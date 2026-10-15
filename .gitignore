@@ -42,3 +42,4 @@ next-env.d.ts
 
 # unsplash source cache (scripts/fetch-images.mjs)
 .cache/
+opencode.json
