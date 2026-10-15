@@ -1,0 +1,486 @@
+{
+  "Metadata": {
+    "home": {
+      "title": "Ventilație pasivă și eliminare mucegai | VENTPRIME",
+      "description": "Scăpați de mucegai și umezeală definitiv. Ventilație pasivă fără electricitate, ventilație forțată, găurire diamantată. Inspecție gratuită în Moldova."
+    },
+    "service": {
+      "title": "{title} | VENTPRIME",
+      "description": "{description} Inspecție gratuită în toată Moldova."
+    },
+    "notFound": {
+      "title": "Pagina nu a fost găsită | VENTPRIME"
+    }
+  },
+  "Nav": {
+    "home": "Acasă",
+    "services": "Servicii",
+    "about": "Despre noi",
+    "tech": "Tehnologie",
+    "reviews": "Recenzii",
+    "contacts": "Contacte",
+    "openMenu": "Deschide meniul",
+    "closeMenu": "Închide meniul",
+    "allServices": "Toate serviciile",
+    "skipToContent": "Sari la conținut",
+    "getInTouch": "Contactează-ne"
+  },
+  "Common": {
+    "freeInspection": "Inspecție gratuită",
+    "howItWorks": "Cum funcționează",
+    "call": "Sună",
+    "write": "Scrie",
+    "learnMore": "Află mai multe",
+    "viewDetails": "Vezi detaliile",
+    "callUs": "Sună acum",
+    "writeUs": "Scrie-ne",
+    "backHome": "Înapoi la acasă",
+    "otherServices": "Alte servicii",
+    "all": "Toate",
+    "close": "Închide",
+    "viewService": "Vezi serviciul"
+  },
+  "Hero": {
+    "title": "Ventilație fără electricitate",
+    "subtitle": "Ventilație pasivă care funcționează non-stop, fără curent și fără întreținere — elimină cauza umezelii și a mucegaiului în case, apartamente, subsoluri și mansarde, în toată Moldova. La inspecția gratuită măsurăm umiditatea, alegem sistemul potrivit clădirii și, acolo unde e nevoie de un debit mai mare, instalăm ventilație forțată.",
+    "cta": {
+      "services": "Serviciile noastre",
+      "technology": "Tehnologie"
+    },
+    "usp": {
+      "noElectricity": "Fără electricitate",
+      "noMaintenance": "Fără mentenanță",
+      "warranty": "Garanție {years} ani"
+    },
+    "imageAlt": "Ventilație autonomă VENTPRIME instalată pe o casă privată"
+  },
+  "Services": {
+    "section": {
+      "title": "Serviciile noastre"
+    },
+    "cta": {
+      "title": "Nu știți de ce serviciu aveți nevoie?",
+      "text": "Facem o inspecție gratuită și vă recomandăm soluția.",
+      "pointCallback": "Vă sunăm în {hours} ore și programăm inspecția.",
+      "pointCoverage": "Inspecție gratuită în toată Moldova.",
+      "pointDiagnostics": "Măsurăm umiditatea înainte de a recomanda ceva."
+    },
+    "items": {
+      "ventilatie-pasiva": {
+        "title": "Instalarea ventilației pasive (fără electricitate)",
+        "description": "Sistem care funcționează non-stop fără curent și fără întreținere.",
+        "points": [
+          "0 lei curent",
+          "Fără filtre",
+          "Montaj rapid"
+        ],
+        "alt": "Unitate de ventilație pasivă montată pe fațada unei case"
+      },
+      "ventilatie-fortata": {
+        "title": "Instalarea ventilației forțate (cu alimentare electrică)",
+        "description": "Ventilație mecanică pentru spații cu încărcare mare de umiditate și aer viciat.",
+        "points": [
+          "Debit reglabil",
+          "Pentru spații comerciale",
+          "Montaj complet"
+        ],
+        "alt": "Ventilator de extracție montat pe perete"
+      },
+      "tratare-mucegai": {
+        "title": "Tratarea și dezinfectarea spațiilor împotriva mucegaiului și ciupercilor",
+        "description": "Îndepărtare profesională a mucegaiului, tratament antifungic și dezinfecție.",
+        "points": [
+          "Toate tipurile de suprafețe",
+          "Produse sigure",
+          "Protecție pe termen lung"
+        ],
+        "alt": "Perete cu mucegai negru înainte de tratament"
+      },
+      "foraj-diamantat": {
+        "title": "Găurire diamantată în beton, cărămidă și alte materiale",
+        "description": "Găuri curate și precise pentru ventilație, conducte și cabluri, fără vibrații și praf.",
+        "points": [
+          "Beton armat",
+          "Fără vibrații",
+          "Diametre variate"
+        ],
+        "alt": "Perete de beton cu găuri realizeate cu găurire diamantată"
+      }
+    },
+    "nav": {
+      "items": {
+        "ventilatie-pasiva": {
+          "title": "Ventilație pasivă",
+          "description": "Fără electricitate și fără întreținere"
+        },
+        "ventilatie-fortata": {
+          "title": "Ventilație forțată",
+          "description": "Debit reglabil pentru spații comerciale"
+        },
+        "tratare-mucegai": {
+          "title": "Tratare mucegai",
+          "description": "Îndepărtare, tratament și dezinfecție"
+        },
+        "foraj-diamantat": {
+          "title": "Găurire diamantată",
+          "description": "Găuri precise în beton și cărămidă"
+        }
+      }
+    }
+  },
+  "Stats": {
+    "section": {
+      "eyebrow": "Rezultate",
+      "title": "VENTPRIME în cifre",
+      "years": {
+        "label": "ani",
+        "caption": "Pe piața din Moldova — în case private, apartamente, subsoluri și spații comerciale."
+      },
+      "objects": {
+        "label": "obiecte",
+        "caption": "Finalizate în toată Moldova — case private, apartamente, subsoluri și spații comerciale."
+      },
+      "humidity": {
+        "label": "reducere umiditate",
+        "caption": "Mai puțină umiditate în casă după montaj — ventilația pasivă funcționează 24/7, fără curent."
+      },
+      "electricity": {
+        "label": "lei / an",
+        "caption": "Costul de funcționare al sistemului pasiv — fără curent, fără filtre, fără mentenanță."
+      },
+      "area": {
+        "label": "m²",
+        "caption": "suprafețe tratate"
+      },
+      "warranty": {
+        "label": "ani garanție",
+        "caption": "pentru lucrări"
+      }
+    }
+  },
+  "About": {
+    "section": {
+      "eyebrow": "Despre noi",
+      "title": "VENTPRIME — specialiști în ventilație și eliminarea mucegaiului",
+      "description": "Suntem o echipă care se ocupă de ventilație și de eliminarea mucegaiului. Misiunea noastră: case sănătoase și uscate, fără costuri suplimentare. Nu tratăm simptomul — eliminăm cauza.",
+      "location": "Sediu",
+      "serviceArea": "Zona de deservire",
+      "imageAlt": "Echipa VENTPRIME la lucru"
+    },
+    "usp": {
+      "no-electricity": {
+        "title": "Fără electricitate",
+        "description": "Sistemul funcționează fără curent, zero costuri lunare."
+      },
+      "no-maintenance": {
+        "title": "Fără mentenanță",
+        "description": "Fără filtre, fără motoare, fără vizite de service."
+      },
+      "warranty": {
+        "title": "Garanție {years} ani",
+        "description": "Răspundem pentru rezultat."
+      },
+      "free-inspection": {
+        "title": "Inspecție gratuită",
+        "description": "Măsurăm umiditatea și găsim cauza înainte de ofertă."
+      }
+    },
+    "process": {
+      "eyebrow": "Cum lucrăm",
+      "title": "Cum lucrăm cu clienții",
+      "description": "Patru pași simpli, de la primul apel la o casă uscată.",
+      "request": {
+        "title": "Solicitare",
+        "description": "Sunați sau completați formularul."
+      },
+      "inspection": {
+        "title": "Inspecție gratuită",
+        "description": "Măsurăm umiditatea, identificăm cauza."
+      },
+      "work": {
+        "title": "Montaj / tratament",
+        "description": "Instalare ventilație și/sau tratarea mucegaiului."
+      },
+      "result": {
+        "title": "Casă uscată",
+        "description": "Verificare ulterioară și garanție."
+      }
+    }
+  },
+  "Tech": {
+    "section": {
+      "eyebrow": "Tehnologia noastră",
+      "title": "Cum funcționează ventilația fără electricitate",
+      "description": "Sistemul folosește forțele fizice naturale — diferența de temperatură și de presiune — pentru a menține aerul în mișcare 24/7."
+    },
+    "diagram": {
+      "alt": "Secțiune schematică a unei case cu ventilație naturală",
+      "steps": {
+        "out": {
+          "title": "Aerul umed iese",
+          "description": "Aerul cald, încărcat cu umezeală, părăsește casa prin punctele de exhaustie."
+        },
+        "in": {
+          "title": "Aerul proaspăt intră",
+          "description": "Aerul rece și curat intră prin canale alimentare amplasate jos."
+        },
+        "circulation": {
+          "title": "Circulație continuă",
+          "description": "Schimbul are loc 24/7, fără curent și fără motoare."
+        },
+        "result": {
+          "title": "Umiditatea scade",
+          "description": "Condensul și mucegaiul dispar pentru că aerul nu mai stagnează."
+        }
+      }
+    },
+    "components": {
+      "title": "Ce se montează",
+      "description": "Componente simple, fără piese electronice, cu durată mare de viață."
+    },
+    "comparison": {
+      "title": "Comparație",
+      "columns": [
+        "",
+        "VENTPRIME",
+        "Ventilație electrică",
+        "Dezumidificator",
+        "Abrisire prin geam"
+      ],
+      "rows": [
+        {
+          "label": "Cost electricitate",
+          "values": [
+            "0 lei",
+            "Lunar",
+            "Lunar, ridicat",
+            "0 lei, pierderi de căldură"
+          ]
+        },
+        {
+          "label": "Mentenanță",
+          "values": [
+            "Nu",
+            "Filtre, service",
+            "Golire apă, filtre",
+            "—"
+          ]
+        },
+        {
+          "label": "Funcționează 24/7",
+          "values": [
+            "Da",
+            "Da",
+            "Da",
+            "Nu"
+          ]
+        },
+        {
+          "label": "Zgomot",
+          "values": [
+            "Nu",
+            "Da",
+            "Da",
+            "—"
+          ]
+        },
+        {
+          "label": "Funcționează fără curent",
+          "values": [
+            "Da",
+            "Nu",
+            "Nu",
+            "Da"
+          ]
+        },
+        {
+          "label": "Elimină cauza mucegaiului",
+          "values": [
+            "Da",
+            "Parțial",
+            "Nu",
+            "Nu"
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Întrebări frecvente despre tehnologie",
+      "items": [
+        {
+          "question": "Cum poate funcționa ventilația fără electricitate?",
+          "answer": "Sistemul se bazează pe diferența naturală de temperatură și presiune dintre interior și exterior, care creează un tiraj natural permanent."
+        },
+        {
+          "question": "Funcționează și iarna? Nu se răcește casa?",
+          "answer": "Da. Aerul care iese este cald și umed, iar cel care intră este rece, însă schimbul constant menține temperatura confortabilă."
+        },
+        {
+          "question": "Chiar nu necesită întreținere?",
+          "answer": "Nu există motoare, filtre sau componente electronice. Singura întreținere este curățarea ocazională a grilelor."
+        },
+        {
+          "question": "Cât durează montajul?",
+          "answer": "În medie 1–2 zile, în funcție de dimensiunea clădirii."
+        },
+        {
+          "question": "Pentru ce tipuri de clădiri este potrivită?",
+          "answer": "Case, apartamente, subsoluri, mansarde, depozite, magazine, birouri și restaurante."
+        }
+      ]
+    },
+    "cta": "Aflați dacă sistemul se potrivește clădirii dumneavoastră"
+  },
+  "Feedback": {
+    "section": {
+      "eyebrow": "Recenzii",
+      "title": "Recenziile clienților și rezultate reale",
+      "rating": "{rating} / 5 · {count} recenzii Google",
+      "viewAll": "Vezi toate pe Google",
+      "testimonialsTitle": "Ce spun clienții",
+      "projectsTitle": "Rezultate înainte și după",
+      "before": "Înainte",
+      "after": "După",
+      "humidity": "Umiditate",
+      "projectImageAlt": "{locality} — înainte de tratament"
+    },
+    "cta": "Vreți același rezultat?",
+    "reviews": {
+      "t1": {
+        "quote": "Mucegaiul revenea mereu în dormitor, oricât de mult frecam. VENTPRIME a tratat pereții și a montat ventilație pasivă — după un an pereții sunt uscați, iar mirosul de umezeală a dispărut complet."
+      },
+      "t2": {
+        "quote": "Au venit la inspecția gratuită, au măsurat umiditatea în fiecare cameră și ne-au explicat cauza, nu doar prețul. Subsolul s-a uscat în câteva săptămâni după montaj."
+      },
+      "t3": {
+        "quote": "Geamurile se abureau în fiecare dimineață, iar colțurile se înnegreau iarna. De la instalare aerul e proaspăt, geamurile rămân clare, iar mucegaiul nu a mai revenit."
+      },
+      "t4": {
+        "quote": "Lucru rapid, curat și onest. Au acoperit mobila, au terminat într-o zi și au luat molozul cu ei. Mansarda e uscată acum, iar mirosul a dispărut complet."
+      },
+      "t5": {
+        "quote": "Am încercat spray-uri și revopsire de două ori, dar petele negre reveneau mereu. Tratamentul lor plus ventilația au rezolvat cauza — după două sezoane colțurile băii sunt impecabile."
+      },
+      "t6": {
+        "quote": "O vizită, un montaj, fără praf prin toată casa. Beciul rămâne uscat de atunci, chiar și după ploi torențiale. Merită fiecare leu."
+      }
+    },
+    "projects": {
+      "p1": {
+        "title": "Subsol, Chișinău",
+        "summary": "Mucegai pe pereți și umezeală ridicată — rezolvat prin ventilație autonomă."
+      },
+      "p2": {
+        "title": "Beci, Ialoveni",
+        "summary": "Umiditate crescută în pod — rezolvată prin circulația naturală a aerului."
+      }
+    }
+  },
+  "Contacts": {
+    "section": {
+      "eyebrow": "Contacte",
+      "title": "Contacte și zona de deservire",
+      "description": "Lăsați datele — vă sunăm în {hours} ore și programăm o inspecție gratuită."
+    },
+    "details": {
+      "phone": "Telefon",
+      "messengers": "Mesagerie",
+      "email": "Email",
+      "address": "Adresă",
+      "hours": "Program de lucru",
+      "serviceArea": "Deservim"
+    }
+  },
+  "Form": {
+    "quick": {
+      "title": "Consultanță gratuită",
+      "description": "Lăsați numele și telefonul — vă sunăm.",
+      "submit": "Trimite"
+    },
+    "full": {
+      "title": "Solicitați o inspecție gratuită",
+      "description": "Completați formularul și vă contactăm în cel mai scurt timp.",
+      "submit": "Trimite cererea",
+      "submitting": "Se trimite…"
+    },
+    "fields": {
+      "name": "Nume",
+      "phone": "Telefon",
+      "email": "Email",
+      "locality": "Localitate",
+      "premise": "Tip de spațiu",
+      "service": "Serviciu",
+      "problem": "Problema",
+      "area": "Suprafață (m²)",
+      "photos": "Fotografii",
+      "message": "Mesaj",
+      "consent": "Sunt de acord cu prelucrarea datelor personale și cu politica de confidențialitate."
+    },
+    "options": {
+      "premise": {
+        "house": "Casă",
+        "apartment": "Apartament",
+        "basement": "Subsol",
+        "attic": "Mansardă",
+        "commercial": "Spațiu comercial"
+      },
+      "problem": {
+        "mold": "Mucegai",
+        "humidity": "Umiditate",
+        "condensation": "Condens",
+        "smell": "Miros neplăcut",
+        "newVentilation": "Ventilație nouă",
+        "other": "Altul"
+      },
+      "service": {
+        "ventilatie-pasiva": "Ventilație pasivă",
+        "ventilatie-fortata": "Ventilație forțată",
+        "tratare-mucegai": "Tratare mucegai",
+        "foraj-diamantat": "Găurire diamantată"
+      }
+    },
+    "validation": {
+      "nameRequired": "Numele este obligatoriu",
+      "phoneRequired": "Telefonul este obligatoriu",
+      "phoneInvalid": "Introduceți un număr valid",
+      "consentRequired": "Este necesar acordul dumneavoastră",
+      "generic": "Ceva nu a mers bine. Încercați din nou."
+    },
+    "success": {
+      "title": "Vă mulțumim!",
+      "description": "Am primit cererea. Vă sunăm în {hours} ore."
+    },
+    "photos": {
+      "add": "Adaugă fotografii",
+      "hint": "Maxim 3 fotografii",
+      "remove": "Elimină"
+    }
+  },
+  "Privacy": {
+    "title": "Politica de confidențialitate",
+    "body": "Datele transmise prin acest formular sunt folosite exclusiv pentru a vă contacta în legătură cu inspecția și serviciile solicitate. Nu le transmitem terților. Le păstrăm doar pe perioada necesară desfășurării solicitării și le ștergem la cererea dumneavoastră.",
+    "accept": "Am citit"
+  },
+  "Footer": {
+    "tagline": "Aer curat. Casă uscată. Fără electricitate.",
+    "services": "Servicii",
+    "company": "Companie",
+    "contacts": "Contacte",
+    "hours": "Program",
+    "privacy": "Politica de confidențialitate",
+    "rights": "Toate drepturile rezervate.",
+    "legal": "Legal"
+  },
+  "NotFoundPage": {
+    "title": "Pagina nu a fost găsită",
+    "description": "Pagina pe care o căutați nu există sau a fost mutată."
+  },
+  "Locale": {
+    "switcher": "Limbă",
+    "label": {
+      "ro": "Română",
+      "ru": "Русский",
+      "en": "English"
+    }
+  }
+}

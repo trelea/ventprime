@@ -1,26 +1,401 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Display face — headings, hero, body copy. */
+  --font-sans: var(--font-sans);
+  /* UI face — navigation, buttons, form controls, labels, footer. */
+  --font-ui: var(--font-ui);
+  /*
+   * JetBrains Mono, loaded in `app/[locale]/layout.tsx` — used for the small
+   * uppercase micro-labels only (section eyebrows, the sheet's services
+   * heading), never for body copy.
+   */
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+  /*
+   * Onest, loaded in `app/[locale]/layout.tsx` — the display face for the hero
+   * headline only. Exists because Manrope's axis stops at 800 and that headline
+   * needs 900 (`font-black`); see the font comment in the layout.
+   */
+  --font-display: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* VENTPRIME brand tokens */
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-dark: var(--brand-blue-dark);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-soft: var(--brand-green-soft);
+  --color-surface: var(--surface);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  /*
+   * Aurora Text (Magic UI) — `components/ui/aurora-text.tsx`. Sweep only.
+   *
+   * ⚠️  Deliberately NOT the registry's keyframes. Upstream also animates
+   * `transform: rotate(-5deg..5deg) scale(0.9..1.1)`, which on a two-line hero
+   * headline makes it tilt and breathe, and — because the transform scales from
+   * the centre — drags the headline's left edge in and out of the column guide
+   * every section on the site aligns to. Only the background sweep is kept.
+   *
+   * The two stops are 0% and 200% because the element carries
+   * `bg-size-[200%_auto]`: the gradient is twice the box, so travelling its full
+   * width and back (`alternate`) reads as one seamless drift.
+   */
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+
+  @keyframes aurora {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+
+  /*
+   * Meteors (Magic UI, registry `@magicui`) — `components/ui/meteors.tsx`.
+   * Only the layout was cleaned up after the registry add; the animation
+   * itself is the component's: one uniform sweep, and each meteor offsets
+   * onto the track with its own inline delay/duration.
+   */
+  --animate-meteor: meteor 5s linear infinite;
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  /* VENTPRIME palette — see AGENTS.md §8 */
+  --white: #ffffff;
+  --surface: #f2f8fc;
+  --brand-blue: #1e6fb8;
+  --brand-blue-dark: #0f2e4d;
+  --brand-green: #2fb36d;
+  --brand-green-soft: #eaf8f0;
+  --gray-500: #6b7a89;
+
+  --background: var(--white);
+  --foreground: var(--brand-blue-dark);
+  --card: var(--white);
+  --card-foreground: var(--brand-blue-dark);
+  --popover: var(--white);
+  --popover-foreground: var(--brand-blue-dark);
+  --primary: var(--brand-blue);
+  --primary-foreground: var(--white);
+  --secondary: var(--surface);
+  --secondary-foreground: var(--brand-blue-dark);
+  --muted: var(--surface);
+  --muted-foreground: var(--gray-500);
+  --accent: var(--brand-green-soft);
+  --accent-foreground: var(--brand-blue-dark);
+  --destructive: #dc2626;
+  --border: #e3ecf4;
+  --input: #e3ecf4;
+  --ring: var(--brand-blue);
+  --chart-1: #1e6fb8;
+  --chart-2: #2fb36d;
+  --chart-3: #0f2e4d;
+  --chart-4: #6b7a89;
+  --chart-5: #eaf8f0;
+  --radius: 0.875rem;
+  --sidebar: var(--white);
+  --sidebar-foreground: var(--brand-blue-dark);
+  --sidebar-primary: var(--brand-blue);
+  --sidebar-primary-foreground: var(--white);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--brand-blue-dark);
+  --sidebar-border: #e3ecf4;
+  --sidebar-ring: var(--brand-blue);
+}
+
+.dark {
+  --background: var(--brand-blue-dark);
+  --foreground: var(--white);
+  --card: #143a5f;
+  --card-foreground: var(--white);
+  --popover: #143a5f;
+  --popover-foreground: var(--white);
+  --primary: var(--brand-blue);
+  --primary-foreground: var(--white);
+  --secondary: #143a5f;
+  --secondary-foreground: var(--white);
+  --muted: #143a5f;
+  --muted-foreground: #a9bccd;
+  --accent: #1c4b78;
+  --accent-foreground: var(--white);
+  --destructive: #f87171;
+  --border: #ffffff1f;
+  --input: #ffffff2e;
+  --ring: var(--brand-green);
+  --chart-1: var(--brand-green);
+  --chart-2: var(--brand-blue);
+  --chart-3: var(--white);
+  --chart-4: #a9bccd;
+  --chart-5: #143a5f;
+  --sidebar: #143a5f;
+  --sidebar-foreground: var(--white);
+  --sidebar-primary: var(--brand-blue);
+  --sidebar-primary-foreground: var(--white);
+  --sidebar-accent: #1c4b78;
+  --sidebar-accent-foreground: var(--white);
+  --sidebar-border: #ffffff1f;
+  --sidebar-ring: var(--brand-green);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    /* keep anchored sections clear of the floating pill header */
+    scroll-padding-top: 7rem;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /*
+   * The navigation chrome — navbar and footer — uses the quieter UI face, so
+   * the menu reads as supporting furniture rather than competing with the
+   * headline above it.
+   *
+   * Scoped to `header`/`footer` rather than a blanket `main`/`button` rule: the
+   * hero and the marketing sections below it must stay on the display face,
+   * and the hero lives inside `main`. Form controls get the UI face explicitly
+   * from the `font-ui` utility on their primitives (`components/ui/*`), which
+   * keeps the intent greppable instead of implied by a selector.
+   */
+  header,
+  footer {
+    font-family: var(--font-ui), var(--font-sans), ui-sans-serif, system-ui,
+      sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Section backgrounds follow the rhythm defined in AGENTS.md §5 */
+  .bg-surface-section {
+    background-color: var(--surface);
+  }
+
+  .bg-brand-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-blue) 0%,
+      var(--brand-green) 100%
+    );
+  }
+
+  .text-brand-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-blue) 0%,
+      var(--brand-green) 100%
+    );
+    background-clip: text;
+    color: transparent;
+  }
+
+  /**
+   * Veil the SERVICE card (`components/sections/service-card.tsx`) lays over
+   * its photo so the solid blue copy panel bleeds into the picture instead of
+   * meeting it at a hard seam.
+   *
+   * The six stops are a hand-tuned ease-out (100 → 78 → 52 → 27 → 9 → 0), not
+   * the two-stop ramp a `from-*`/`to-*` pair would give. A straight two-stop
+   * fade is linear, and against a busy photo that reads as a visible band with
+   * a hard upper edge; dropping most of the opacity early and coasting out to
+   * zero keeps the far end of the fade imperceptible.
+   *
+   * Direction comes from `--service-card-blend-direction` so one rule serves
+   * all three placements: the copy panel sits right of the photo (default,
+   * `to left`), left of it (`to right`, on `reverse` cards), or below it
+   * (`to top`, in the stacked mobile layout).
+   */
+  .service-card-blend {
+    background-image: linear-gradient(
+      var(--service-card-blend-direction, to left),
+      var(--brand-blue-dark) 0%,
+      color-mix(in srgb, var(--brand-blue-dark) 78%, transparent) 22%,
+      color-mix(in srgb, var(--brand-blue-dark) 52%, transparent) 44%,
+      color-mix(in srgb, var(--brand-blue-dark) 27%, transparent) 65%,
+      color-mix(in srgb, var(--brand-blue-dark) 9%, transparent) 83%,
+      transparent 100%
+    );
+  }
+
+  /**
+   * Full-viewport height for the HERO, immune to mobile browser chrome.
+   *
+   * `svh` rather than `dvh` on purpose: `dvh` grows and shrinks as mobile
+   * browser chrome slides in and out, which would resize the hero mid-scroll
+   * and show up as a layout shift. `svh` locks to the *smallest* viewport — the
+   * one with the browser chrome expanded, which is the state the hero is
+   * actually viewed in — so it stays put.
+   *
+   * Deliberately `min-height`, not `height`: on a phone held in landscape the
+   * viewport is only ~320-400px tall, and a fixed height would clip the
+   * headline and CTAs. `min-height` still gives a true full-screen hero in
+   * portrait while letting the content grow instead of being cut off.
+   *
+   * ⚠️  These two rules must stay separate. Written as a plain
+   * `min-height: 100vh; min-height: 100svh;` pair, Tailwind emits both
+   * correctly but Next's Lightning CSS minifier then collapses them to just
+   * `100svh` — leaving browsers without `svh` (Chrome < 108, Safari < 15.4,
+   * Firefox < 101) with *no* hero height at all. `@supports` keeps the
+   * fallback and the enhancement structurally distinct.
+   */
+  .min-h-screen-safe {
+    min-height: 100vh;
+  }
+
+  @supports (height: 100svh) {
+    .min-h-screen-safe {
+      min-height: 100svh;
+    }
+  }
+
+  /**
+   * Padding that clears the iOS notch / status bar above the fixed header.
+   * `env()` resolves to 0px everywhere that has no inset, so this is a plain
+   * 1rem on desktop.
+   */
+  .pt-safe {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  }
+
+  /** Same idea for the bottom edge, for the home indicator in landscape. */
+  .pb-safe {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+  }
+}
+
+/*
+ * Navbar underline — the top-level nav items (Services trigger + the four
+ * anchor links).
+ *
+ * ⚠️  A plain CSS rule rather than Tailwind's `hover:decoration-*` utilities, on
+ * purpose. Those utilities are emitted into `@layer utilities`, and on these
+ * elements they never painted: the base reset `a { text-decoration: inherit }`
+ * (from `shadcn/tailwind.css`, in `@layer base`) kept winning even though the
+ * hover rule has both higher specificity and a later layer. Verified in the
+ * browser — the trigger (a `<button>`) picked the utilities up, the links (an
+ * `<a>`) did not, and an equivalent unlayered rule applied to both instantly.
+ *
+ * Left unlayered so it beats every `@layer`, and scoped to `header` so it can
+ * never touch the service grid cells — those live in the portalled dropdown
+ * popup, which renders outside `<header>` in the DOM.
+ *
+ * `text-decoration` rather than a border or pseudo-element because it is
+ * painted outside the box and does not affect layout, so nothing shifts when
+ * the underline appears. The colour is transparent at rest, so it reads as a
+ * colour change rather than an element appearing.
+ */
+header [data-slot="navigation-menu-trigger"],
+header [data-slot="navigation-menu-link"] {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: transparent;
+  transition:
+    color 150ms ease,
+    text-decoration-color 150ms ease;
+}
+
+header [data-slot="navigation-menu-trigger"]:hover,
+header [data-slot="navigation-menu-link"]:hover,
+header [data-slot="navigation-menu-trigger"]:focus-visible,
+header [data-slot="navigation-menu-link"]:focus-visible,
+header [data-slot="navigation-menu-trigger"][data-active]:not([data-active="false"]),
+header [data-slot="navigation-menu-link"][data-active]:not([data-active="false"]),
+header [data-slot="navigation-menu-trigger"][data-popup-open]:not([data-popup-open="false"]) {
+  text-decoration-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

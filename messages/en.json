@@ -1,0 +1,486 @@
+{
+  "Metadata": {
+    "home": {
+      "title": "Passive ventilation & mold removal | VENTPRIME",
+      "description": "Get rid of mold and damp for good. Electricity-free passive ventilation, forced ventilation, diamond drilling. Free inspection across Moldova."
+    },
+    "service": {
+      "title": "{title} | VENTPRIME",
+      "description": "{description} Free inspection across Moldova."
+    },
+    "notFound": {
+      "title": "Page not found | VENTPRIME"
+    }
+  },
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About us",
+    "tech": "Technology",
+    "reviews": "Reviews",
+    "contacts": "Contacts",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "allServices": "All services",
+    "skipToContent": "Skip to content",
+    "getInTouch": "Get in touch"
+  },
+  "Common": {
+    "freeInspection": "Free inspection",
+    "howItWorks": "How it works",
+    "call": "Call",
+    "write": "Write",
+    "learnMore": "Learn more",
+    "viewDetails": "View details",
+    "callUs": "Call us",
+    "writeUs": "Write to us",
+    "backHome": "Back to home",
+    "otherServices": "Other services",
+    "all": "All",
+    "close": "Close",
+    "viewService": "View service"
+  },
+  "Hero": {
+    "title": "Ventilation without electricity",
+    "subtitle": "Passive ventilation that runs around the clock with no electricity and no maintenance — it removes the cause of damp and mold in houses, apartments, basements and attics, all over Moldova. On the free inspection we measure the humidity, fit the right system for your building and, where more airflow is needed, install forced ventilation.",
+    "cta": {
+      "services": "Our services",
+      "technology": "Technology"
+    },
+    "usp": {
+      "noElectricity": "No electricity",
+      "noMaintenance": "No maintenance",
+      "warranty": "{years}-year warranty"
+    },
+    "imageAlt": "VENTPRIME autonomous ventilation installed on a private house"
+  },
+  "Services": {
+    "section": {
+      "title": "Our services"
+    },
+    "cta": {
+      "title": "Not sure which service you need?",
+      "text": "We'll run a free inspection and recommend the right solution.",
+      "pointCallback": "We call back within {hours} hours and schedule the inspection.",
+      "pointCoverage": "Free inspection all over Moldova.",
+      "pointDiagnostics": "We measure the humidity before recommending anything."
+    },
+    "items": {
+      "ventilatie-pasiva": {
+        "title": "Passive ventilation installation (no electricity)",
+        "description": "A system that runs non-stop with no power and no maintenance.",
+        "points": [
+          "0 lei running cost",
+          "No filters",
+          "Fast installation"
+        ],
+        "alt": "Passive ventilation unit mounted on a house facade"
+      },
+      "ventilatie-fortata": {
+        "title": "Forced ventilation installation (electric)",
+        "description": "Mechanical ventilation for spaces with heavy humidity and stale air.",
+        "points": [
+          "Adjustable airflow",
+          "For commercial spaces",
+          "Complete installation"
+        ],
+        "alt": "Extract fan mounted on a wall"
+      },
+      "tratare-mucegai": {
+        "title": "Mold and fungus treatment and disinfection",
+        "description": "Professional mold removal, anti-fungal treatment and disinfection.",
+        "points": [
+          "All surface types",
+          "Safe products",
+          "Long-term protection"
+        ],
+        "alt": "Wall with black mold before treatment"
+      },
+      "foraj-diamantat": {
+        "title": "Diamond drilling in concrete, brick and other materials",
+        "description": "Clean, precise holes for ventilation, pipes and cables, with no vibration and no dust.",
+        "points": [
+          "Reinforced concrete",
+          "No vibration",
+          "Various diameters"
+        ],
+        "alt": "Concrete wall with diamond-drilled holes"
+      }
+    },
+    "nav": {
+      "items": {
+        "ventilatie-pasiva": {
+          "title": "Passive ventilation",
+          "description": "No power, no maintenance"
+        },
+        "ventilatie-fortata": {
+          "title": "Forced ventilation",
+          "description": "Adjustable airflow for commercial"
+        },
+        "tratare-mucegai": {
+          "title": "Mold treatment",
+          "description": "Removal, treatment, disinfection"
+        },
+        "foraj-diamantat": {
+          "title": "Diamond drilling",
+          "description": "Precise holes in concrete and brick"
+        }
+      }
+    }
+  },
+  "Stats": {
+    "section": {
+      "eyebrow": "Results",
+      "title": "VENTPRIME in numbers",
+      "years": {
+        "label": "years",
+        "caption": "On the Moldovan market — in private houses, apartments, basements and commercial premises."
+      },
+      "objects": {
+        "label": "objects",
+        "caption": "Completed across Moldova — private houses, apartments, basements and commercial premises."
+      },
+      "humidity": {
+        "label": "humidity reduction",
+        "caption": "Less humidity indoors once the passive ventilation is in — it runs 24/7, no electricity."
+      },
+      "electricity": {
+        "label": "lei / year",
+        "caption": "The running cost of the passive system — no current, no filters, no maintenance at all."
+      },
+      "area": {
+        "label": "m²",
+        "caption": "surface area treated"
+      },
+      "warranty": {
+        "label": "year warranty",
+        "caption": "on workmanship"
+      }
+    }
+  },
+  "About": {
+    "section": {
+      "eyebrow": "About us",
+      "title": "VENTPRIME — specialists in ventilation and mold removal",
+      "description": "We are a team focused on ventilation and mold removal. Our mission is healthy, dry homes without extra running costs. We remove the cause, not the symptom.",
+      "location": "Office",
+      "serviceArea": "Service area",
+      "imageAlt": "The VENTPRIME team at work"
+    },
+    "usp": {
+      "no-electricity": {
+        "title": "No electricity",
+        "description": "The system runs without power — zero monthly costs."
+      },
+      "no-maintenance": {
+        "title": "No maintenance",
+        "description": "No filters, no motors, no service visits."
+      },
+      "warranty": {
+        "title": "{years}-year warranty",
+        "description": "We stand behind the result."
+      },
+      "free-inspection": {
+        "title": "Free inspection",
+        "description": "We measure the moisture and find the cause before quoting."
+      }
+    },
+    "process": {
+      "eyebrow": "How we work",
+      "title": "How we work with clients",
+      "description": "Four simple steps, from your first call to a dry home.",
+      "request": {
+        "title": "Request",
+        "description": "Call us or fill in the form."
+      },
+      "inspection": {
+        "title": "Free inspection",
+        "description": "We measure the moisture and identify the cause."
+      },
+      "work": {
+        "title": "Installation / treatment",
+        "description": "We install the ventilation and/or treat the mold."
+      },
+      "result": {
+        "title": "Dry home",
+        "description": "Follow-up check and warranty."
+      }
+    }
+  },
+  "Tech": {
+    "section": {
+      "eyebrow": "Our technology",
+      "title": "How electricity-free ventilation works",
+      "description": "The system relies on natural physical forces — the difference in temperature and pressure — to keep air moving 24/7."
+    },
+    "diagram": {
+      "alt": "Schematic cross-section of a house with natural ventilation",
+      "steps": {
+        "out": {
+          "title": "Humid air leaves",
+          "description": "Warm, moisture-laden air exits through the exhaust points."
+        },
+        "in": {
+          "title": "Fresh air enters",
+          "description": "Cool, clean air comes in through low-level supply channels."
+        },
+        "circulation": {
+          "title": "Continuous circulation",
+          "description": "Air exchange runs 24/7, with no power and no motors."
+        },
+        "result": {
+          "title": "Humidity drops",
+          "description": "Condensation and mold disappear because the air no longer stagnates."
+        }
+      }
+    },
+    "components": {
+      "title": "What gets installed",
+      "description": "Simple components with no electronics and a long service life."
+    },
+    "comparison": {
+      "title": "Comparison",
+      "columns": [
+        "",
+        "VENTPRIME",
+        "Electric ventilation",
+        "Dehumidifier",
+        "Window airing"
+      ],
+      "rows": [
+        {
+          "label": "Electricity cost",
+          "values": [
+            "0 lei",
+            "Monthly",
+            "Monthly, high",
+            "0 lei, heat loss"
+          ]
+        },
+        {
+          "label": "Maintenance",
+          "values": [
+            "No",
+            "Filters, service",
+            "Water tank, filters",
+            "—"
+          ]
+        },
+        {
+          "label": "Runs 24/7",
+          "values": [
+            "Yes",
+            "Yes",
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "label": "Noise",
+          "values": [
+            "No",
+            "Yes",
+            "Yes",
+            "—"
+          ]
+        },
+        {
+          "label": "Works without power",
+          "values": [
+            "Yes",
+            "No",
+            "No",
+            "Yes"
+          ]
+        },
+        {
+          "label": "Removes the cause of mold",
+          "values": [
+            "Yes",
+            "Partly",
+            "No",
+            "No"
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Technology questions",
+      "items": [
+        {
+          "question": "How can ventilation work without electricity?",
+          "answer": "The system relies on the natural difference in temperature and pressure between inside and outside, which creates a permanent natural draft."
+        },
+        {
+          "question": "Does it work in winter? Does the house get cold?",
+          "answer": "Yes. The air that leaves is warm and damp while the incoming air is cool, but the constant exchange keeps the temperature comfortable."
+        },
+        {
+          "question": "Does it really need no maintenance?",
+          "answer": "There are no motors, filters or electronic components. The only upkeep is occasionally cleaning the grilles."
+        },
+        {
+          "question": "How long does installation take?",
+          "answer": "On average 1–2 days, depending on the size of the building."
+        },
+        {
+          "question": "What types of buildings is it suitable for?",
+          "answer": "Houses, apartments, basements, attics, warehouses, shops, offices and restaurants."
+        }
+      ]
+    },
+    "cta": "Find out whether the system suits your building"
+  },
+  "Feedback": {
+    "section": {
+      "eyebrow": "Reviews",
+      "title": "Client reviews and real results",
+      "rating": "{rating} / 5 · {count} Google reviews",
+      "viewAll": "See all reviews on Google",
+      "testimonialsTitle": "What clients say",
+      "projectsTitle": "Before and after results",
+      "before": "Before",
+      "after": "After",
+      "humidity": "Humidity",
+      "projectImageAlt": "{locality} — before treatment"
+    },
+    "cta": "Want the same result?",
+    "reviews": {
+      "t1": {
+        "quote": "Mold kept coming back in our bedroom no matter what we scrubbed it with. VENTPRIME treated the walls and installed passive ventilation — a year later the walls are still dry and there is no damp smell at all."
+      },
+      "t2": {
+        "quote": "They came for a free inspection, measured the humidity in every room and explained the cause instead of just quoting a price. The basement dried out within weeks after the vents went in."
+      },
+      "t3": {
+        "quote": "Our windows used to fog up every morning and the corners turned black by winter. Since the installation the air feels fresh, the glass stays clear and the mold never returned."
+      },
+      "t4": {
+        "quote": "Fast, clean and honest work. They covered the furniture, finished in one day and took the debris with them. The attic is dry now and the musty smell disappeared completely."
+      },
+      "t5": {
+        "quote": "We tried sprays and repainting twice and the black spots always came back. Their treatment plus ventilation fixed the actual cause — two seasons later the bathroom corners are still spotless."
+      },
+      "t6": {
+        "quote": "One visit, one installation, no dust all over the house. The cellar stays dry ever since, even after heavy rains. Worth every leu."
+      }
+    },
+    "projects": {
+      "p1": {
+        "title": "Basement, Chișinău",
+        "summary": "Mold on the walls and high humidity — solved with autonomous ventilation."
+      },
+      "p2": {
+        "title": "Cellar, Ialoveni",
+        "summary": "Rising humidity in the attic — solved with natural air circulation."
+      }
+    }
+  },
+  "Contacts": {
+    "section": {
+      "eyebrow": "Contacts",
+      "title": "Contacts and service area",
+      "description": "Leave your details — we call back within {hours} hours and schedule a free inspection."
+    },
+    "details": {
+      "phone": "Phone",
+      "messengers": "Messengers",
+      "email": "Email",
+      "address": "Address",
+      "hours": "Working hours",
+      "serviceArea": "We serve"
+    }
+  },
+  "Form": {
+    "quick": {
+      "title": "Free consultation",
+      "description": "Leave your name and phone — we'll call you.",
+      "submit": "Send"
+    },
+    "full": {
+      "title": "Request a free inspection",
+      "description": "Fill in the form and we'll get back to you as soon as possible.",
+      "submit": "Send request",
+      "submitting": "Sending…"
+    },
+    "fields": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "locality": "Locality",
+      "premise": "Type of premises",
+      "service": "Service",
+      "problem": "Problem",
+      "area": "Area (m²)",
+      "photos": "Photos",
+      "message": "Message",
+      "consent": "I agree to the processing of my personal data and to the privacy notice."
+    },
+    "options": {
+      "premise": {
+        "house": "House",
+        "apartment": "Apartment",
+        "basement": "Basement",
+        "attic": "Attic",
+        "commercial": "Commercial premises"
+      },
+      "problem": {
+        "mold": "Mold",
+        "humidity": "Damp",
+        "condensation": "Condensation",
+        "smell": "Musty smell",
+        "newVentilation": "New ventilation",
+        "other": "Other"
+      },
+      "service": {
+        "ventilatie-pasiva": "Passive ventilation",
+        "ventilatie-fortata": "Forced ventilation",
+        "tratare-mucegai": "Mold treatment",
+        "foraj-diamantat": "Diamond drilling"
+      }
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "phoneRequired": "Phone is required",
+      "phoneInvalid": "Enter a valid number",
+      "consentRequired": "Your consent is required",
+      "generic": "Something went wrong. Please try again."
+    },
+    "success": {
+      "title": "Thank you!",
+      "description": "We've received your request. We'll call you within {hours} hours."
+    },
+    "photos": {
+      "add": "Add photos",
+      "hint": "Up to 3 photos",
+      "remove": "Remove"
+    }
+  },
+  "Privacy": {
+    "title": "Privacy notice",
+    "body": "The data submitted through this form is used only to contact you about your inspection and requested services. We do not share it with third parties. We keep it only for as long as needed to handle your request and delete it on request.",
+    "accept": "I've read it"
+  },
+  "Footer": {
+    "tagline": "Clean air. Dry home. No electricity.",
+    "services": "Services",
+    "company": "Company",
+    "contacts": "Contacts",
+    "hours": "Working hours",
+    "privacy": "Privacy notice",
+    "rights": "All rights reserved.",
+    "legal": "Legal"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "The page you are looking for doesn't exist or has been moved."
+  },
+  "Locale": {
+    "switcher": "Language",
+    "label": {
+      "ro": "Română",
+      "ru": "Русский",
+      "en": "English"
+    }
+  }
+}
