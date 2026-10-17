@@ -6,6 +6,7 @@ import {
   Droplets,
   Fan,
   ShieldCheck,
+  Sparkles,
   SprayCan,
   Wind,
   ZapOff,
@@ -22,6 +23,7 @@ const SERVICE_ICONS: Record<ServiceIcon, LucideIcon> = {
   fan: Fan,
   mold: SprayCan,
   drill: Drill,
+  ozonizare: Sparkles,
 };
 
 const USP_ICONS: Record<USP["icon"], LucideIcon> = {
@@ -45,7 +47,7 @@ const STAT_ICONS: Record<Stat["icon"], LucideIcon> = {
 };
 
 /**
- * Icons are rendered inside a soft brand-green circle, per the service card
+ * Icons are rendered inside a soft emerald-50 circle, per the service card
  * anatomy in AGENTS.md §5.2.
  *
  * The classes are combined with `cn()` rather than string-concatenated on
@@ -66,7 +68,7 @@ export function IconCircle({
   return (
     <span
       className={cn(
-        "bg-brand-green-soft text-primary flex size-14 shrink-0 items-center justify-center rounded-2xl",
+        "bg-emerald-50 text-primary flex size-14 shrink-0 items-center justify-center rounded-2xl",
         className,
       )}
     >
@@ -107,7 +109,7 @@ export function ServiceGlyph({
 
 /**
  * The bare USP glyph, same idea as `ServiceGlyph` for the `USP["icon"]` set —
- * the hero's badges supply their own chip, so the green-soft circle that
+ * the hero's badges supply their own chip, so the emerald-50 circle that
  * `UspIcon` wraps around the icon would be a second, nested chip.
  *
  * `strokeWidth` 2 rather than `IconCircle`'s 1.75: the hero renders these at

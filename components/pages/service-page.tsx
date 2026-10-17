@@ -9,6 +9,7 @@ import {
   type ServiceKey,
 } from "@/lib/services";
 import { getImage, type ImageName } from "@/lib/images";
+import { formatMDLCurency } from "@/lib/currency";
 import { site } from "@/lib/site";
 import { routing } from "@/i18n/routing";
 import { ButtonLink } from "@/components/ui/button";
@@ -96,7 +97,10 @@ export async function ServicePage({ service: key }: { service: ServiceKey }) {
   const title = t("title") as unknown as string;
   const description = t("description") as unknown as string;
   const alt = t("alt") as unknown as string;
-  const points = t.raw("points") as unknown as string[];
+  const zeroPrice = formatMDLCurency(0, locale);
+  const points = (t.raw("points") as unknown as string[]).map((point) =>
+    point.replaceAll("{zeroPrice}", zeroPrice),
+  );
 
   const image = getImage(service.image as ImageName);
   const slug = service.slug[locale];
@@ -130,7 +134,7 @@ export async function ServicePage({ service: key }: { service: ServiceKey }) {
             {points.map((point) => (
               <li
                 key={point}
-                className="bg-brand-green-soft text-brand-blue-dark rounded-full px-3 py-1.5 text-sm font-medium"
+                className="bg-emerald-50 text-brand-blue-dark rounded-full px-3 py-1.5 text-sm font-medium"
               >
                 {point}
               </li>
@@ -141,7 +145,7 @@ export async function ServicePage({ service: key }: { service: ServiceKey }) {
             <ButtonLink
               render={<Link href={{ pathname: "/", hash: "#contacte" }} />}
               size="lg"
-              className="bg-brand-green hover:bg-brand-green/90 text-white"
+              className="bg-emerald-500 hover:bg-emerald-500/90 text-white"
             >
               {tCommon("freeInspection")}
             </ButtonLink>
@@ -215,8 +219,9 @@ export async function ServicePage({ service: key }: { service: ServiceKey }) {
  * `preselectedService={key}` above (AGENTS.md §6: pre-selected on service pages).
  */
 const preselectedProblem: Partial<Record<ServiceKey, string>> = {
-  "ventilatie-pasiva": "humidity",
+  "ventilatie-pasiva": "highHumidity",
   "ventilatie-fortata": "smell",
   "tratare-mucegai": "mold",
   "foraj-diamantat": "newVentilation",
+  "ozonizare-incaperi": "smell",
 };

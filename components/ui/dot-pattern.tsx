@@ -1,43 +1,51 @@
-"use client"
+import { type SVGProps } from "react";
+import { cn } from "cn";
 
 /*
- * Static `DotPattern` — the Magic UI registry component, trimmed for this
- * codebase.
+ * Static `DotPattern` — the Magic UI registry component, ported to a Server
+ * Component.
  *
- * The upstream template also shipped an animated `glow` flag: per-dot
- * `Math.random()` delays/durations driven by `motion/react`. That tripped the
- * `react-hooks/purity` lint (an impure call made every render), started an
- * animation loop the global `prefers-reduced-motion` override cannot cancel,
- * and nothing here wanted shimmering dots — which are also a GPU cost on
- * phones. What remains draws the same SVG grid, static: one circle per grid
- * cell, sized to the measured container, painted in `currentColor`, so a
- * `text-*` utility on `className` is still how you brand them.
+ * The registry version measures its container with `useEffect` + `useState`
+ * (and a window `resize` listener) to work out how many dots to emit, which
+ * forces `"use client"` and ships that stateful code on every page that uses
+ * it. It isn't needed: an SVG `<pattern>` tiles itself, so a single `<rect>`
+ * filled with `url(#id)` covers any container size, at any breakpoint, with no
+ * measurement and no JavaScript. This is the same approach `grid-pattern.tsx`
+ * uses to stay server-rendered.
  *
- * `use client` because the container is measured on mount (zero dots until
- * then) and on window resize; the template behaved the same way minus motion.
+ * Consequence, meant on purpose: the pattern is identical on server and client
+ * and is present in the initial HTML — instead of starting empty and popping in
+ * on hydration — and costs zero bytes of client JS. It is also far fewer DOM
+ * nodes (one `<rect>` + one `<pattern>` versus a `<circle>` per grid cell).
+ *
+ * `id` is required and comes from the caller because `useId()` is client-only.
+ * It must be unique per document: two instances sharing an id means the second
+ * renders the first one's pattern.
+ *
+ * Dots paint in `currentColor`, so a `text-*` utility on `className` brands
+ * them, exactly as before.
  */
 
-import React, { useEffect, useRef, useState } from "react"
-import { cn } from "cn"
-
-interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
+interface DotPatternProps extends SVGProps<SVGSVGElement> {
+  /** Unique per document — used as the `<pattern>` id. */
+  id: string;
   /** Horizontal spacing between dots. */
-  width?: number
+  width?: number;
   /** Vertical spacing between dots. */
-  height?: number
+  height?: number;
   /** Offset of the entire pattern. */
-  x?: number
-  y?: number
-  /** Offset of individual dots. */
-  cx?: number
-  cy?: number
+  x?: number;
+  y?: number;
+  /** Offset of each dot within its cell. */
+  cx?: number;
+  cy?: number;
   /** Radius of each dot. */
-  cr?: number
-  className?: string
-  [key: string]: unknown
+  cr?: number;
+  className?: string;
 }
 
 export function DotPattern({
+  id,
   width = 16,
   height = 16,
   x = 0,
@@ -48,53 +56,28 @@ export function DotPattern({
   className,
   ...props
 }: DotPatternProps) {
-  const containerRef = useRef<SVGSVGElement>(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current) {
-        const { width, height } = containerRef.current.getBoundingClientRect()
-        setDimensions({ width, height })
-      }
-    }
-
-    updateDimensions()
-    window.addEventListener("resize", updateDimensions)
-    return () => window.removeEventListener("resize", updateDimensions)
-  }, [])
-
-  /*
-   * `cols`/`rows` are 0 until the first measurement lands, so the pattern
-   * starts empty and fills in on the client — as decorative background, that
-   * pop-in is imperceptible.
-   */
-  const cols = Math.ceil(dimensions.width / width)
-  const rows = Math.ceil(dimensions.height / height)
-  const dots = Array.from({ length: cols * rows }, (_, i) => ({
-    x: (i % cols) * width + cx + x,
-    y: Math.floor(i / cols) * height + cy + y,
-  }))
-
   return (
     <svg
-      ref={containerRef}
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 h-full w-full text-neutral-400/80",
-        className
+        className,
       )}
       {...props}
     >
-      {dots.map((dot) => (
-        <circle
-          key={`${dot.x}-${dot.y}`}
-          cx={dot.x}
-          cy={dot.y}
-          r={cr}
-          fill="currentColor"
-        />
-      ))}
+      <defs>
+        <pattern
+          id={id}
+          width={width}
+          height={height}
+          patternUnits="userSpaceOnUse"
+          x={x}
+          y={y}
+        >
+          <circle cx={cx} cy={cy} r={cr} fill="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${id})`} />
     </svg>
-  )
+  );
 }

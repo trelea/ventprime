@@ -45,12 +45,20 @@ export const images = {
   "service-ventilatie-fortata": image("service-ventilatie-fortata", 2000, 2800),
   "service-tratare-mucegai": image("service-tratare-mucegai", 2000, 1125),
   "service-foraj-diamantat": image("service-foraj-diamantat", 2000, 1500),
+  "service-ozonizare-incaperi": {
+    ...image("service-ozonizare-incaperi", 2000, 1334),
+    credit: "Photo by Toon Lambrechts on Unsplash",
+  },
 
   "about-installation": image("about-installation", 2000, 3478),
   "about-attic": image("about-attic", 2000, 2667),
 
   "tech-ductwork": image("tech-ductwork", 2000, 1330),
   "tech-facade": image("tech-facade", 2000, 1330),
+  "tech-condensation": {
+    ...image("tech-condensation", 2000, 1333),
+    credit: "Photo by Nenad Radojčić on Unsplash",
+  },
 
   "project-1-before": image("project-1-before", 2000, 2500),
   "project-1-after": image("project-1-after", 2000, 1200),

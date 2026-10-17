@@ -24,7 +24,8 @@ export const site = {
    * mentions them stays in sync across locales.
    */
   warrantyYears: 5, // TODO(client)
-  experienceYears: 10, // TODO(client)
+  experienceYears: 5,
+  valveInstallationPrice: 1500,
 
   contact: {
     phone: "+37360000000", // TODO(client)
@@ -72,10 +73,11 @@ export const site = {
   ], // TODO(client)
 
   socials: [
-    // TODO(client): only list real profiles — the reference site ships dead
-    // `#` placeholders, which is exactly what we must avoid (AGENTS.md §2).
-    // { label: "Facebook", href: "https://facebook.com/…" },
-    // { label: "Instagram", href: "https://instagram.com/…" },
+    // TODO(client): replace the `#` placeholders below with the real profile
+    // URLs — only list profiles that exist (the reference site ships dead `#`
+    // placeholders, which is exactly what we must avoid, AGENTS.md §2).
+    { label: "Facebook", href: "#" },
+    { label: "Instagram", href: "#" },
   ] as { label: string; href: string }[],
 
   messengers: {

@@ -15,8 +15,9 @@
   "Nav": {
     "home": "Home",
     "services": "Services",
-    "about": "About us",
     "tech": "Technology",
+    "about": "About us",
+    "faq": "FAQ",
     "reviews": "Reviews",
     "contacts": "Contacts",
     "openMenu": "Open menu",
@@ -41,16 +42,17 @@
     "viewService": "View service"
   },
   "Hero": {
-    "title": "Ventilation without electricity",
-    "subtitle": "Passive ventilation that runs around the clock with no electricity and no maintenance — it removes the cause of damp and mold in houses, apartments, basements and attics, all over Moldova. On the free inspection we measure the humidity, fit the right system for your building and, where more airflow is needed, install forced ventilation.",
+    "title": "Natural draft ventilation for your home",
+    "subtitle": "We install natural and forced ventilation systems and help solve problems with stuffy air, excess humidity and condensation. We perform mold treatments, room ozonation and diamond core drilling.",
     "cta": {
-      "services": "Our services",
-      "technology": "Technology"
+      "calculateCost": "Calculate cost",
+      "call": "Call"
     },
     "usp": {
-      "noElectricity": "No electricity",
-      "noMaintenance": "No maintenance",
-      "warranty": "{years}-year warranty"
+      "naturalDraft": "Natural ventilation without an electric fan.",
+      "valvePrice": "Complete installation of a single valve — {price}.",
+      "freeConsultation": "Free consultation by phone, photos or video.",
+      "coverage": "We work across the entire territory of the Republic of Moldova."
     },
     "imageAlt": "VENTPRIME autonomous ventilation installed on a private house"
   },
@@ -63,21 +65,23 @@
       "text": "We'll run a free inspection and recommend the right solution.",
       "pointCallback": "We call back within {hours} hours and schedule the inspection.",
       "pointCoverage": "Free inspection all over Moldova.",
-      "pointDiagnostics": "We measure the humidity before recommending anything."
+      "pointDiagnostics": "We measure the humidity before recommending anything.",
+      "sendRequest": "Send a request",
+      "getConsultation": "Get a consultation"
     },
     "items": {
       "ventilatie-pasiva": {
-        "title": "Passive ventilation installation (no electricity)",
+        "title": "Natural ventilation",
         "description": "A system that runs non-stop with no power and no maintenance.",
         "points": [
-          "0 lei running cost",
+          "{zeroPrice} running cost",
           "No filters",
           "Fast installation"
         ],
         "alt": "Passive ventilation unit mounted on a house facade"
       },
       "ventilatie-fortata": {
-        "title": "Forced ventilation installation (electric)",
+        "title": "Forced ventilation and heat recovery",
         "description": "Mechanical ventilation for spaces with heavy humidity and stale air.",
         "points": [
           "Adjustable airflow",
@@ -87,7 +91,7 @@
         "alt": "Extract fan mounted on a wall"
       },
       "tratare-mucegai": {
-        "title": "Mold and fungus treatment and disinfection",
+        "title": "Mold treatment",
         "description": "Professional mold removal, anti-fungal treatment and disinfection.",
         "points": [
           "All surface types",
@@ -97,7 +101,7 @@
         "alt": "Wall with black mold before treatment"
       },
       "foraj-diamantat": {
-        "title": "Diamond drilling in concrete, brick and other materials",
+        "title": "Diamond core drilling",
         "description": "Clean, precise holes for ventilation, pipes and cables, with no vibration and no dust.",
         "points": [
           "Reinforced concrete",
@@ -105,16 +109,26 @@
           "Various diameters"
         ],
         "alt": "Concrete wall with diamond-drilled holes"
+      },
+      "ozonizare-incaperi": {
+        "title": "Room ozonation",
+        "description": "Ozone disinfection of air and surfaces, eliminating unpleasant odors, mold spores and bacteria.",
+        "points": [
+          "Eliminates odors",
+          "Destroys spores and bacteria",
+          "No chemical residue"
+        ],
+        "alt": "Professional room disinfection and ozonation"
       }
     },
     "nav": {
       "items": {
         "ventilatie-pasiva": {
-          "title": "Passive ventilation",
+          "title": "Natural ventilation",
           "description": "No power, no maintenance"
         },
         "ventilatie-fortata": {
-          "title": "Forced ventilation",
+          "title": "Forced ventilation and heat recovery",
           "description": "Adjustable airflow for commercial"
         },
         "tratare-mucegai": {
@@ -122,8 +136,12 @@
           "description": "Removal, treatment, disinfection"
         },
         "foraj-diamantat": {
-          "title": "Diamond drilling",
+          "title": "Diamond core drilling",
           "description": "Precise holes in concrete and brick"
+        },
+        "ozonizare-incaperi": {
+          "title": "Room ozonation",
+          "description": "Eliminates odors, spores and bacteria"
         }
       }
     }
@@ -160,173 +178,56 @@
   },
   "About": {
     "section": {
-      "eyebrow": "About us",
-      "title": "VENTPRIME — specialists in ventilation and mold removal",
-      "description": "We are a team focused on ventilation and mold removal. Our mission is healthy, dry homes without extra running costs. We remove the cause, not the symptom.",
-      "location": "Office",
-      "serviceArea": "Service area",
+      "title": "VENTPRIME is a family company with five years of experience.",
       "imageAlt": "The VENTPRIME team at work"
     },
-    "usp": {
-      "no-electricity": {
-        "title": "No electricity",
-        "description": "The system runs without power — zero monthly costs."
-      },
-      "no-maintenance": {
-        "title": "No maintenance",
-        "description": "No filters, no motors, no service visits."
-      },
-      "warranty": {
-        "title": "{years}-year warranty",
-        "description": "We stand behind the result."
-      },
-      "free-inspection": {
-        "title": "Free inspection",
-        "description": "We measure the moisture and find the cause before quoting."
-      }
-    },
-    "process": {
-      "eyebrow": "How we work",
-      "title": "How we work with clients",
-      "description": "Four simple steps, from your first call to a dry home.",
-      "request": {
-        "title": "Request",
-        "description": "Call us or fill in the form."
-      },
-      "inspection": {
-        "title": "Free inspection",
-        "description": "We measure the moisture and identify the cause."
-      },
-      "work": {
-        "title": "Installation / treatment",
-        "description": "We install the ventilation and/or treat the mold."
-      },
-      "result": {
-        "title": "Dry home",
-        "description": "Follow-up check and warranty."
-      }
+    "paragraphs": [
+      "We have completed 500 projects: we install ventilation systems, perform diamond core drilling and treat indoor spaces. We help improve air exchange and solve problems related to dampness, stuffy air and condensation.",
+      "Clients recommend us to friends and family. We explain the included work, agree on costs upfront and carry out the installation with care.",
+      "We provide a warranty for the completed work, under the terms of the contract."
+    ],
+    "indicators": {
+      "years": "years in business.",
+      "projects": "completed projects."
     }
   },
   "Tech": {
     "section": {
       "eyebrow": "Our technology",
-      "title": "How electricity-free ventilation works",
-      "description": "The system relies on natural physical forces — the difference in temperature and pressure — to keep air moving 24/7."
+      "title": "How electricity-free ventilation works"
     },
+    "paragraphs": [
+      "Natural ventilation uses differences in pressure and temperature to set air in motion.",
+      "The intake point is placed lower down, as close to the radiator as possible. Outdoor air enters through the valve, is distributed by the indoor unit and mixes with the warm air in the room.",
+      "Warm air rises and, when the required draft is present, is exhausted through the upper outlet point. Along with it, part of the accumulated moisture is removed.",
+      "The valves can remain open non-stop. The intensity and direction of airflow depend on temperature, wind and the conditions of the building."
+    ],
     "diagram": {
-      "alt": "Schematic cross-section of a house with natural ventilation",
-      "steps": {
-        "out": {
-          "title": "Humid air leaves",
-          "description": "Warm, moisture-laden air exits through the exhaust points."
-        },
-        "in": {
-          "title": "Fresh air enters",
-          "description": "Cool, clean air comes in through low-level supply channels."
-        },
-        "circulation": {
-          "title": "Continuous circulation",
-          "description": "Air exchange runs 24/7, with no power and no motors."
-        },
-        "result": {
-          "title": "Humidity drops",
-          "description": "Condensation and mold disappear because the air no longer stagnates."
-        }
+      "title": "Diagram",
+      "alt": "Schematic of electricity-free ventilation: 1 — air intake near the heating source, 2 — air exhaust in the upper section",
+      "points": {
+        "intake": "Air intake near the heating source.",
+        "exhaust": "Air exhaust in the upper section."
       }
     },
-    "components": {
-      "title": "What gets installed",
-      "description": "Simple components with no electronics and a long service life."
+    "advantages": {
+      "title": "Advantages",
+      "items": {
+        "closedWindows": "Air exchange with windows closed.",
+        "stuffyAir": "Reduced feeling of stuffy air.",
+        "excessHumidity": "Removal of excess moisture.",
+        "condensationRisk": "Reduced risk of condensation caused by insufficient ventilation.",
+        "noElectricity": "No electricity consumption for a fan.",
+        "manualControl": "Manual adjustment of air intake."
+      }
     },
-    "comparison": {
-      "title": "Comparison",
-      "columns": [
-        "",
-        "VENTPRIME",
-        "Electric ventilation",
-        "Dehumidifier",
-        "Window airing"
-      ],
-      "rows": [
-        {
-          "label": "Electricity cost",
-          "values": [
-            "0 lei",
-            "Monthly",
-            "Monthly, high",
-            "0 lei, heat loss"
-          ]
-        },
-        {
-          "label": "Maintenance",
-          "values": [
-            "No",
-            "Filters, service",
-            "Water tank, filters",
-            "—"
-          ]
-        },
-        {
-          "label": "Runs 24/7",
-          "values": [
-            "Yes",
-            "Yes",
-            "Yes",
-            "No"
-          ]
-        },
-        {
-          "label": "Noise",
-          "values": [
-            "No",
-            "Yes",
-            "Yes",
-            "—"
-          ]
-        },
-        {
-          "label": "Works without power",
-          "values": [
-            "Yes",
-            "No",
-            "No",
-            "Yes"
-          ]
-        },
-        {
-          "label": "Removes the cause of mold",
-          "values": [
-            "Yes",
-            "Partly",
-            "No",
-            "No"
-          ]
-        }
-      ]
-    },
-    "faq": {
-      "title": "Technology questions",
-      "items": [
-        {
-          "question": "How can ventilation work without electricity?",
-          "answer": "The system relies on the natural difference in temperature and pressure between inside and outside, which creates a permanent natural draft."
-        },
-        {
-          "question": "Does it work in winter? Does the house get cold?",
-          "answer": "Yes. The air that leaves is warm and damp while the incoming air is cool, but the constant exchange keeps the temperature comfortable."
-        },
-        {
-          "question": "Does it really need no maintenance?",
-          "answer": "There are no motors, filters or electronic components. The only upkeep is occasionally cleaning the grilles."
-        },
-        {
-          "question": "How long does installation take?",
-          "answer": "On average 1–2 days, depending on the size of the building."
-        },
-        {
-          "question": "What types of buildings is it suitable for?",
-          "answer": "Houses, apartments, basements, attics, warehouses, shops, offices and restaurants."
-        }
+    "condensation": {
+      "title": "Why do windows fog up?",
+      "imageAlt": "Condensation and water droplets on a window pane",
+      "paragraphs": [
+        "Moisture builds up indoors from breathing, cooking, showering and drying laundry. If the air is not renewed sufficiently, humidity rises.",
+        "When humid air comes into contact with cold windows and walls, condensation can form. Prolonged dampness creates favorable conditions for moisture and mold.",
+        "Ventilation helps remove excess humidity. Water leaks and structural freezing require separate remedial measures."
       ]
     },
     "cta": "Find out whether the system suits your building"
@@ -337,12 +238,7 @@
       "title": "Client reviews and real results",
       "rating": "{rating} / 5 · {count} Google reviews",
       "viewAll": "See all reviews on Google",
-      "testimonialsTitle": "What clients say",
-      "projectsTitle": "Before and after results",
-      "before": "Before",
-      "after": "After",
-      "humidity": "Humidity",
-      "projectImageAlt": "{locality} — before treatment"
+      "testimonialsTitle": "What clients say"
     },
     "cta": "Want the same result?",
     "reviews": {
@@ -364,24 +260,46 @@
       "t6": {
         "quote": "One visit, one installation, no dust all over the house. The cellar stays dry ever since, even after heavy rains. Worth every leu."
       }
-    },
-    "projects": {
-      "p1": {
-        "title": "Basement, Chișinău",
-        "summary": "Mold on the walls and high humidity — solved with autonomous ventilation."
-      },
-      "p2": {
-        "title": "Cellar, Ialoveni",
-        "summary": "Rising humidity in the attic — solved with natural air circulation."
-      }
     }
   },
+  "Faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "How many valves are needed for one room?",
+        "answer": "Our standard set for a bedroom or living room up to 25 m² includes two points: one for intake and one for exhaust. The price with complete installation is {roomPrice}."
+      },
+      {
+        "question": "Will there be a lot of dust and dirt during drilling?",
+        "answer": "No. We work carefully and use professional equipment with dust extraction or water collection. Very little dust is produced. After installation, we clean the work area."
+      },
+      {
+        "question": "Will there be drafts?",
+        "answer": "The indoor unit distributes air through side openings, reducing the feeling of a direct jet. Airflow can be adjusted. Comfort also depends on temperature, wind and installation location."
+      },
+      {
+        "question": "What are the heat losses?",
+        "answer": "Outdoor air needs to be heated. Whenever possible, we place the intake near the radiator so incoming air mixes with the warm indoor air. Temperature change depends on conditions; we do not guarantee a fixed 1–2 degree loss."
+      },
+      {
+        "question": "Does ventilation help against mold?",
+        "answer": "It helps remove excess humidity when air exchange is insufficient. Existing mold requires separate treatment, and water leaks or structural freezing must be remedied."
+      },
+      {
+        "question": "Do the valves require maintenance?",
+        "answer": "Simple maintenance is needed: cleaning the filter and grilles. The washable filter should be rinsed and completely dried according to the manufacturer's instructions."
+      },
+      {
+        "question": "Can I find out the price without an on-site inspection?",
+        "answer": "Yes. Consultation by phone, photos and video is free. For standard jobs, the cost can be agreed preliminarily remotely."
+      },
+      {
+        "question": "How can I get the discount on mold treatment?",
+        "answer": "When installing two natural ventilation points, mold treatment for that room costs {moldPromoPrice} instead of {moldRegularPrice}."
+      }
+    ]
+  },
   "Contacts": {
-    "section": {
-      "eyebrow": "Contacts",
-      "title": "Contacts and service area",
-      "description": "Leave your details — we call back within {hours} hours and schedule a free inspection."
-    },
     "details": {
       "phone": "Phone",
       "messengers": "Messengers",
@@ -393,67 +311,159 @@
   },
   "Form": {
     "quick": {
-      "title": "Free consultation",
+      "title": "Contact Us",
       "description": "Leave your name and phone — we'll call you.",
       "submit": "Send"
     },
     "full": {
-      "title": "Request a free inspection",
-      "description": "Fill in the form and we'll get back to you as soon as possible.",
+      "title": "Send a request and get a preliminary cost",
+      "description": "Describe the room, select the service and add photos or a video. For standard natural ventilation installation, the preliminary cost will be shown immediately.",
       "submit": "Send request",
       "submitting": "Sending…"
     },
     "fields": {
       "name": "Name",
       "phone": "Phone",
-      "email": "Email",
+      "email": "E-mail",
+      "emailHint": "Fill in if you would like to receive the reply by e-mail",
       "locality": "Locality",
+      "localityPlaceholder": "Select locality…",
+      "address": "Exact address",
+      "addressHint": "The address can be specified when scheduling the visit",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "email@example.com",
+      "addressPlaceholder": "Street, number, apartment…",
       "premise": "Type of premises",
-      "service": "Service",
+      "premisePlaceholder": "Select premise type…",
       "problem": "Problem",
-      "area": "Area (m²)",
+      "problemPlaceholder": "Select the issue…",
+      "service": "Service",
+      "servicePlaceholder": "Select a service…",
+      "roomsCount": "Number of rooms where work is needed",
+      "roomsCountHint": "Indicate the rooms where work is needed, not the total number of rooms in the home",
+      "moldTreatmentRooms": "Number of rooms for mold treatment",
+      "moldTreatmentRoomsHint": "May differ from the number of rooms where ventilation is installed (+{price} per treated room with two ventilation points)",
+      "kitchenIntakePoint": "A separate intake point is needed in the kitchen with an existing exhaust system — {price}",
+      "problemRooms": "In which rooms does the problem exist?",
+      "problemRoomsHint": "You can select multiple options",
       "photos": "Photos",
+      "video": "Video",
       "message": "Message",
-      "consent": "I agree to the processing of my personal data and to the privacy notice."
+      "messagePlaceholder": "Describe the situation in the room…",
+      "consent": "I agree to the processing of my personal data",
+      "consentPrefix": "I agree to the processing of my personal data in accordance with the ",
+      "consentLink": "privacy policy"
     },
     "options": {
       "premise": {
-        "house": "House",
         "apartment": "Apartment",
-        "basement": "Basement",
-        "attic": "Attic",
-        "commercial": "Commercial premises"
+        "house": "Private house",
+        "basement": "Basement or cellar",
+        "commercial": "Commercial space",
+        "other": "Other type"
       },
       "problem": {
+        "highHumidity": "High humidity",
         "mold": "Mold",
-        "humidity": "Damp",
-        "condensation": "Condensation",
-        "smell": "Musty smell",
-        "newVentilation": "New ventilation",
-        "other": "Other"
+        "moldAndHumidity": "Mold and humidity",
+        "newVentilation": "A new ventilation system is needed",
+        "smell": "Unpleasant smell",
+        "allOfAbove": "All of the above"
       },
       "service": {
-        "ventilatie-pasiva": "Passive ventilation",
-        "ventilatie-fortata": "Forced ventilation",
+        "consultation": "I don't know — I need a consultation",
+        "ventilatie-pasiva": "Natural ventilation",
+        "ventilatie-pasiva-ozonizare": "Natural ventilation + ozonation",
+        "ventilatie-pasiva-mucegai": "Natural ventilation + mold treatment",
+        "ventilatie-fortata": "Forced ventilation / heat recovery unit",
         "tratare-mucegai": "Mold treatment",
-        "foraj-diamantat": "Diamond drilling"
+        "ozonizare-incaperi": "Ozonation",
+        "foraj-diamantat": "Diamond core drilling",
+        "inspectie": "Inspection visit only — {price}"
+      },
+      "roomsCount": {
+        "1": "1 room",
+        "2": "2 rooms",
+        "3": "3 rooms",
+        "4": "4 rooms",
+        "5": "5 rooms",
+        "moreThan5": "More than 5 rooms"
+      },
+      "problemRooms": {
+        "bedroom": "Bedroom",
+        "living": "Living room",
+        "children": "Children's room",
+        "kitchen": "Kitchen",
+        "bathroom": "Bathroom / restroom",
+        "basement": "Basement / cellar",
+        "other": "Other room"
       }
+    },
+    "calculator": {
+      "title": "Your preliminary calculation",
+      "selectPrompt": "Select the service and number of rooms to see the preliminary calculation.",
+      "naturalVentilationLabel": "Natural ventilation:",
+      "roomsAndPoints": "{roomsLabel} / {points} ventilation points.",
+      "equipmentAndInstallLabel": "Equipment and complete installation:",
+      "kitchenIntakeLabel": "Separate kitchen intake point:",
+      "moldTreatmentLabel": "Room treatment ({roomsLabel}):",
+      "ozonationNotice": "Ventilation — {amount}. Ozonation is calculated separately.",
+      "ozonationSeparateNote": "Ozonation is calculated separately",
+      "customQuoteNotice": "We will calculate the cost based on your request.",
+      "inspectionOnlyNotice": "Inspection visit — {price}.",
+      "transportChisinauLabel": "Transport in Chișinău:",
+      "transportChisinauValue": "{price}.",
+      "transportChisinauSupplement": "Travel supplement: {price}",
+      "transportFeeLabel": "Chișinău – {locality} – Chișinău:",
+      "transportOtherLabel": "Transport (other locality):",
+      "transportOtherValue": "Transport cost will be confirmed when your request is validated.",
+      "totalPreliminaryLabel": "Total preliminary cost:",
+      "standardExplanation": "Equipment, drilling and complete installation are included. The calculation is valid for standard rooms up to 25 m² and walls up to 60 cm, excluding concrete and reinforced concrete.",
+      "disclaimer": "Preliminary cost for standard installation conditions. Work in concrete, reinforced concrete and additional work are calculated separately.",
+      "referenceTableTitle": "Standard pricing",
+      "referenceRow": "{roomsLabel} — {points} points — {cost}.",
+      "submitWithCalculation": "Send request with this calculation"
+    },
+    "transport": {
+      "title": "Transport and travel",
+      "description": "Within Chișinău municipality there is no separate travel fee. For work carried out in other towns and villages, transport costs are paid separately: round-trip travel from Chișinău at 6 lei per kilometre travelled, rounded up to the next 50 lei with a minimum supplement of 150 lei."
     },
     "validation": {
       "nameRequired": "Name is required",
       "phoneRequired": "Phone is required",
-      "phoneInvalid": "Enter a valid number",
+      "phoneInvalid": "Enter a valid phone number",
+      "emailInvalid": "Enter a valid e-mail address",
+      "localityRequired": "Locality is required",
       "consentRequired": "Your consent is required",
-      "generic": "Something went wrong. Please try again."
+      "photosMaxExceeded": "You can upload up to 10 photos",
+      "photosInvalid": "Unsupported photo format or file exceeds 15 MB",
+      "videoMaxExceeded": "You can upload up to 2 videos",
+      "videoInvalid": "Unsupported video format or file exceeds 50 MB (accepted: MP4, MOV, WebM)",
+      "generic": "An error occurred while sending. Please check your details and try again."
     },
     "success": {
-      "title": "Thank you!",
-      "description": "We've received your request. We'll call you within {hours} hours."
+      "title": "Thank you! Your request has been sent.",
+      "description": "We will contact you, clarify the details and confirm the cost.",
+      "fullMessage": "Thank you! Your request has been sent. We will contact you, clarify the details and confirm the cost."
     },
     "photos": {
-      "add": "Add photos",
-      "hint": "Up to 3 photos",
+      "add": "Add photos (up to 10)",
+      "subtitle": "Drag photos here or click to upload",
+      "dropHint": "Drop here",
+      "hint": "Up to 10 photos · Formats: JPG, PNG, WebP, HEIC (max. 15 MB / photo)",
+      "preview": "View image",
       "remove": "Remove"
+    },
+    "video": {
+      "add": "Upload video",
+      "subtitle": "Drag video here or click to upload",
+      "dropHint": "Drop here",
+      "hint": "Accepted formats: MP4, MOV, WebM · Max size: 50 MB",
+      "remove": "Remove"
+    },
+    "combobox": {
+      "searchPlaceholder": "Search locality…",
+      "empty": "No locality found."
     }
   },
   "Privacy": {
@@ -469,7 +479,9 @@
     "hours": "Working hours",
     "privacy": "Privacy notice",
     "rights": "All rights reserved.",
-    "legal": "Legal"
+    "legal": "Legal",
+    "copyright": "Copyrights © Vent Prime Company",
+    "follow": "Follow us on social media"
   },
   "NotFoundPage": {
     "title": "Page not found",

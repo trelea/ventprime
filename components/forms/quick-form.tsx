@@ -33,10 +33,10 @@ export function QuickForm({
   if (done) {
     return (
       <div
-        className="bg-background rounded-2xl border border-border p-5 text-center shadow-lg"
+        className="bg-background border border-border p-5 text-center"
         role="status"
       >
-        <p className="text-brand-green font-semibold">{tSuccess("title")}</p>
+        <p className="text-emerald-500 font-semibold">{tSuccess("title")}</p>
         <p className="text-muted-foreground mt-1 text-sm">
           {tSuccess("description", { hours: site.responseTimeHours })}
         </p>
@@ -46,7 +46,7 @@ export function QuickForm({
 
   return (
     <form
-      className="bg-background rounded-2xl border border-border p-5 shadow-lg"
+      className="bg-background border border-border p-5"
       action={(formData) => {
         startTransition(async () => {
           const result = await submitLead({
@@ -77,6 +77,7 @@ export function QuickForm({
             id={`quick-name-${source}`}
             name="name"
             autoComplete="name"
+            placeholder={t("fields.namePlaceholder")}
             required
             aria-invalid={Boolean(errors.name)}
           />
@@ -92,6 +93,7 @@ export function QuickForm({
             name="phone"
             type="tel"
             autoComplete="tel"
+            placeholder="+373 60 000 000"
             required
             aria-invalid={Boolean(errors.phone)}
           />
@@ -113,7 +115,7 @@ export function QuickForm({
         <Button
           type="submit"
           disabled={pending}
-          className="bg-brand-green hover:bg-brand-green/90 w-full text-white"
+          className="bg-emerald-500 hover:bg-emerald-500/90 w-full rounded-lg text-white"
         >
           {pending ? <Loader2 className="animate-spin" /> : <Send />}
           {pending ? t("full.submitting") : t("quick.submit")}

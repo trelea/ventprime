@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, JetBrains_Mono, Manrope, Onest } from "next/font/google";
+import { Exo_2, IBM_Plex_Sans, JetBrains_Mono, Manrope, Onest } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
@@ -70,6 +70,25 @@ const onest = Onest({
   display: "swap",
 });
 
+/**
+ * `exo2` — the readout face. It has exactly one job: the preliminary-cost panel
+ * of the request form (`components/forms/contact-form.tsx`). That panel is the
+ * only place on the site where a block of figures sits inside a marketing page
+ * and should look *computed* — so it is set in Exo 2, a squarish product-spec
+ * grotesque, rather than in `manrope` (editorial) or `plex` (chrome).
+ *
+ * ⚠️  Cyrillic is not optional here, exactly as for the other faces: every label
+ * in that panel renders in Russian for RU visitors. The celebrated "techy"
+ * families — Orbitron, Chakra Petch, Rajdhani, Oxanium, Sora, Space Grotesk —
+ * ship no Cyrillic at all and would silently fall back to a system font there.
+ * Exo 2 carries cyrillic, cyrillic-ext, latin and latin-ext.
+ */
+const exo2 = Exo_2({
+  variable: "--font-readout",
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  display: "swap",
+});
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -121,14 +140,14 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${manrope.variable} ${onest.variable} ${plex.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${manrope.variable} ${onest.variable} ${plex.variable} ${jetbrains.variable} ${exo2.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <a
             href="#main"
-            className="bg-brand-green sr-only rounded-md px-4 py-2 text-white focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
+            className="bg-emerald-500 sr-only rounded-md px-4 py-2 text-white focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
           >
             {tNav("skipToContent")}
           </a>

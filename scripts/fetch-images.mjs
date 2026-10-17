@@ -45,10 +45,12 @@ const PHOTOS = {
   // TODO(client): replace with a real diamond-drilling photo — currently the
   // old basement shot, kept so the four-service catalog is complete.
   "service-foraj-diamantat": "vJmlEqowqb8",
+  "service-ozonizare-incaperi": "7PTD99F8oUk",
   "about-installation": "b0U5yvj7A7I",
   "about-attic": "XEkGi2wElsc",
   "tech-ductwork": "4ZRCRIvfhoQ",
   "tech-facade": "MxEgFRAWU60",
+  "tech-condensation": "ZisSo0slonk",
   "project-1-before": "4yJ9Hsfvlc8",
   "project-1-after": "tPz3Lhh3z_4",
   "project-2-before": "tGn1KGrUKj4",

@@ -1,4 +1,5 @@
 import { getFormatter, getTranslations } from "next-intl/server";
+import { formatMDLCurency } from "@/lib/currency";
 import { primaryStats, type Stat } from "@/lib/stats";
 import { StatCounter } from "@/components/sections/stat-counter";
 import { Meteors } from "@/components/ui/meteors";
@@ -9,17 +10,15 @@ import { container } from "@/components/sections/section";
 
 /*
  * Unit suffixes are only shown for the formats that carry one visually:
- * percentages, the currency headline ("0 lei") and the year formats, which
- * reuse the stat's existing label ("years" / "ani" / "лет") as its unit.
- * Plain numbers (objects, m² treated) render bare.
+ * percentages and the year formats, which reuse the stat's existing label
+ * ("years" / "ani" / "лет") as its unit. Currency values are formatted with
+ * `formatMDLCurency` directly, and plain numbers render bare.
  */
 const UNIT = (stat: Stat, label: string) =>
   stat.format === "years" ? (
     <span className="text-2xl sm:text-3xl">{label}</span>
   ) : stat.format === "percent" ? (
     <span>%</span>
-  ) : stat.format === "currency" ? (
-    <span className="text-2xl sm:text-3xl">lei</span>
   ) : null;
 
 export async function StatsSection({ locale }: { locale: string }) {
@@ -53,7 +52,7 @@ export async function StatsSection({ locale }: { locale: string }) {
         to ~72px on PC (`lg:rounded-[72px]`, low end of the 70–100px range)
         so the full-bleed curb reads clearly on wide screens.
       */}
-      <div className="bg-brand-gradient relative isolate overflow-hidden rounded-[1.75rem] py-28 sm:rounded-[3rem] sm:py-36 lg:rounded-[72px] lg:py-44">
+      <div className="bg-brand-gradient relative isolate overflow-hidden rounded-[1.75rem] py-28 shadow-lg shadow-black/10 sm:rounded-[3rem] sm:py-36 lg:rounded-[72px] lg:py-44">
         {/*
           Magic UI Meteors — faint white streaks drifting across the band,
           reading as air currents. The component itself mounts nothing under
@@ -85,7 +84,10 @@ export async function StatsSection({ locale }: { locale: string }) {
                * ("yearsCaption") never matched anything in the messages.
                */
               const caption = t(stat.captionKey as never) as unknown as string;
-              const formatted = format.number(stat.value, { maximumFractionDigits: 0 });
+              const formatted =
+                stat.format === "currency"
+                  ? formatMDLCurency(stat.value, locale)
+                  : format.number(stat.value, { maximumFractionDigits: 0 });
 
               return (
                 <div
@@ -94,7 +96,7 @@ export async function StatsSection({ locale }: { locale: string }) {
                 >
                   <StatIcon
                     icon={stat.icon}
-                    className="bg-brand-green text-white rounded-md size-14 sm:size-16"
+                    className="bg-emerald-500 text-white rounded-md size-14 sm:size-16"
                     iconClassName="size-7 sm:size-8"
                   />
 

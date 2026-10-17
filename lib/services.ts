@@ -22,11 +22,12 @@ export const serviceKeys = [
   "ventilatie-fortata",
   "tratare-mucegai",
   "foraj-diamantat",
+  "ozonizare-incaperi",
 ] as const;
 
 export type ServiceKey = (typeof serviceKeys)[number];
 
-export type ServiceIcon = "airflow" | "fan" | "mold" | "drill";
+export type ServiceIcon = "airflow" | "fan" | "mold" | "drill" | "ozonizare";
 
 export interface Service {
   key: ServiceKey;
@@ -85,6 +86,17 @@ export const services: Service[] = [
     image: "service-foraj-diamantat",
     altKey: "alt",
   },
+  {
+    key: "ozonizare-incaperi",
+    icon: "ozonizare",
+    slug: {
+      ro: "ozonizare-incaperi",
+      ru: "ozonirovanie-pomescheniy",
+      en: "room-ozonation",
+    },
+    image: "service-ozonizare-incaperi",
+    altKey: "alt",
+  },
 ];
 
 export const serviceByKey = Object.fromEntries(
@@ -118,6 +130,10 @@ export const servicePathnames = {
   "/foraj-diamantat": {
     ru: "/almaznoe-sverlenie",
     en: "/diamond-drilling",
+  },
+  "/ozonizare-incaperi": {
+    ru: "/ozonirovanie-pomescheniy",
+    en: "/room-ozonation",
   },
 } as const;
 

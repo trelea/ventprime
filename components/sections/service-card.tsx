@@ -164,7 +164,7 @@ export async function ServiceCard({
           <span
             className={cn(
               buttonVariants({ variant: "default", size: "lg" }),
-              "bg-brand-green hover:bg-brand-green/90 mt-auto h-12 w-fit gap-2 rounded-md px-6 text-base font-semibold text-white",
+              "bg-emerald-500 hover:bg-emerald-500/90 mt-auto h-12 w-fit gap-2 rounded-md px-6 text-base font-semibold text-white",
             )}
           >
             {tCommon("viewService")}

@@ -28,20 +28,22 @@ import { Logo } from "@/components/layout/logo";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { cn } from "cn";
 
-/** Anchor sections of the home page, in document order. */
+/** Anchor sections shown in the navbar, in document order. */
 const SECTIONS = [
-  { hash: "#acasa", key: "home" },
   { hash: "#servicii", key: "services" },
-  { hash: "#despre", key: "about" },
   { hash: "#tehnologie", key: "tech" },
-  { hash: "#recenzii", key: "reviews" },
+  { hash: "#despre", key: "about" },
+  { hash: "#intrebari", key: "faq" },
   { hash: "#contacte", key: "contacts" },
 ] as const;
 
 /** Sections shown as top-level links (Servicii is rendered separately). */
-const NAV_SECTIONS = SECTIONS.filter((section) =>
-  ["#despre", "#tehnologie", "#recenzii", "#contacte"].includes(section.hash),
+const NAV_SECTIONS = SECTIONS.filter(
+  (section) => section.hash !== "#servicii",
 );
+
+/** All home anchors observed by scroll-spy (includes Hero to clear active state at top). */
+const OBSERVED_HASHES = ["#acasa", ...SECTIONS.map((section) => section.hash)];
 
 /**
  * Alternating brand accents for the four service chips, in `services` order:
@@ -52,7 +54,7 @@ const NAV_SECTIONS = SECTIONS.filter((section) =>
  * re-colour an icon. Index 0 is blue, so the odd indices are the green ones.
  */
 const serviceAccent = (index: number) =>
-  index % 2 === 0 ? "bg-brand-blue" : "bg-brand-green";
+  index % 2 === 0 ? "bg-brand-blue" : "bg-emerald-500";
 
 /**
  * Floating glass header: logo left, nav centred, locale switcher + a single
@@ -102,7 +104,7 @@ export function SiteHeader() {
       { rootMargin: "-45% 0px -50% 0px" },
     );
 
-    for (const { hash } of SECTIONS) {
+    for (const hash of OBSERVED_HASHES) {
       const element = document.querySelector(hash);
       if (element) observer.observe(element);
     }
@@ -265,7 +267,7 @@ export function SiteHeader() {
           <ButtonLink
             render={<Link href={contactLink} />}
             size="lg"
-            className="bg-brand-green hover:bg-brand-green/90 h-11 gap-2.5 rounded-md px-4 text-[15px] text-white shadow-sm sm:px-5"
+            className="bg-emerald-500 hover:bg-emerald-500/90 h-11 gap-2.5 rounded-md px-4 text-[15px] text-white shadow-sm sm:px-5"
           >
             <Phone className="size-4" />
             {t("getInTouch")}
@@ -358,7 +360,7 @@ export function SiteHeader() {
                 <ButtonLink
                   render={<Link href={contactLink} />}
                   size="lg"
-                  className="bg-brand-green hover:bg-brand-green/90 h-11 w-full gap-2.5 rounded-md text-[15px] text-white"
+                  className="bg-emerald-500 hover:bg-emerald-500/90 h-11 w-full gap-2.5 rounded-md text-[15px] text-white"
                 >
                   <Phone className="size-4" />
                   {t("getInTouch")}

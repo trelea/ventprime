@@ -38,10 +38,10 @@ function AccordionTrigger({ className, children, ...props }: AccordionPrimitive.
         {children}
         <span
           data-slot="accordion-trigger-icon"
-          className="text-muted-foreground pointer-events-none mt-0.5 flex size-4 shrink-0 items-center justify-center"
+          className="text-muted-foreground pointer-events-none mt-1 flex size-5 shrink-0 items-center justify-center sm:size-6"
         >
-          <ChevronDownIcon className="size-4 group-aria-expanded/accordion-trigger:hidden" />
-          <ChevronUpIcon className="hidden size-4 group-aria-expanded/accordion-trigger:block" />
+          <ChevronDownIcon className="size-5 group-aria-expanded/accordion-trigger:hidden sm:size-6" />
+          <ChevronUpIcon className="hidden size-5 group-aria-expanded/accordion-trigger:block sm:size-6" />
         </span>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -53,7 +53,7 @@ function AccordionPanel({ className, children, ...props }: AccordionPrimitive.Pa
     <AccordionPrimitive.Panel
       data-slot="accordion-panel"
       className={cn(
-        "text-muted-foreground overflow-hidden text-sm transition-[height] duration-200",
+        "text-muted-foreground h-(--accordion-panel-height) overflow-hidden text-sm transition-[height] duration-200 ease-out data-ending-style:h-0 data-starting-style:h-0",
         className,
       )}
       {...props}
@@ -63,4 +63,10 @@ function AccordionPanel({ className, children, ...props }: AccordionPrimitive.Pa
   );
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionPanel };
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionPanel,
+  AccordionPanel as AccordionContent,
+};

@@ -36,7 +36,7 @@ export interface Stat {
 export const stats: Stat[] = [
   {
     id: "years",
-    value: 10,
+    value: 5,
     format: "years",
     icon: "calendar",
     labelKey: "years",

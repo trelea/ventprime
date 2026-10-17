@@ -1,24 +1,39 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { Building2, Calendar } from "lucide-react";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { getImage } from "@/lib/images";
-import { site } from "@/lib/site";
-import { usps } from "@/lib/stats";
-import { UspIcon } from "@/components/icons/service-icon";
+import { statValue } from "@/lib/stats";
 import { GlareHover } from "@/components/ui/glare-hover";
+import { StatCounter } from "@/components/sections/stat-counter";
 import { Section } from "@/components/sections/section";
 
 /** ABOUT US (`#despre`) — AGENTS.md §5.4. */
 export async function AboutSection() {
+  const locale = await getLocale();
+  const format = await getFormatter();
   const t = await getTranslations("About");
+
+  const paragraphs = t.raw("paragraphs") as unknown as string[];
+
+  const indicators = [
+    {
+      id: "years",
+      value: statValue("years"),
+      label: t("indicators.years"),
+      icon: Calendar,
+    },
+    {
+      id: "projects",
+      value: statValue("objects"),
+      label: t("indicators.projects"),
+      icon: Building2,
+    },
+  ];
 
   return (
     <Section id="despre">
-      {/* Block A — intro fills exactly one viewport height: the grid itself
-          carries `min-h-screen-safe` (100svh) so photos + title + 2x2 cards
-          occupy the full screen, with the timeline flowing below it. Inner
-          columns stay top-aligned (`items-start`); `content-center` centers
-          the whole row vertically inside the viewport. */}
       <div className="min-h-screen-safe grid content-center items-start gap-12 lg:grid-cols-2">
+        {/* Left — original overlapping photos */}
         <div>
           <div className="relative">
             <div className="relative aspect-4/5 w-4/5 overflow-hidden rounded-2xl">
@@ -42,40 +57,27 @@ export async function AboutSection() {
           </div>
         </div>
 
+        {/* Right — title, description paragraphs, and the 2 indicator cards (+5 and +500) */}
         <div className="min-w-0">
-          <h2 className="font-display text-2xl font-bold tracking-tight text-balance sm:text-3xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-balance sm:text-3xl lg:text-4xl">
             {t("section.title")}
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-base leading-relaxed text-pretty sm:text-lg">
-            {t("section.description")}
-          </p>
 
-          {/*
-            The four "why choose us" points as a 2x2 of solid brand-blue cards —
-            one saturated color across all four, white copy for contrast. Each
-            card is a Magic UI `GlareHover` root (CSS-only diagonal sheen on
-            hover, zero deps): `width="100%"` + matching `background` fill the
-            grid cell, a white glare sweep tints the hover, and the inner stack
-            lays out icon over title over description. `place-items-stretch`
-            cancels the component's centering so the copy stays left-aligned.
-            Equal size via `auto-rows-fr` + `h-full` down the whole chain, so
-            all four resolve to the tallest cell's height in every locale.
-          */}
-          <ul className="mt-16 grid auto-rows-fr items-stretch gap-4 sm:grid-cols-2">
-            {usps.map((usp) => {
-              // `warranty` is the only USP whose title interpolates a value, so the
-              // ICU variable has to be supplied to `t()` — a post-hoc string
-              // replacement would throw FORMATTING_ERROR before it ever ran.
-              const title =
-                usp.id === "warranty"
-                  ? t("usp.warranty.title", { years: site.warrantyYears })
-                  : (t(`usp.${usp.id}.title` as never) as unknown as string);
-              const description = t(
-                `usp.${usp.id}.description` as never,
-              ) as unknown as string;
+          <div className="text-muted-foreground mt-5 flex max-w-xl flex-col gap-4 text-lg leading-relaxed font-medium text-pretty sm:text-xl">
+            {paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+
+          <dl className="mt-10 grid auto-rows-fr items-stretch gap-4 sm:grid-cols-2">
+            {indicators.map((item, index) => {
+              const Icon = item.icon;
+              const formatted = format.number(item.value, {
+                maximumFractionDigits: 0,
+              });
 
               return (
-                <li key={usp.id} className="h-full min-w-0">
+                <div key={item.id} className="h-full min-w-0">
                   <GlareHover
                     width="100%"
                     background="#1e6fb8"
@@ -84,21 +86,27 @@ export async function AboutSection() {
                     className="h-full w-full place-items-stretch rounded-md border border-white/15 text-left shadow-lg shadow-black/20 transition-shadow duration-300 hover:shadow-xl"
                   >
                     <div className="flex h-full w-full flex-col p-5">
-                      <UspIcon
-                        icon={usp.icon}
-                        className="bg-brand-green size-11 rounded-md text-white"
-                        iconClassName="size-5"
-                      />
-                      <h3 className="mt-3 text-base font-semibold text-white">{title}</h3>
-                      <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-white/85">
-                        {description}
-                      </p>
+                      <span className="bg-emerald-500 flex size-11 shrink-0 items-center justify-center rounded-md text-white">
+                        <Icon className="size-5" strokeWidth={2} />
+                      </span>
+                      <dd className="mt-4 flex items-baseline text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                        <span>+</span>
+                        <StatCounter
+                          value={item.value}
+                          formatted={formatted}
+                          locale={locale}
+                          delay={index * 0.1}
+                        />
+                      </dd>
+                      <dt className="mt-1.5 text-base leading-relaxed font-semibold text-white/90">
+                        {item.label}
+                      </dt>
                     </div>
                   </GlareHover>
-                </li>
+                </div>
               );
             })}
-          </ul>
+          </dl>
         </div>
       </div>
     </Section>

@@ -1,14 +1,14 @@
 /**
- * TECH cross-section diagram (AGENTS.md §5.5 Block A).
+ * TECH cross-section diagram.
  *
- * Inline SVG rather than an image so the airflow arrows can be animated in CSS
- * and the whole thing stays a few KB. It is decorative — the numbered steps
- * beside it carry the meaning, and the section has a text description above.
+ * Shows natural draft ventilation:
+ *  1 — Air intake valve placed low, near the heating source (radiator).
+ *  2 — Air exhaust in the upper area of the room.
  */
 export function TechDiagram({ alt }: { alt: string }) {
   return (
     <svg
-      viewBox="0 0 480 320"
+      viewBox="0 0 520 340"
       role="img"
       aria-label={alt}
       className="h-auto w-full"
@@ -34,13 +34,17 @@ export function TechDiagram({ alt }: { alt: string }) {
           markerHeight="5"
           orient="auto-start-reverse"
         >
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--brand-green)" />
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" />
         </marker>
+        <linearGradient id="warm-rise" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor="#10b981" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0.9" />
+        </linearGradient>
       </defs>
 
-      {/* House envelope */}
+      {/* House roof & room envelope */}
       <path
-        d="M60 160 L240 50 L420 160"
+        d="M50 135 L260 35 L470 135"
         fill="none"
         stroke="var(--brand-blue-dark)"
         strokeWidth="4"
@@ -48,96 +52,160 @@ export function TechDiagram({ alt }: { alt: string }) {
         strokeLinejoin="round"
       />
       <rect
-        x="60"
-        y="160"
-        width="360"
-        height="110"
+        x="70"
+        y="135"
+        width="380"
+        height="165"
+        rx="6"
         fill="var(--surface)"
         stroke="var(--brand-blue-dark)"
         strokeWidth="4"
         strokeLinejoin="round"
       />
 
-      {/* Supply channel at floor level — cool air in */}
+      {/* Window above radiator on left wall */}
       <rect
-        x="90"
-        y="236"
-        width="120"
-        height="16"
+        x="96"
+        y="155"
+        width="74"
+        height="58"
         rx="4"
-        fill="var(--brand-green-soft)"
-        stroke="var(--brand-green)"
-        strokeWidth="2"
-      />
-
-      {/* Exhaust channel near the ridge — warm, damp air out */}
-      <rect
-        x="252"
-        y="112"
-        width="120"
-        height="16"
-        rx="4"
-        fill="#dbeafe"
+        fill="#e0f2fe"
         stroke="var(--brand-blue)"
         strokeWidth="2"
       />
+      <line
+        x1="133"
+        y1="155"
+        x2="133"
+        y2="213"
+        stroke="var(--brand-blue)"
+        strokeWidth="1.5"
+      />
 
-      {/* Inbound airflow */}
-      <g className="flow-in">
-        {[0, 1, 2].map((i) => (
-          <path
-            key={i}
-            d={`M ${96 + i * 36} 244 L ${96 + i * 36} 200`}
-            stroke="var(--brand-green)"
-            strokeWidth="4"
-            strokeLinecap="round"
-            markerEnd="url(#arrow-in)"
-            className="flow-arrow"
-            style={{ animationDelay: `${i * 0.4}s` }}
-          />
-        ))}
-      </g>
-
-      {/* Outbound airflow */}
+      {/* Radiator (heating source) placed low on left side */}
       <g>
-        {[0, 1, 2].map((i) => (
-          <path
-            key={i}
-            d={`M ${268 + i * 36} 100 L ${268 + i * 36} 58`}
-            stroke="var(--brand-blue)"
-            strokeWidth="4"
+        <rect
+          x="100"
+          y="236"
+          width="68"
+          height="46"
+          rx="5"
+          fill="#fee2e2"
+          stroke="#ef4444"
+          strokeWidth="2"
+        />
+        {[0, 1, 2, 3, 4].map((fin) => (
+          <line
+            key={fin}
+            x1={112 + fin * 11}
+            y1="242"
+            x2={112 + fin * 11}
+            y2="276"
+            stroke="#ef4444"
+            strokeWidth="2.5"
             strokeLinecap="round"
-            markerEnd="url(#arrow-out)"
-            className="flow-arrow"
-            style={{ animationDelay: `${i * 0.4 + 0.2}s` }}
           />
         ))}
       </g>
 
-      {/* Callout numbers */}
-      {[
-        { n: 1, x: 150, y: 262 },
-        { n: 2, x: 312, y: 96 },
-      ].map((callout) => (
-        <g key={callout.n}>
-          <circle
-            cx={callout.x}
-            cy={callout.y}
-            r="14"
-            fill="var(--brand-blue-dark)"
-          />
-          <text
-            x={callout.x}
-            y={callout.y + 5}
-            textAnchor="middle"
-            fontSize="14"
-            fontWeight="700"
-            fill="#fff"
-          >
-            {callout.n}
-          </text>
-        </g>
-      ))}
+      {/* 1 — Low air intake valve near the radiator */}
+      <rect
+        x="56"
+        y="248"
+        width="28"
+        height="20"
+        rx="4"
+        fill="#ecfdf5"
+        stroke="#10b981"
+        strokeWidth="2.5"
+      />
+
+      {/* 2 — Upper air exhaust channel */}
+      <rect
+        x="436"
+        y="154"
+        width="28"
+        height="20"
+        rx="4"
+        fill="#dbeafe"
+        stroke="var(--brand-blue)"
+        strokeWidth="2.5"
+      />
+
+      {/* Fresh air entering through valve (1) */}
+      <path
+        d="M 22 258 L 88 258"
+        stroke="#10b981"
+        strokeWidth="4"
+        strokeLinecap="round"
+        markerEnd="url(#arrow-in)"
+        className="flow-arrow"
+      />
+
+      {/* Air mixing with warm air from radiator and rising toward upper exhaust (2) */}
+      <path
+        d="M 140 256 C 210 256, 235 190, 320 172 C 365 164, 395 164, 426 164"
+        fill="none"
+        stroke="url(#warm-rise)"
+        strokeWidth="3.5"
+        strokeDasharray="7 6"
+        strokeLinecap="round"
+        markerEnd="url(#arrow-out)"
+        className="flow-arrow"
+        style={{ animationDelay: "0.35s" }}
+      />
+      <path
+        d="M 150 232 C 215 215, 260 165, 355 154"
+        fill="none"
+        stroke="url(#warm-rise)"
+        strokeWidth="2.5"
+        strokeDasharray="5 6"
+        strokeLinecap="round"
+        className="flow-arrow"
+        style={{ animationDelay: "0.7s" }}
+      />
+
+      {/* Warm humid air exiting at upper exhaust (2) */}
+      <path
+        d="M 442 164 L 502 164"
+        stroke="var(--brand-blue)"
+        strokeWidth="4"
+        strokeLinecap="round"
+        markerEnd="url(#arrow-out)"
+        className="flow-arrow"
+        style={{ animationDelay: "0.6s" }}
+      />
+
+      {/* Numbered Callout 1 — Intake near heating source */}
+      <g>
+        <circle cx="70" cy="224" r="15" fill="#10b981" />
+        <text
+          x="70"
+          y="229"
+          textAnchor="middle"
+          fontSize="14"
+          fontWeight="700"
+          fill="#ffffff"
+        >
+          1
+        </text>
+      </g>
+
+      {/* Numbered Callout 2 — Exhaust in the upper part */}
+      <g>
+        <circle cx="450" cy="130" r="15" fill="var(--brand-blue)" />
+        <text
+          x="450"
+          y="135"
+          textAnchor="middle"
+          fontSize="14"
+          fontWeight="700"
+          fill="#ffffff"
+        >
+          2
+        </text>
+      </g>
     </svg>
   );
 }
@@ -152,7 +220,7 @@ export function TechDiagramStyles() {
       dangerouslySetInnerHTML={{
         __html: `
           @keyframes ventprime-dash {
-            0%, 100% { opacity: 0.25; }
+            0%, 100% { opacity: 0.3; }
             50% { opacity: 1; }
           }
           .flow-arrow { animation: ventprime-dash 2.4s ease-in-out infinite; }

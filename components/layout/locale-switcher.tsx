@@ -12,37 +12,23 @@ import {
 } from "@/components/ui/select";
 import { cn } from "cn";
 
-/** BCP-47 locale → country flag shown to the user. */
-const FLAGS: Record<Locale, string> = {
-  ro: "md",
-  ru: "ru",
-  en: "gb",
+/** BCP-47 locale → short code shown to the user (no flags). */
+const CODES: Record<Locale, string> = {
+  ro: "RO",
+  ru: "RU",
+  en: "EN",
 };
 
-function Flag({ locale, className }: { locale: Locale; className?: string }) {
-  return (
-    // Plain <img>: these are tiny hand-authored SVGs, and routing them through
-    // the image optimizer would need `dangerouslyAllowSVG` for no benefit.
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`/flags/${FLAGS[locale]}.svg`}
-      alt=""
-      width={24}
-      height={12}
-      className={cn("h-3 w-6 rounded-[2px] object-cover shadow-xs", className)}
-    />
-  );
-}
-
 /**
- * Flag-only language switcher.
+ * Text-only language switcher.
  *
- * Visually there are no words at all — just the flag and a chevron. The
- * accessible name comes from `aria-label` on the trigger and on each item, so
- * screen readers still announce the native language names.
+ * Visually the trigger carries only the current locale's two-letter code and a
+ * chevron. The accessible name comes from `aria-label` on the trigger and on
+ * each item, so screen readers still announce the native language names ("Română",
+ * "Русский", "English") rather than the bare code.
  *
- * Switching uses next-intl's `useRouter().replace(pathname, { locale })`,
- * which rewrites the first segment *and* re-maps the slug to that locale
+ * Switching uses next-intl's `useRouter().replace(pathname, { locale })`, which
+ * rewrites the first segment *and* re-maps the slug to that locale
  * (`/ro/ventilatie-pasiva` → `/ru/passivnaya-ventilyaciya`).
  *
  * `className` controls the wrapper's display so callers can pass
@@ -64,10 +50,9 @@ export function LocaleSwitcher({ className }: { className?: string }) {
       >
         <SelectTrigger
           aria-label={t("switcher")}
-          showIcon={false}
-          className="h-9 w-auto gap-0 rounded-full border-transparent bg-transparent pr-2 pl-2 shadow-none hover:bg-surface"
+          className="h-9 w-auto min-w-11 gap-0 rounded-full border-transparent bg-transparent px-3 text-sm font-semibold tracking-wide uppercase shadow-none hover:bg-surface"
         >
-          <Flag locale={locale} />
+          {CODES[locale]}
         </SelectTrigger>
 
         <SelectContent align="center" className="min-w-16">
@@ -77,9 +62,9 @@ export function LocaleSwitcher({ className }: { className?: string }) {
               value={candidate}
               aria-label={t(`label.${candidate}`)}
               showIndicator={false}
-              className="justify-center py-2 pl-1.5"
+              className="justify-center py-2 pl-1.5 text-sm font-semibold tracking-wide uppercase"
             >
-              <Flag locale={candidate} />
+              <span aria-hidden>{CODES[candidate]}</span>
               <span className="sr-only">{t(`label.${candidate}`)}</span>
             </SelectItem>
           ))}

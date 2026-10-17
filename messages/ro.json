@@ -15,8 +15,9 @@
   "Nav": {
     "home": "Acasă",
     "services": "Servicii",
-    "about": "Despre noi",
     "tech": "Tehnologie",
+    "about": "Despre noi",
+    "faq": "Întrebări frecvente",
     "reviews": "Recenzii",
     "contacts": "Contacte",
     "openMenu": "Deschide meniul",
@@ -41,16 +42,17 @@
     "viewService": "Vezi serviciul"
   },
   "Hero": {
-    "title": "Ventilație fără electricitate",
-    "subtitle": "Ventilație pasivă care funcționează non-stop, fără curent și fără întreținere — elimină cauza umezelii și a mucegaiului în case, apartamente, subsoluri și mansarde, în toată Moldova. La inspecția gratuită măsurăm umiditatea, alegem sistemul potrivit clădirii și, acolo unde e nevoie de un debit mai mare, instalăm ventilație forțată.",
+    "title": "Ventilație cu tiraj natural pentru casa dumneavoastră",
+    "subtitle": "Instalăm sisteme de ventilație naturală și forțată și ajutăm la rezolvarea problemelor legate de aerul înăbușitor, umiditatea excesivă și condens. Efectuăm tratamente împotriva mucegaiului, ozonizarea încăperilor și găurire cu carotă diamantată.",
     "cta": {
-      "services": "Serviciile noastre",
-      "technology": "Tehnologie"
+      "calculateCost": "Calculează costul",
+      "call": "Sună"
     },
     "usp": {
-      "noElectricity": "Fără electricitate",
-      "noMaintenance": "Fără mentenanță",
-      "warranty": "Garanție {years} ani"
+      "naturalDraft": "Ventilație naturală fără ventilator electric.",
+      "valvePrice": "Instalarea completă a unei singure valve — {price}.",
+      "freeConsultation": "Consultație gratuită prin telefon, fotografii sau video.",
+      "coverage": "Lucrăm pe întreg teritoriul Republicii Moldova."
     },
     "imageAlt": "Ventilație autonomă VENTPRIME instalată pe o casă privată"
   },
@@ -63,21 +65,23 @@
       "text": "Facem o inspecție gratuită și vă recomandăm soluția.",
       "pointCallback": "Vă sunăm în {hours} ore și programăm inspecția.",
       "pointCoverage": "Inspecție gratuită în toată Moldova.",
-      "pointDiagnostics": "Măsurăm umiditatea înainte de a recomanda ceva."
+      "pointDiagnostics": "Măsurăm umiditatea înainte de a recomanda ceva.",
+      "sendRequest": "Trimite o solicitare",
+      "getConsultation": "Obține o consultație"
     },
     "items": {
       "ventilatie-pasiva": {
-        "title": "Instalarea ventilației pasive (fără electricitate)",
+        "title": "Ventilație naturală",
         "description": "Sistem care funcționează non-stop fără curent și fără întreținere.",
         "points": [
-          "0 lei curent",
+          "{zeroPrice} curent",
           "Fără filtre",
           "Montaj rapid"
         ],
         "alt": "Unitate de ventilație pasivă montată pe fațada unei case"
       },
       "ventilatie-fortata": {
-        "title": "Instalarea ventilației forțate (cu alimentare electrică)",
+        "title": "Ventilație forțată și recuperatoare de căldură",
         "description": "Ventilație mecanică pentru spații cu încărcare mare de umiditate și aer viciat.",
         "points": [
           "Debit reglabil",
@@ -87,7 +91,7 @@
         "alt": "Ventilator de extracție montat pe perete"
       },
       "tratare-mucegai": {
-        "title": "Tratarea și dezinfectarea spațiilor împotriva mucegaiului și ciupercilor",
+        "title": "Tratament împotriva mucegaiului",
         "description": "Îndepărtare profesională a mucegaiului, tratament antifungic și dezinfecție.",
         "points": [
           "Toate tipurile de suprafețe",
@@ -97,7 +101,7 @@
         "alt": "Perete cu mucegai negru înainte de tratament"
       },
       "foraj-diamantat": {
-        "title": "Găurire diamantată în beton, cărămidă și alte materiale",
+        "title": "Găurire cu carotă diamantată",
         "description": "Găuri curate și precise pentru ventilație, conducte și cabluri, fără vibrații și praf.",
         "points": [
           "Beton armat",
@@ -105,25 +109,39 @@
           "Diametre variate"
         ],
         "alt": "Perete de beton cu găuri realizeate cu găurire diamantată"
+      },
+      "ozonizare-incaperi": {
+        "title": "Ozonizarea încăperilor",
+        "description": "Dezinfectarea aerului și a suprafețelor cu ozon, eliminând mirosurile neplăcute, sporii de mucegai și bacteriile.",
+        "points": [
+          "Elimină mirosurile",
+          "Distruge sporii și bacteriile",
+          "Fără reziduuri chimice"
+        ],
+        "alt": "Dezinfectarea și ozonizarea profesională a unei încăperi"
       }
     },
     "nav": {
       "items": {
         "ventilatie-pasiva": {
-          "title": "Ventilație pasivă",
+          "title": "Ventilație naturală",
           "description": "Fără electricitate și fără întreținere"
         },
         "ventilatie-fortata": {
-          "title": "Ventilație forțată",
+          "title": "Ventilație forțată și recuperatoare de căldură",
           "description": "Debit reglabil pentru spații comerciale"
         },
         "tratare-mucegai": {
-          "title": "Tratare mucegai",
+          "title": "Tratament împotriva mucegaiului",
           "description": "Îndepărtare, tratament și dezinfecție"
         },
         "foraj-diamantat": {
-          "title": "Găurire diamantată",
+          "title": "Găurire cu carotă diamantată",
           "description": "Găuri precise în beton și cărămidă"
+        },
+        "ozonizare-incaperi": {
+          "title": "Ozonizarea încăperilor",
+          "description": "Eliminare mirosuri, spori și bacterii"
         }
       }
     }
@@ -160,173 +178,56 @@
   },
   "About": {
     "section": {
-      "eyebrow": "Despre noi",
-      "title": "VENTPRIME — specialiști în ventilație și eliminarea mucegaiului",
-      "description": "Suntem o echipă care se ocupă de ventilație și de eliminarea mucegaiului. Misiunea noastră: case sănătoase și uscate, fără costuri suplimentare. Nu tratăm simptomul — eliminăm cauza.",
-      "location": "Sediu",
-      "serviceArea": "Zona de deservire",
+      "title": "VENTPRIME este o companie de familie cu cinci ani de experiență.",
       "imageAlt": "Echipa VENTPRIME la lucru"
     },
-    "usp": {
-      "no-electricity": {
-        "title": "Fără electricitate",
-        "description": "Sistemul funcționează fără curent, zero costuri lunare."
-      },
-      "no-maintenance": {
-        "title": "Fără mentenanță",
-        "description": "Fără filtre, fără motoare, fără vizite de service."
-      },
-      "warranty": {
-        "title": "Garanție {years} ani",
-        "description": "Răspundem pentru rezultat."
-      },
-      "free-inspection": {
-        "title": "Inspecție gratuită",
-        "description": "Măsurăm umiditatea și găsim cauza înainte de ofertă."
-      }
-    },
-    "process": {
-      "eyebrow": "Cum lucrăm",
-      "title": "Cum lucrăm cu clienții",
-      "description": "Patru pași simpli, de la primul apel la o casă uscată.",
-      "request": {
-        "title": "Solicitare",
-        "description": "Sunați sau completați formularul."
-      },
-      "inspection": {
-        "title": "Inspecție gratuită",
-        "description": "Măsurăm umiditatea, identificăm cauza."
-      },
-      "work": {
-        "title": "Montaj / tratament",
-        "description": "Instalare ventilație și/sau tratarea mucegaiului."
-      },
-      "result": {
-        "title": "Casă uscată",
-        "description": "Verificare ulterioară și garanție."
-      }
+    "paragraphs": [
+      "Am realizat 500 de proiecte: instalăm sisteme de ventilație, executăm găurire cu carotă diamantată și tratamente pentru încăperi. Ajutăm la îmbunătățirea schimbului de aer și la rezolvarea problemelor legate de umezeală, aer înăbușitor și condens.",
+      "Clienții ne recomandă prietenilor și apropiaților. Explicăm lucrările incluse, convenim asupra costurilor și efectuăm montajul cu grijă.",
+      "Oferim garanție pentru lucrările executate, în condițiile contractului."
+    ],
+    "indicators": {
+      "years": "ani de activitate.",
+      "projects": "de proiecte realizate."
     }
   },
   "Tech": {
     "section": {
       "eyebrow": "Tehnologia noastră",
-      "title": "Cum funcționează ventilația fără electricitate",
-      "description": "Sistemul folosește forțele fizice naturale — diferența de temperatură și de presiune — pentru a menține aerul în mișcare 24/7."
+      "title": "Cum funcționează ventilația fără electricitate"
     },
+    "paragraphs": [
+      "Ventilația naturală utilizează diferențele de presiune și temperatură pentru a pune aerul în mișcare.",
+      "Punctul de admisie se amplasează mai jos, pe cât posibil lângă calorifer. Aerul exterior pătrunde prin valvă, este distribuit de blocul interior și se amestecă cu aerul cald din încăpere.",
+      "Aerul cald se ridică și, atunci când există tirajul necesar, este evacuat prin punctul de evacuare. Odată cu acesta este eliminată o parte din umiditatea acumulată.",
+      "Valvele pot rămâne deschise non-stop. Intensitatea și direcția fluxului depind de temperatură, vânt și condițiile clădirii."
+    ],
     "diagram": {
-      "alt": "Secțiune schematică a unei case cu ventilație naturală",
-      "steps": {
-        "out": {
-          "title": "Aerul umed iese",
-          "description": "Aerul cald, încărcat cu umezeală, părăsește casa prin punctele de exhaustie."
-        },
-        "in": {
-          "title": "Aerul proaspăt intră",
-          "description": "Aerul rece și curat intră prin canale alimentare amplasate jos."
-        },
-        "circulation": {
-          "title": "Circulație continuă",
-          "description": "Schimbul are loc 24/7, fără curent și fără motoare."
-        },
-        "result": {
-          "title": "Umiditatea scade",
-          "description": "Condensul și mucegaiul dispar pentru că aerul nu mai stagnează."
-        }
+      "title": "Schemă",
+      "alt": "Schemă de funcționare a ventilației fără electricitate: 1 — admisia aerului lângă sursa de încălzire, 2 — evacuarea aerului în partea superioară",
+      "points": {
+        "intake": "Admisia aerului lângă sursa de încălzire.",
+        "exhaust": "Evacuarea aerului în partea superioară."
       }
     },
-    "components": {
-      "title": "Ce se montează",
-      "description": "Componente simple, fără piese electronice, cu durată mare de viață."
+    "advantages": {
+      "title": "Avantaje",
+      "items": {
+        "closedWindows": "Schimb de aer cu ferestrele închise.",
+        "stuffyAir": "Reducerea senzației de aer înăbușitor.",
+        "excessHumidity": "Eliminarea excesului de umiditate.",
+        "condensationRisk": "Reducerea riscului de condens cauzat de ventilația insuficientă.",
+        "noElectricity": "Fără consum de electricitate pentru ventilator.",
+        "manualControl": "Reglarea manuală a admisiei aerului."
+      }
     },
-    "comparison": {
-      "title": "Comparație",
-      "columns": [
-        "",
-        "VENTPRIME",
-        "Ventilație electrică",
-        "Dezumidificator",
-        "Abrisire prin geam"
-      ],
-      "rows": [
-        {
-          "label": "Cost electricitate",
-          "values": [
-            "0 lei",
-            "Lunar",
-            "Lunar, ridicat",
-            "0 lei, pierderi de căldură"
-          ]
-        },
-        {
-          "label": "Mentenanță",
-          "values": [
-            "Nu",
-            "Filtre, service",
-            "Golire apă, filtre",
-            "—"
-          ]
-        },
-        {
-          "label": "Funcționează 24/7",
-          "values": [
-            "Da",
-            "Da",
-            "Da",
-            "Nu"
-          ]
-        },
-        {
-          "label": "Zgomot",
-          "values": [
-            "Nu",
-            "Da",
-            "Da",
-            "—"
-          ]
-        },
-        {
-          "label": "Funcționează fără curent",
-          "values": [
-            "Da",
-            "Nu",
-            "Nu",
-            "Da"
-          ]
-        },
-        {
-          "label": "Elimină cauza mucegaiului",
-          "values": [
-            "Da",
-            "Parțial",
-            "Nu",
-            "Nu"
-          ]
-        }
-      ]
-    },
-    "faq": {
-      "title": "Întrebări frecvente despre tehnologie",
-      "items": [
-        {
-          "question": "Cum poate funcționa ventilația fără electricitate?",
-          "answer": "Sistemul se bazează pe diferența naturală de temperatură și presiune dintre interior și exterior, care creează un tiraj natural permanent."
-        },
-        {
-          "question": "Funcționează și iarna? Nu se răcește casa?",
-          "answer": "Da. Aerul care iese este cald și umed, iar cel care intră este rece, însă schimbul constant menține temperatura confortabilă."
-        },
-        {
-          "question": "Chiar nu necesită întreținere?",
-          "answer": "Nu există motoare, filtre sau componente electronice. Singura întreținere este curățarea ocazională a grilelor."
-        },
-        {
-          "question": "Cât durează montajul?",
-          "answer": "În medie 1–2 zile, în funcție de dimensiunea clădirii."
-        },
-        {
-          "question": "Pentru ce tipuri de clădiri este potrivită?",
-          "answer": "Case, apartamente, subsoluri, mansarde, depozite, magazine, birouri și restaurante."
-        }
+    "condensation": {
+      "title": "De ce se aburesc ferestrele?",
+      "imageAlt": "Condens și picături de apă pe geamul unei ferestre",
+      "paragraphs": [
+        "În încăpere se acumulează umiditate din respirație, gătit, duș și uscarea rufelor. Dacă aerul nu este reînnoit suficient, umiditatea crește.",
+        "La contactul aerului umed cu ferestrele și pereții reci se poate forma condens. Umezirea prelungită creează condiții favorabile pentru umezeală și mucegai.",
+        "Ventilația ajută la eliminarea umidității. Infiltrațiile de apă și înghețarea structurilor necesită măsuri separate de remediere."
       ]
     },
     "cta": "Aflați dacă sistemul se potrivește clădirii dumneavoastră"
@@ -337,12 +238,7 @@
       "title": "Recenziile clienților și rezultate reale",
       "rating": "{rating} / 5 · {count} recenzii Google",
       "viewAll": "Vezi toate pe Google",
-      "testimonialsTitle": "Ce spun clienții",
-      "projectsTitle": "Rezultate înainte și după",
-      "before": "Înainte",
-      "after": "După",
-      "humidity": "Umiditate",
-      "projectImageAlt": "{locality} — înainte de tratament"
+      "testimonialsTitle": "Ce spun clienții"
     },
     "cta": "Vreți același rezultat?",
     "reviews": {
@@ -364,24 +260,46 @@
       "t6": {
         "quote": "O vizită, un montaj, fără praf prin toată casa. Beciul rămâne uscat de atunci, chiar și după ploi torențiale. Merită fiecare leu."
       }
-    },
-    "projects": {
-      "p1": {
-        "title": "Subsol, Chișinău",
-        "summary": "Mucegai pe pereți și umezeală ridicată — rezolvat prin ventilație autonomă."
-      },
-      "p2": {
-        "title": "Beci, Ialoveni",
-        "summary": "Umiditate crescută în pod — rezolvată prin circulația naturală a aerului."
-      }
     }
   },
+  "Faq": {
+    "title": "Întrebări frecvente",
+    "items": [
+      {
+        "question": "De câte valve este nevoie pentru o cameră?",
+        "answer": "Setul nostru standard pentru un dormitor sau o cameră de zi de până la 25 m² include două puncte: unul pentru admisie și unul pentru evacuare. Prețul cu instalare completă este de {roomPrice}."
+      },
+      {
+        "question": "Se va produce mult praf și murdărie în timpul găuririi?",
+        "answer": "Nu. Lucrăm cu atenție și utilizăm echipamente profesionale cu aspirarea prafului sau colectarea apei. Se produce foarte puțin praf. După montaj, curățăm zona de lucru."
+      },
+      {
+        "question": "Vor exista curenți de aer?",
+        "answer": "Blocul interior distribuie aerul prin orificiile laterale, reducând senzația unui jet direct. Debitul poate fi reglat. Confortul depinde și de temperatură, vânt și locul instalării."
+      },
+      {
+        "question": "Care sunt pierderile de căldură?",
+        "answer": "Aerul exterior trebuie încălzit. Pe cât posibil, amplasăm admisia lângă calorifer, pentru ca aerul introdus să se amestece cu aerul cald din încăpere. Modificarea temperaturii depinde de condiții; nu garantăm o pierdere fixă de 1–2 grade."
+      },
+      {
+        "question": "Ventilația ajută împotriva mucegaiului?",
+        "answer": "Ajută la eliminarea excesului de umiditate atunci când schimbul de aer este insuficient. Mucegaiul deja apărut necesită un tratament separat, iar infiltrațiile de apă și înghețarea structurilor trebuie remediate."
+      },
+      {
+        "question": "Valvele necesită întreținere?",
+        "answer": "Este necesară o întreținere simplă: curățarea filtrului și a grilelor. Filtrul lavabil trebuie clătit și uscat complet, conform instrucțiunilor producătorului."
+      },
+      {
+        "question": "Pot afla prețul fără inspecție?",
+        "answer": "Da. Consultația prin telefon, fotografii și video este gratuită. Pentru lucrările standard, costul poate fi convenit preliminar de la distanță."
+      },
+      {
+        "question": "Cum pot obține reducerea pentru tratamentul împotriva mucegaiului?",
+        "answer": "La instalarea a două puncte de ventilație naturală, tratamentul împotriva mucegaiului pentru camera respectivă costă {moldPromoPrice} în loc de {moldRegularPrice}."
+      }
+    ]
+  },
   "Contacts": {
-    "section": {
-      "eyebrow": "Contacte",
-      "title": "Contacte și zona de deservire",
-      "description": "Lăsați datele — vă sunăm în {hours} ore și programăm o inspecție gratuită."
-    },
     "details": {
       "phone": "Telefon",
       "messengers": "Mesagerie",
@@ -393,67 +311,159 @@
   },
   "Form": {
     "quick": {
-      "title": "Consultanță gratuită",
+      "title": "Contactează-ne",
       "description": "Lăsați numele și telefonul — vă sunăm.",
       "submit": "Trimite"
     },
     "full": {
-      "title": "Solicitați o inspecție gratuită",
-      "description": "Completați formularul și vă contactăm în cel mai scurt timp.",
-      "submit": "Trimite cererea",
+      "title": "Trimiteți o solicitare și aflați costul preliminar",
+      "description": "Descrieți încăperea, selectați serviciul și adăugați fotografii sau un videoclip. Pentru instalarea standard a ventilației naturale, costul preliminar va fi afișat imediat.",
+      "submit": "Trimite solicitarea",
       "submitting": "Se trimite…"
     },
     "fields": {
       "name": "Nume",
       "phone": "Telefon",
-      "email": "Email",
+      "email": "E-mail",
+      "emailHint": "Completați dacă doriți să primiți răspunsul prin e-mail",
       "locality": "Localitate",
-      "premise": "Tip de spațiu",
-      "service": "Serviciu",
+      "localityPlaceholder": "Selectați localitatea…",
+      "address": "Adresa exactă",
+      "addressHint": "Adresa poate fi precizată la stabilirea deplasării",
+      "namePlaceholder": "Numele dumneavoastră",
+      "emailPlaceholder": "email@exemplu.com",
+      "addressPlaceholder": "Strada, numărul, apartamentul…",
+      "premise": "Tipul încăperii",
+      "premisePlaceholder": "Selectați tipul încăperii…",
       "problem": "Problema",
-      "area": "Suprafață (m²)",
+      "problemPlaceholder": "Selectați problema…",
+      "service": "Serviciul",
+      "servicePlaceholder": "Selectați serviciul…",
+      "roomsCount": "Numărul camerelor în care sunt necesare lucrări",
+      "roomsCountHint": "Indicați camerele în care sunt necesare lucrări, nu numărul total de camere din locuință",
+      "moldTreatmentRooms": "Numărul de camere pentru tratament împotriva mucegaiului",
+      "moldTreatmentRoomsHint": "Poate fi diferit de numărul camerelor în care se instalează ventilația (+{price} pentru fiecare cameră tratată cu două puncte de ventilație)",
+      "kitchenIntakePoint": "Este necesar un punct separat de admisie în bucătăria cu sistem de evacuare existent — {price}",
+      "problemRooms": "În ce camere există problema?",
+      "problemRoomsHint": "Puteți selecta mai multe variante",
       "photos": "Fotografii",
+      "video": "Video",
       "message": "Mesaj",
-      "consent": "Sunt de acord cu prelucrarea datelor personale și cu politica de confidențialitate."
+      "messagePlaceholder": "Descrieți situația din încăpere…",
+      "consent": "Sunt de acord cu prelucrarea datelor cu caracter personal",
+      "consentPrefix": "Sunt de acord cu prelucrarea datelor cu caracter personal conform ",
+      "consentLink": "politicii de confidențialitate"
     },
     "options": {
       "premise": {
-        "house": "Casă",
         "apartment": "Apartament",
-        "basement": "Subsol",
-        "attic": "Mansardă",
-        "commercial": "Spațiu comercial"
+        "house": "Casă particulară",
+        "basement": "Subsol sau beci",
+        "commercial": "Spațiu comercial",
+        "other": "Alt tip"
       },
       "problem": {
+        "highHumidity": "Umiditate ridicată",
         "mold": "Mucegai",
-        "humidity": "Umiditate",
-        "condensation": "Condens",
+        "moldAndHumidity": "Mucegai și umiditate",
+        "newVentilation": "Este necesar un sistem nou de ventilație",
         "smell": "Miros neplăcut",
-        "newVentilation": "Ventilație nouă",
-        "other": "Altul"
+        "allOfAbove": "Toate cele enumerate"
       },
       "service": {
-        "ventilatie-pasiva": "Ventilație pasivă",
-        "ventilatie-fortata": "Ventilație forțată",
-        "tratare-mucegai": "Tratare mucegai",
-        "foraj-diamantat": "Găurire diamantată"
+        "consultation": "Nu știu — am nevoie de o consultație",
+        "ventilatie-pasiva": "Ventilație naturală",
+        "ventilatie-pasiva-ozonizare": "Ventilație naturală + ozonizare",
+        "ventilatie-pasiva-mucegai": "Ventilație naturală + tratament împotriva mucegaiului",
+        "ventilatie-fortata": "Ventilație forțată / recuperator",
+        "tratare-mucegai": "Tratament împotriva mucegaiului",
+        "ozonizare-incaperi": "Ozonizare",
+        "foraj-diamantat": "Găurire cu carotă diamantată",
+        "inspectie": "Doar deplasare pentru inspecție — {price}"
+      },
+      "roomsCount": {
+        "1": "1 cameră",
+        "2": "2 camere",
+        "3": "3 camere",
+        "4": "4 camere",
+        "5": "5 camere",
+        "moreThan5": "Mai mult de 5 camere"
+      },
+      "problemRooms": {
+        "bedroom": "Dormitor",
+        "living": "Cameră de zi / living",
+        "children": "Cameră pentru copii",
+        "kitchen": "Bucătărie",
+        "bathroom": "Baie / grup sanitar",
+        "basement": "Subsol / beci",
+        "other": "Altă încăpere"
       }
+    },
+    "calculator": {
+      "title": "Calculul dumneavoastră preliminar",
+      "selectPrompt": "Selectați serviciul și numărul de camere pentru a vedea calculul preliminar.",
+      "naturalVentilationLabel": "Ventilație naturală:",
+      "roomsAndPoints": "{roomsLabel} / {points} puncte de ventilație.",
+      "equipmentAndInstallLabel": "Echipament și instalare completă:",
+      "kitchenIntakeLabel": "Punct separat de admisie în bucătărie:",
+      "moldTreatmentLabel": "Tratamentul camerelor ({roomsLabel}):",
+      "ozonationNotice": "Ventilație — {amount}. Ozonizarea se calculează separat.",
+      "ozonationSeparateNote": "Ozonizarea se calculează separat",
+      "customQuoteNotice": "Vom calcula costul în baza solicitării dumneavoastră.",
+      "inspectionOnlyNotice": "Deplasare pentru inspecție — {price}.",
+      "transportChisinauLabel": "Transport în Chișinău:",
+      "transportChisinauValue": "{price}.",
+      "transportChisinauSupplement": "Supliment pentru deplasare: {price}",
+      "transportFeeLabel": "Chișinău – {locality} – Chișinău:",
+      "transportOtherLabel": "Transport (altă localitate):",
+      "transportOtherValue": "Costul transportului va fi confirmat la validarea solicitării.",
+      "totalPreliminaryLabel": "Cost preliminar total:",
+      "standardExplanation": "Echipamentul, găurirea și montajul complet sunt incluse. Calculul este valabil pentru camere standard de până la 25 m² și pereți de până la 60 cm, cu excepția betonului și betonului armat.",
+      "disclaimer": "Cost preliminar pentru condiții standard de montaj. Lucrările în beton, beton armat și lucrările suplimentare se calculează separat.",
+      "referenceTableTitle": "Prețuri standard",
+      "referenceRow": "{roomsLabel} — {points} puncte — {cost}.",
+      "submitWithCalculation": "Trimite solicitarea cu acest calcul"
+    },
+    "transport": {
+      "title": "Transportul și deplasarea",
+      "description": "În municipiul Chișinău nu se percepe o taxă separată pentru deplasare. Pentru lucrările efectuate în alte orașe și sate, cheltuielile de transport se achită separat: deplasarea dus-întors din Chișinău la tariful de 6 lei pentru fiecare kilometru parcurs, cu rotunjire în sus la următorii 50 de lei și un supliment minim de 150 de lei."
     },
     "validation": {
       "nameRequired": "Numele este obligatoriu",
       "phoneRequired": "Telefonul este obligatoriu",
-      "phoneInvalid": "Introduceți un număr valid",
-      "consentRequired": "Este necesar acordul dumneavoastră",
-      "generic": "Ceva nu a mers bine. Încercați din nou."
+      "phoneInvalid": "Introduceți un număr de telefon valid",
+      "emailInvalid": "Introduceți o adresă de e-mail validă",
+      "localityRequired": "Localitatea este obligatorie",
+      "consentRequired": "Este necesar consimțământul dumneavoastră",
+      "photosMaxExceeded": "Puteți încărca cel mult 10 fotografii",
+      "photosInvalid": "Format foto neacceptat sau fișierul depășește 15 MB",
+      "videoMaxExceeded": "Puteți încărca cel mult 2 videoclipuri",
+      "videoInvalid": "Format video neacceptat sau fișierul depășește 50 MB (acceptate: MP4, MOV, WebM)",
+      "generic": "A apărut o eroare la trimitere. Verificați datele și încercați din nou."
     },
     "success": {
-      "title": "Vă mulțumim!",
-      "description": "Am primit cererea. Vă sunăm în {hours} ore."
+      "title": "Vă mulțumim! Solicitarea a fost trimisă.",
+      "description": "Vă vom contacta, vom clarifica detaliile și vom confirma costul.",
+      "fullMessage": "Vă mulțumim! Solicitarea a fost trimisă. Vă vom contacta, vom clarifica detaliile și vom confirma costul."
     },
     "photos": {
-      "add": "Adaugă fotografii",
-      "hint": "Maxim 3 fotografii",
+      "add": "Adaugă fotografii (până la 10)",
+      "subtitle": "Trageți fotografiile aici sau faceți clic pentru a încărca",
+      "dropHint": "Plasați",
+      "hint": "Până la 10 fotografii · Formate: JPG, PNG, WebP, HEIC (max. 15 MB / foto)",
+      "preview": "Vezi imaginea",
       "remove": "Elimină"
+    },
+    "video": {
+      "add": "Încarcă videoclip",
+      "subtitle": "Trageți videoclipul aici sau faceți clic pentru a încărca",
+      "dropHint": "Plasați",
+      "hint": "Formate acceptate: MP4, MOV, WebM · Dimensiune maximă: 50 MB",
+      "remove": "Elimină"
+    },
+    "combobox": {
+      "searchPlaceholder": "Caută localitatea…",
+      "empty": "Nicio localitate găsită."
     }
   },
   "Privacy": {
@@ -469,7 +479,9 @@
     "hours": "Program",
     "privacy": "Politica de confidențialitate",
     "rights": "Toate drepturile rezervate.",
-    "legal": "Legal"
+    "legal": "Legal",
+    "copyright": "Copyrights © Vent Prime Company",
+    "follow": "Urmărește-ne pe rețelele sociale"
   },
   "NotFoundPage": {
     "title": "Pagina nu a fost găsită",

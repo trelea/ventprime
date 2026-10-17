@@ -85,7 +85,7 @@ export function HeroContactCards({
         onClick={() => setExpanded((state) => ({ ...state, phone: !state.phone }))}
         className={card}
       >
-        <Phone className="text-brand-green size-6 shrink-0" />
+        <Phone className="text-emerald-500 size-6 shrink-0" />
         <div className={cell(expanded.phone)}>
           <a
             href={`tel:${phone}`}
@@ -102,7 +102,7 @@ export function HeroContactCards({
         onClick={() => setExpanded((state) => ({ ...state, email: !state.email }))}
         className={card}
       >
-        <Mail className="text-brand-green size-6 shrink-0" />
+        <Mail className="text-emerald-500 size-6 shrink-0" />
         <div className={cell(expanded.email)}>
           <a
             href={`mailto:${email}`}
