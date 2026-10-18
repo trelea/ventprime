@@ -36,7 +36,7 @@ export async function StatsSection({ locale }: { locale: string }) {
         strip below ends the section on white, flush with About's background,
         so no surface band survives past the melt.
       */
-      className={`scroll-mt-20 bg-surface-section ${sectionSpacingTop}`}
+      className={`bg-surface-section ${sectionSpacingTop}`}
     >
       {/*
         The band is full-bleed again — 100% of the viewport width, edge to

@@ -226,8 +226,20 @@
   html {
     @apply font-sans;
     scroll-behavior: smooth;
-    /* keep anchored sections clear of the floating pill header */
-    scroll-padding-top: 7rem;
+    /*
+     * The single source of truth for the fixed-header offset. Section targets
+     * carry no `scroll-mt-*` of their own on purpose: `scroll-padding-top` and a
+     * target's `scroll-margin-top` are additive for hash navigation, so setting
+     * both would push every section well below the bar.
+     *
+     * Resolves to the header's exact height plus a little breathing room, and
+     * then a further 10vh so a jump stops a touch short rather than pinning the
+     * heading right against the bar:
+     * `pt-safe` (env(safe-area-inset-top) + 1rem) + the pill (`h-16` = 4rem).
+     * Keep the header-height part in lockstep with
+     * `components/layout/site-header.tsx`.
+     */
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 6rem + 10vh);
   }
   body {
     @apply bg-background text-foreground antialiased;

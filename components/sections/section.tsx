@@ -116,15 +116,22 @@ export function Section({
 }) {
   return (
     <section
-      id={id}
       className={cn(
-        "scroll-mt-20",
         sectionSpacing,
         tone === "surface" && "bg-surface-section",
         className,
       )}
     >
-      <div className={container}>{children}</div>
+      {/*
+        The `id` lives on the inner content box, not on the <section>. An anchor
+        jump then lands on the section's *content*, so the heading sits right
+        under the fixed header — targeting the <section> instead would leave its
+        own `sectionSpacing` padding (and, where a section centres its content in
+        a full-height box, a whole empty band) between the header and the text.
+      */}
+      <div id={id} className={container}>
+        {children}
+      </div>
     </section>
   );
 }

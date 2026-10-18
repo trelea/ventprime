@@ -31,8 +31,11 @@ export async function AboutSection() {
   ];
 
   return (
-    <Section id="despre">
-      <div className="min-h-screen-safe grid content-center items-start gap-12 lg:grid-cols-2">
+    <Section
+      id="despre"
+      className="flex min-h-screen-safe flex-col justify-center"
+    >
+      <div className="grid items-start gap-12 lg:grid-cols-2">
         {/* Left — original overlapping photos */}
         <div>
           <div className="relative">

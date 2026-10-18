@@ -60,14 +60,20 @@ export async function TechSection() {
   ];
 
   return (
-    <section id="tehnologie" className="scroll-mt-20">
+    <section>
       <TechDiagramStyles />
 
       {/* Screen 1 — How electricity-free ventilation works + Schema */}
       <div
         className={`${container} min-h-screen-safe flex flex-col justify-center ${sectionSpacing}`}
       >
-        <h2 className="font-display text-center text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
+        {/* The anchor sits on the heading, not the <section>: the first block
+            centres its content in a full-height box, so targeting the section
+            box would land a whole empty band above the title. */}
+        <h2
+          id="tehnologie"
+          className="font-display text-center text-3xl font-extrabold tracking-tight text-balance sm:text-4xl"
+        >
           <AuroraText colors={AURORA_COLORS_LIGHT}>
             {t("section.title")}
           </AuroraText>

@@ -5,6 +5,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { HashScroll } from "@/components/layout/hash-scroll";
 import { site } from "@/lib/site";
 import "../globals.css";
 
@@ -151,6 +152,8 @@ export default async function RootLayout({
           >
             {tNav("skipToContent")}
           </a>
+
+          <HashScroll />
 
           <SiteHeader />
 

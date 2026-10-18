@@ -2,17 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { Menu, Phone } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { servicePath, services } from "@/lib/services";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import {
   Sheet,
   SheetContent,
@@ -86,6 +81,8 @@ export function SiteHeader() {
   // 72 characters in RO, which wraps to three lines in a 2x2 cell and leaves
   // the four cells ragged — these are written to fit one line.
   const tServicesNav = useTranslations("Services.nav");
+  const router = useRouter();
+  const locale = useLocale();
 
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>("#acasa");
@@ -104,25 +101,53 @@ export function SiteHeader() {
 
   // Scroll-spy for the anchor links (AGENTS.md §4).
   useEffect(() => {
+    // Watch each hash's enclosing <section>, not the anchor element itself:
+    // anchors sit on a section's *content* box (so a jump lands the heading
+    // under the header), which for `#tehnologie` is a single heading — far too
+    // short to hold the active state while its section fills the viewport.
+    const sectionsByHash = new Map<Element, string>();
+    for (const hash of OBSERVED_HASHES) {
+      const anchor = document.querySelector(hash);
+      if (!anchor) continue;
+      sectionsByHash.set(anchor.closest("section") ?? anchor, hash);
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (visible) setActive(`#${visible.target.id}`);
+        if (visible) {
+          setActive(sectionsByHash.get(visible.target) ?? `#${visible.target.id}`);
+        }
       },
       { rootMargin: "-45% 0px -50% 0px" },
     );
 
-    for (const hash of OBSERVED_HASHES) {
-      const element = document.querySelector(hash);
-      if (element) observer.observe(element);
-    }
+    for (const section of sectionsByHash.keys()) observer.observe(section);
 
     return () => observer.disconnect();
   }, []);
 
   const contactLink = { pathname: "/" as const, hash: "#contacte" };
+
+  /**
+   * Smooth-scroll to a home section. `block: "start"` rides the same
+   * `scroll-behavior: smooth` + `scroll-padding-top` as a native hash link, so
+   * it lands with the identical header offset. Needed for "Servicii", which is
+   * a menu trigger (not a link) and would otherwise never reach `#servicii`.
+   *
+   * Off the home page (a service page) the section isn't in the DOM yet, so fall
+   * back to navigating home with the hash.
+   */
+  const scrollToSection = (hash: string) => {
+    const target = document.getElementById(hash.slice(1));
+    if (target) {
+      target.scrollIntoView({ block: "start" });
+    } else {
+      router.push(`/${locale}${hash}`);
+    }
+  };
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-40 px-4 pt-safe sm:px-6 lg:px-8">
@@ -193,8 +218,14 @@ export function SiteHeader() {
         */}
         <NavigationMenu className="absolute top-1/2 left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 lg:flex">
           <NavigationMenuList>
-            {/* Services — dropdown with a 2x2 grid of the four services. */}
-            <NavigationMenuItem>
+            {/*
+              Services — a dropdown trigger, but clicking it also scrolls to the
+              services section. Base UI opens the popup on hover *and* click, so
+              hover still reveals the four service pages; the popup is portalled
+              to `document.body`, so clicks on those links do not bubble back to
+              this item and never trigger the scroll.
+            */}
+            <NavigationMenuItem onClick={() => scrollToSection("#servicii")}>
               <NavigationMenuTrigger data-active={active === "#servicii" || undefined}>
                 {t("services")}
               </NavigationMenuTrigger>
@@ -304,53 +335,55 @@ export function SiteHeader() {
               </div>
 
               <nav className="flex-1 overflow-y-auto px-4 py-4">
-                {/*
-                  Services is an accordion item rather than a plain anchor, so
-                  the four service links (icon + short title + one-line
-                  description) nest under it instead of sitting in their own
-                  group below the section list. Still a vertical list, not the
-                  desktop 2x2 grid — at sheet width those cells would be ~160px,
-                  too narrow for a title plus a two-line description.
-                */}
-                <Accordion defaultValue={["services"]}>
-                  <AccordionItem value="services" className="border-b-0">
-                    <AccordionTrigger className="hover:bg-surface rounded-md px-3 py-2.5 text-base font-medium">
-                      {t("services")}
-                    </AccordionTrigger>
-                    <AccordionContent className="[&>div]:pr-0">
-                      <ul className="flex flex-col gap-1">
-                        {services.map((service, index) => (
-                          <li key={service.key}>
-                            <Link
-                              href={servicePath(service.key)}
-                              onClick={() => setMenuOpen(false)}
-                              className="hover:bg-surface flex items-center gap-3 rounded-md px-3 py-2.5"
-                            >
-                              <span
-                                className={cn(
-                                  "flex size-11 shrink-0 items-center justify-center rounded-lg text-white",
-                                  serviceAccent(index),
-                                )}
-                              >
-                                <ServiceGlyph icon={service.icon} className="size-5" />
-                              </span>
-                              <span className="flex min-w-0 flex-col">
-                                <span className="text-foreground text-[15px] leading-tight font-medium">
-                                  {tServicesNav(`items.${service.key}.title`)}
-                                </span>
-                                <span className="text-muted-foreground truncate text-sm">
-                                  {tServicesNav(`items.${service.key}.description`)}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-
                 <ul className="flex flex-col gap-1">
+                  {/*
+                    Services — a plain anchor to the section, matching the other
+                    rows, with the four service pages nested beneath it. On
+                    desktop the same item is a hover dropdown; here the pages stay
+                    visible so tapping "Servicii" can close the sheet and scroll
+                    without hiding them. Still a vertical list, not the desktop
+                    2x2 grid — at sheet width those cells would be ~160px, too
+                    narrow for a title plus a two-line description.
+                  */}
+                  <li>
+                    <Link
+                      href={{ pathname: "/", hash: "#servicii" }}
+                      onClick={() => setMenuOpen(false)}
+                      className="hover:bg-surface block rounded-md px-3 py-2.5 text-base font-medium"
+                    >
+                      {t("services")}
+                    </Link>
+
+                    <ul className="mt-1 flex flex-col gap-1 pl-2">
+                      {services.map((service, index) => (
+                        <li key={service.key}>
+                          <Link
+                            href={servicePath(service.key)}
+                            onClick={() => setMenuOpen(false)}
+                            className="hover:bg-surface flex items-center gap-3 rounded-md px-3 py-2.5"
+                          >
+                            <span
+                              className={cn(
+                                "flex size-11 shrink-0 items-center justify-center rounded-lg text-white",
+                                serviceAccent(index),
+                              )}
+                            >
+                              <ServiceGlyph icon={service.icon} className="size-5" />
+                            </span>
+                            <span className="flex min-w-0 flex-col">
+                              <span className="text-foreground text-[15px] leading-tight font-medium">
+                                {tServicesNav(`items.${service.key}.title`)}
+                              </span>
+                              <span className="text-muted-foreground truncate text-sm">
+                                {tServicesNav(`items.${service.key}.description`)}
+                              </span>
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+
                   {NAV_SECTIONS.map((section) => (
                     <li key={section.hash}>
                       <Link
