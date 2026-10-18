@@ -27,6 +27,21 @@ export const container =
   "mx-auto w-full max-w-[calc(88rem_+_2rem)] px-4 sm:max-w-[calc(88rem_+_3rem)] sm:px-6 lg:max-w-[calc(88rem_+_4rem)] lg:px-8";
 
 /**
+ * The site's single vertical rhythm between sections — tight on phones and
+ * growing with every breakpoint (80 / 112 / 128 / 144 / 160px). Top-level
+ * sections paint their breathing room from this one string, the same way they
+ * all share `container` above, so the page's pacing can never drift apart.
+ */
+export const sectionSpacing = "py-20 sm:py-28 md:py-32 lg:py-36 xl:py-40";
+
+/**
+ * Top half of `sectionSpacing`. Sections that must *not* pad their bottom — the
+ * STATS band, which deliberately ends on its own white fade — take this instead.
+ * Keep the two in lockstep when tuning the scale.
+ */
+export const sectionSpacingTop = "pt-20 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40";
+
+/**
  * Shared eyebrow + heading block used by every section
  * (see the per-section layouts in AGENTS.md §5).
  */
@@ -103,7 +118,8 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "scroll-mt-20 py-16 sm:py-24",
+        "scroll-mt-20",
+        sectionSpacing,
         tone === "surface" && "bg-surface-section",
         className,
       )}

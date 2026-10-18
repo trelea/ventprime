@@ -46,7 +46,7 @@ export function FooterForm({ source }: { source: string }) {
 
   return (
     <form
-      className="text-foreground"
+      className="text-foreground [&_label[data-slot=label]]:text-[16px]"
       action={(formData) => {
         startTransition(async () => {
           const result = await submitLead({
@@ -66,7 +66,7 @@ export function FooterForm({ source }: { source: string }) {
 
       <div className="mt-5 flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor={`footer-name-${source}`} className="font-normal">
+          <Label htmlFor={`footer-name-${source}`}>
             {t("fields.name")} *
           </Label>
           <Input
@@ -85,7 +85,7 @@ export function FooterForm({ source }: { source: string }) {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor={`footer-phone-${source}`} className="font-normal">
+          <Label htmlFor={`footer-phone-${source}`}>
             {t("fields.phone")} *
           </Label>
           <Input
@@ -107,7 +107,7 @@ export function FooterForm({ source }: { source: string }) {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor={`footer-email-${source}`} className="font-normal">
+          <Label htmlFor={`footer-email-${source}`}>
             {t("fields.email")}
           </Label>
           <Input

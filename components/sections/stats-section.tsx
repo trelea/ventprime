@@ -4,7 +4,7 @@ import { primaryStats, type Stat } from "@/lib/stats";
 import { StatCounter } from "@/components/sections/stat-counter";
 import { Meteors } from "@/components/ui/meteors";
 import { StatIcon } from "@/components/icons/service-icon";
-import { container } from "@/components/sections/section";
+import { container, sectionSpacingTop } from "@/components/sections/section";
 
 /** STATS / METRICS (`#cifre`) — AGENTS.md §5.3, rebuilt as a rounded band. */
 
@@ -12,7 +12,8 @@ import { container } from "@/components/sections/section";
  * Unit suffixes are only shown for the formats that carry one visually:
  * percentages and the year formats, which reuse the stat's existing label
  * ("years" / "ani" / "лет") as its unit. Currency values are formatted with
- * `formatMDLCurency` directly, and plain numbers render bare.
+ * `formatMDLCurency` directly, and plain numbers render bare — any `+` on a
+ * cumulative metric comes from `stat.symbol`, rendered before the number.
  */
 const UNIT = (stat: Stat, label: string) =>
   stat.format === "years" ? (
@@ -35,7 +36,7 @@ export async function StatsSection({ locale }: { locale: string }) {
         strip below ends the section on white, flush with About's background,
         so no surface band survives past the melt.
       */
-      className="scroll-mt-20 bg-surface-section pt-6 sm:pt-10"
+      className={`scroll-mt-20 bg-surface-section ${sectionSpacingTop}`}
     >
       {/*
         The band is full-bleed again — 100% of the viewport width, edge to
@@ -46,13 +47,14 @@ export async function StatsSection({ locale }: { locale: string }) {
         gradient itself now reaches the screen edges. `isolate` +
         `overflow-hidden` clip the meteors exactly at the rounded edges.
 
-        `py-28` / `sm:py-36` / `lg:py-44` applies equally above the title and
+        `py-20` / `sm:py-32` / `lg:py-44` applies equally above the title and
         below the cards, so the band keeps the same breathing room on both
-        ends. Corners stay modest on phones (`rounded-[1.75rem]`) and open up
+        ends, trimmed on phones where the single-column grid already makes the
+        section tall. Corners stay modest on phones (`rounded-[1.75rem]`) and open up
         to ~72px on PC (`lg:rounded-[72px]`, low end of the 70–100px range)
         so the full-bleed curb reads clearly on wide screens.
       */}
-      <div className="bg-brand-gradient relative isolate overflow-hidden rounded-[1.75rem] py-28 shadow-lg shadow-black/10 sm:rounded-[3rem] sm:py-36 lg:rounded-[72px] lg:py-44">
+      <div className="bg-brand-gradient relative isolate overflow-hidden rounded-[1.75rem] py-20 shadow-lg shadow-black/10 sm:rounded-[3rem] sm:py-32 lg:rounded-[72px] lg:py-44">
         {/*
           Magic UI Meteors — faint white streaks drifting across the band,
           reading as air currents. The component itself mounts nothing under
@@ -75,7 +77,7 @@ export async function StatsSection({ locale }: { locale: string }) {
             Icon on top, the server-rendered count-up number with its unit,
             one extralight caption. Nothing else on the card.
           */}
-          <dl className="relative z-10 mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          <dl className="relative z-10 mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {primaryStats.map((stat, index) => {
               const label = t(`${stat.labelKey}.label` as never) as unknown as string;
               /*
@@ -92,7 +94,7 @@ export async function StatsSection({ locale }: { locale: string }) {
               return (
                 <div
                   key={stat.id}
-                  className="flex aspect-3/4 flex-col items-center justify-center rounded-md border border-border bg-white p-8 text-center shadow-xl shadow-black/20"
+                  className="flex flex-col items-center justify-center rounded-md border border-border bg-white p-8 text-center shadow-xl shadow-black/20 sm:aspect-3/4"
                 >
                   <StatIcon
                     icon={stat.icon}
@@ -100,13 +102,22 @@ export async function StatsSection({ locale }: { locale: string }) {
                     iconClassName="size-7 sm:size-8"
                   />
 
-                  <dd className="text-brand-blue-dark mt-14 flex items-baseline gap-1 text-4xl font-extrabold sm:text-5xl">
-                    <StatCounter
-                      value={stat.value}
-                      formatted={formatted}
-                      locale={locale}
-                      delay={index * 0.08}
-                    />
+                  <dd className="text-brand-blue-dark mt-8 flex items-baseline gap-1 text-4xl font-extrabold sm:mt-14 sm:text-5xl">
+                    <span className="inline-flex items-baseline">
+                      {/*
+                        The symbol leads the number and sits tight against it
+                        (no flex gap, so `+500` not `+ 500`), matching the
+                        About indicators; `UNIT()` keeps the parent's `gap-1`
+                        after the number (`+5 ani`).
+                      */}
+                      {stat.symbol ? <span>{stat.symbol}</span> : null}
+                      <StatCounter
+                        value={stat.value}
+                        formatted={formatted}
+                        locale={locale}
+                        delay={index * 0.08}
+                      />
+                    </span>
                     {UNIT(stat, label)}
                   </dd>
                   {/*

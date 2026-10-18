@@ -8,7 +8,11 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { FaqSection, getFaqItems } from "@/components/sections/faq-section";
 import { CostCalculatorSection } from "@/components/sections/cost-calculator-section";
 import { JsonLd } from "@/components/seo/json-ld";
-import { faqSchema, organizationSchema, aggregateRatingSchema } from "@/lib/seo";
+import {
+  faqSchema,
+  organizationSchema,
+  aggregateRatingSchema,
+} from "@/lib/seo";
 import { serviceKeys, type ServiceKey } from "@/lib/services";
 import type { Locale } from "@/i18n/routing";
 

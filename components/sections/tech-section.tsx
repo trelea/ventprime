@@ -15,7 +15,7 @@ import { getTranslations } from "next-intl/server";
 import { getImage } from "@/lib/images";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { DotPattern } from "@/components/ui/dot-pattern";
-import { container } from "@/components/sections/section";
+import { container, sectionSpacing } from "@/components/sections/section";
 import {
   TechDiagram,
   TechDiagramStyles,
@@ -65,7 +65,7 @@ export async function TechSection() {
 
       {/* Screen 1 — How electricity-free ventilation works + Schema */}
       <div
-        className={`${container} min-h-screen-safe flex flex-col justify-center py-16 sm:py-20`}
+        className={`${container} min-h-screen-safe flex flex-col justify-center ${sectionSpacing}`}
       >
         <h2 className="font-display text-center text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
           <AuroraText colors={AURORA_COLORS_LIGHT}>
@@ -122,7 +122,7 @@ export async function TechSection() {
 
       {/* Screen 2 — Advantages + Why do windows fog up? */}
       <div
-        className={`${container} min-h-screen-safe flex flex-col justify-center py-16 sm:py-20`}
+        className={`${container} min-h-screen-safe flex flex-col justify-center ${sectionSpacing}`}
       >
         <h2 className="font-display text-center text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
           <AuroraText colors={AURORA_COLORS_LIGHT}>

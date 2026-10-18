@@ -35,11 +35,11 @@ import { cn } from "cn";
  * page. The photo's `object-position` follows it, so the subject stays in the
  * half the copy does not cover.
  *
- * The card splits only from `@sm` (a 384px card) up. Narrower cards — phones,
- * and the tightest of the service pages' three-up — stack instead: photo on top,
- * copy below on a flat `brand-blue-dark` panel, with the blue rising out of the
- * photo's bottom edge via `.service-card-blend`. Half of a 358px card is a
- * 130px copy column, which is not a layout, it is a squeeze.
+ * The card splits only from `@lg` (a 512px card) up. Narrower cards — phones,
+ * tablets, and the service pages' three-up — stack instead: photo on top, copy
+ * below on a flat `brand-blue-dark` panel, with the blue rising out of the
+ * photo's bottom edge via `.service-card-blend`. Half of anything under 512px is
+ * a copy column narrower than 256px, which is not a layout, it is a squeeze.
  *
  * Hover: the photo scales to 1.1 and a dark overlay crossfades to 30% over it,
  * while the card's shadow lifts. The overlay is a separate absolutely positioned
@@ -94,7 +94,7 @@ export async function ServiceCard({
    * bare photo.
    *
    * Inline rather than a utility class because it is a function of `reverse` and
-   * only applies from `@sm` up, and an inline style cannot carry a
+   * only applies from `@lg` up, and an inline style cannot carry a
    * container-query variant. The stops are the same either way; only the axis
    * flips.
    */
@@ -104,10 +104,10 @@ export async function ServiceCard({
 
   return (
     <div className="@container h-full">
-      <article className="group bg-brand-blue-dark border-border relative isolate grid h-full min-h-68 overflow-hidden rounded-md border shadow-sm transition-shadow duration-300 hover:shadow-lg focus-within:shadow-lg @sm:min-h-88">
+      <article className="group bg-brand-blue-dark border-border relative isolate grid h-full min-h-68 overflow-hidden rounded-md border shadow-sm transition-shadow duration-300 hover:shadow-lg focus-within:shadow-lg @lg:min-h-88">
         {/* Photo. Its own row above the copy on phones; behind everything from
-            `@sm` up, where it stretches under the copy instead. */}
-        <div className="relative aspect-16/9 overflow-hidden @sm:absolute @sm:inset-0 @sm:aspect-auto">
+            `@lg` up, where it stretches under the copy instead. */}
+        <div className="relative aspect-16/9 overflow-hidden @lg:absolute @lg:inset-0 @lg:aspect-auto">
           <Image
             src={image.src}
             alt={alt}
@@ -124,7 +124,7 @@ export async function ServiceCard({
               out of the photo's bottom edge instead of its side. */}
           <div
             aria-hidden
-            className="service-card-blend absolute inset-x-0 bottom-0 h-3/5 [--service-card-blend-direction:to_top] @sm:hidden"
+            className="service-card-blend absolute inset-x-0 bottom-0 h-3/5 [--service-card-blend-direction:to_top] @lg:hidden"
           />
 
           {/* Crossfades in on hover — see the note above. */}
@@ -138,7 +138,7 @@ export async function ServiceCard({
             third. Under the copy, over the photo. */}
         <div
           aria-hidden
-          className="absolute inset-0 hidden @sm:block"
+          className="absolute inset-0 hidden @lg:block"
           style={{ backgroundImage: blueLayer }}
         />
 
@@ -149,22 +149,22 @@ export async function ServiceCard({
         <div
           className={cn(
             "bg-brand-blue-dark relative z-10 flex flex-col gap-3 p-6 sm:p-8",
-            "@sm:w-1/2 @sm:bg-transparent",
-            reverse ? "@sm:justify-self-start" : "@sm:justify-self-end",
+            "@lg:w-1/2 @lg:bg-transparent",
+            reverse ? "@lg:justify-self-start" : "@lg:justify-self-end",
           )}
         >
-          <h3 className="font-display text-3xl font-extrabold tracking-tight text-white">
+          <h3 className="font-display text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
             {cardTitle}
           </h3>
 
-          <p className="max-w-md text-lg leading-relaxed text-white/85">
+          <p className="max-w-md text-base leading-relaxed text-white/85 sm:text-lg">
             {description}
           </p>
 
           <span
             className={cn(
               buttonVariants({ variant: "default", size: "lg" }),
-              "bg-emerald-500 hover:bg-emerald-500/90 mt-auto h-12 w-fit gap-2 rounded-md px-6 text-base font-semibold text-white",
+              "bg-emerald-500 hover:bg-emerald-500/90 mt-auto h-11 w-fit gap-2 rounded-md px-5 text-sm font-semibold text-white sm:h-12 sm:px-6 sm:text-base",
             )}
           >
             {tCommon("viewService")}

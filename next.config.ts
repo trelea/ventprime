@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   },
   cacheComponents: true,
   partialPrefetching: true,
+  // Testing over the LAN from a phone. The dev server trusts only `localhost`
+  // (and the hostname it was started with) by default, so every other origin has
+  // its requests to dev-only endpoints (`/_next/*`, `/__nextjs*`, incl. the HMR
+  // websocket) rejected with 403 — the "Blocked cross-origin request" warning.
+  // Only the hostname is matched: no scheme, no port. Swap in `192.168.1.*` if
+  // the machine's DHCP address moves.
+  allowedDevOrigins: ["192.168.1.7"],
   // Review avatars are hotlinked Unsplash portraits (`lib/testimonials.ts`).
   images: {
     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],

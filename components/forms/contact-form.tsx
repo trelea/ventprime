@@ -1095,12 +1095,49 @@ export function ContactForm({
       {/* Right column — Preliminary Cost Calculator (§12, §13, §14) */}
       <div className="flex flex-col gap-6 lg:sticky lg:top-24 lg:col-span-5">
         {/*
+          Stacked order (below `lg`) is the source order itself: the transport
+          block comes first so the visitor reads the transport conditions before
+          the cost preview, and the tab order follows the same path. `lg:order-2`
+          is the only reordering, pushing the transport card below the preview
+          panel once the two-column layout kicks in (the preview panel keeps its
+          default `order: 0`).
+        */}
+        {/* Transport & Travel Conditions Block (§13) */}
+        <div className="bg-brand-blue-dark rounded-md border border-border p-6 text-white shadow-sm lg:order-2">
+          <div className="flex items-center gap-3">
+            <span className="bg-emerald-500 flex size-10 shrink-0 items-center justify-center rounded-[6px] text-white">
+              <Truck className="size-5" />
+            </span>
+            <h4 className="text-base font-bold tracking-tight">
+              {tTransport("title")}
+            </h4>
+          </div>
+          <p className="mt-3 text-base font-medium leading-relaxed text-white/90">
+            {tTransport("description")}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2 border-t border-white/15 pt-3 font-ui text-sm">
+            <span className="bg-emerald-500/20 text-emerald-100 inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-readout font-medium tabular-nums">
+              <MapPin className="size-3.5" />
+              {transportIsFree
+                ? tCalc("transportChisinauSupplement", {
+                    price: formatLei(0),
+                  })
+                : transportHasFee
+                  ? tCalc("transportChisinauSupplement", {
+                      price: formatLei(calculation.transportFee ?? 0),
+                    })
+                  : tCalc("transportOtherValue")}
+            </span>
+          </div>
+        </div>
+
+        {/*
           The preview panel renders in one of two variants, chosen by the
           section that owns the form:
 
           `default` (service pages) — the dark card, matching the site's other
           dark blue cards (the Services CTA card, the technology block, the
-          transport card directly below this one): `bg-brand-blue-dark` with
+          transport card that follows it at `lg`): `bg-brand-blue-dark` with
           white copy, the `border-white/85` edge and the same `shadow-sm` →
           `hover:shadow-lg` treatment.
 
@@ -1133,8 +1170,8 @@ export function ContactForm({
           full white, semibold on the green). The card's own edge is set
           explicitly rather than through `border-border` (the palette's
           near-white blue-grey): the dark variant matches the near-white
-          outline of the transport card below it, the green one wears the
-          coloured cards' `border-white/15`.
+          outline of the transport card, which drops below it at `lg`, the green
+          one wears the coloured cards' `border-white/15`.
         */}
         <div
           className={cn(
@@ -1507,35 +1544,6 @@ export function ContactForm({
                 ? t("full.submitting")
                 : tCalc("submitWithCalculation")}
             </Button>
-          </div>
-        </div>
-
-        {/* Transport & Travel Conditions Block (§13) */}
-        <div className="bg-brand-blue-dark rounded-md border border-border p-6 text-white shadow-sm">
-          <div className="flex items-center gap-3">
-            <span className="bg-emerald-500 flex size-10 shrink-0 items-center justify-center rounded-[6px] text-white">
-              <Truck className="size-5" />
-            </span>
-            <h4 className="text-base font-bold tracking-tight">
-              {tTransport("title")}
-            </h4>
-          </div>
-          <p className="mt-3 text-base font-medium leading-relaxed text-white/90">
-            {tTransport("description")}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2 border-t border-white/15 pt-3 font-ui text-sm">
-            <span className="bg-emerald-500/20 text-emerald-100 inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-readout font-medium tabular-nums">
-              <MapPin className="size-3.5" />
-              {transportIsFree
-                ? tCalc("transportChisinauSupplement", {
-                    price: formatLei(0),
-                  })
-                : transportHasFee
-                  ? tCalc("transportChisinauSupplement", {
-                      price: formatLei(calculation.transportFee ?? 0),
-                    })
-                  : tCalc("transportOtherValue")}
-            </span>
           </div>
         </div>
       </div>

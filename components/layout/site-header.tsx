@@ -8,8 +8,13 @@ import { servicePath, services } from "@/lib/services";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetTitle,
   SheetTrigger,
@@ -84,6 +89,11 @@ export function SiteHeader() {
 
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>("#acasa");
+  // The mobile sheet is controlled so its links can close it with a plain
+  // `onClick`. Wrapping them in Base UI's `SheetClose` made each anchor an
+  // element that "acts as a button", which Base UI flags (nativeButton) and
+  // which would stamp `role="button"` onto a real navigation link.
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -267,13 +277,13 @@ export function SiteHeader() {
           <ButtonLink
             render={<Link href={contactLink} />}
             size="lg"
-            className="bg-emerald-500 hover:bg-emerald-500/90 h-11 gap-2.5 rounded-md px-4 text-[15px] text-white shadow-sm sm:px-5"
+            className="bg-emerald-500 hover:bg-emerald-500/90 hidden h-11 gap-2.5 rounded-md px-4 text-[15px] text-white shadow-sm lg:inline-flex lg:px-5"
           >
             <Phone className="size-4" />
             {t("getInTouch")}
           </ButtonLink>
 
-          <Sheet>
+          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger
               render={
                 <Button
@@ -294,69 +304,74 @@ export function SiteHeader() {
               </div>
 
               <nav className="flex-1 overflow-y-auto px-4 py-4">
+                {/*
+                  Services is an accordion item rather than a plain anchor, so
+                  the four service links (icon + short title + one-line
+                  description) nest under it instead of sitting in their own
+                  group below the section list. Still a vertical list, not the
+                  desktop 2x2 grid — at sheet width those cells would be ~160px,
+                  too narrow for a title plus a two-line description.
+                */}
+                <Accordion defaultValue={["services"]}>
+                  <AccordionItem value="services" className="border-b-0">
+                    <AccordionTrigger className="hover:bg-surface rounded-md px-3 py-2.5 text-base font-medium">
+                      {t("services")}
+                    </AccordionTrigger>
+                    <AccordionContent className="[&>div]:pr-0">
+                      <ul className="flex flex-col gap-1">
+                        {services.map((service, index) => (
+                          <li key={service.key}>
+                            <Link
+                              href={servicePath(service.key)}
+                              onClick={() => setMenuOpen(false)}
+                              className="hover:bg-surface flex items-center gap-3 rounded-md px-3 py-2.5"
+                            >
+                              <span
+                                className={cn(
+                                  "flex size-11 shrink-0 items-center justify-center rounded-lg text-white",
+                                  serviceAccent(index),
+                                )}
+                              >
+                                <ServiceGlyph icon={service.icon} className="size-5" />
+                              </span>
+                              <span className="flex min-w-0 flex-col">
+                                <span className="text-foreground text-[15px] leading-tight font-medium">
+                                  {tServicesNav(`items.${service.key}.title`)}
+                                </span>
+                                <span className="text-muted-foreground truncate text-sm">
+                                  {tServicesNav(`items.${service.key}.description`)}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+
                 <ul className="flex flex-col gap-1">
-                  {SECTIONS.map((section) => (
+                  {NAV_SECTIONS.map((section) => (
                     <li key={section.hash}>
-                      <SheetClose
-                        render={
-                          <Link
-                            href={{ pathname: "/", hash: section.hash }}
-                            className="hover:bg-surface block rounded-md px-3 py-2.5 text-base font-medium"
-                          />
-                        }
+                      <Link
+                        href={{ pathname: "/", hash: section.hash }}
+                        onClick={() => setMenuOpen(false)}
+                        className="hover:bg-surface block rounded-md px-3 py-2.5 text-base font-medium"
                       >
                         {t(section.key)}
-                      </SheetClose>
+                      </Link>
                     </li>
                   ))}
-                </ul>
 
-                {/*
-                  Services preview on mobile.
-
-                  Deliberately a plain vertical dropdown of all four services,
-                  not the desktop 2x2 grid — at sheet width the cells would be
-                  ~160px, too narrow for a title plus a two-line description.
-                  Shows icon + short title + one-line description instead.
-                */}
-                <p className="text-muted-foreground mt-6 mb-2 px-3 font-mono text-[11px] font-medium tracking-[0.08em] uppercase">
-                  {t("services")}
-                </p>
-                <ul className="flex flex-col gap-1">
-                  {services.map((service, index) => (
-                    <li key={service.key}>
-                      <SheetClose
-                        render={
-                          <Link
-                            href={servicePath(service.key)}
-                            className="hover:bg-surface flex items-center gap-3 rounded-md px-3 py-2.5"
-                          />
-                        }
-                      >
-                        <span
-                          className={cn(
-                            "flex size-11 shrink-0 items-center justify-center rounded-lg text-white",
-                            serviceAccent(index),
-                          )}
-                        >
-                          <ServiceGlyph icon={service.icon} className="size-5" />
-                        </span>
-                        <span className="flex min-w-0 flex-col">
-                          <span className="text-[15px] leading-tight font-medium">
-                            {tServicesNav(`items.${service.key}.title`)}
-                          </span>
-                          <span className="text-muted-foreground truncate text-sm">
-                            {tServicesNav(`items.${service.key}.description`)}
-                          </span>
-                        </span>
-                      </SheetClose>
-                    </li>
-                  ))}
+                  {/* Language switcher, carried as one more nav row rather than
+                      a detached pill in the sheet footer. */}
+                  <li>
+                    <LocaleSwitcher variant="nav" className="flex w-full" />
+                  </li>
                 </ul>
               </nav>
 
-              <div className="flex flex-col gap-3 border-t border-border p-4">
-                <LocaleSwitcher className="flex justify-center" />
+              <div className="border-t border-border p-4">
                 <ButtonLink
                   render={<Link href={contactLink} />}
                   size="lg"

@@ -7,13 +7,12 @@ import { Mail, Phone } from "lucide-react";
  * The hero's two contact cards, phone over email.
  *
  * Only the value is a link: clicking the number or the address fires `tel:` /
- * `mailto:`, while clicking the icon or the card's own padding does not. That
- * is why the anchor sits *inside* the wrapper instead of being the wrapper — a
- * click on the value still bubbles outward to toggle the card, so one click
- * both dials and collapses.
+ * `mailto:`. That click stops there (`stopPropagation`), so following the link
+ * never collapses the card. Clicking anywhere else on the card — the icon or
+ * the padding — toggles it.
  *
- * Every click on a card toggles it, in both directions: expanded → icon-only,
- * and icon-only → expanded.
+ * Every click on the card *outside* the value toggles it, in both directions:
+ * expanded → icon-only, and icon-only → expanded.
  *
  * ## The slide
  *
@@ -31,7 +30,8 @@ import { Mail, Phone } from "lucide-react";
  *   card instead of being clipped.
  * - There is no flex `gap` on the card. The spacing between icon and value is
  *   the value's own left padding, so a collapsed card is exactly the icon plus
- *   the card's `px-4` — a 56px chip, not 66px.
+ *   the card's own horizontal padding (which steps up a little when collapsed,
+ *   see `card()`) — a small square-ish chip, not the icon plus the value's pad.
  * - The padding sits on an inner span, not on the anchor: padding cannot be
  *   squeezed to zero, so a padded *cell* would floor the collapsed width at the
  *   padding sum.
@@ -56,6 +56,13 @@ import { Mail, Phone } from "lucide-react";
  * content, so the email one is wider than the phone one. They are right-aligned
  * (`items-end`) so their right edges stay flush with the screen edge — the
  * wrapper's negative margin reaches it, see the note in `hero.tsx`.
+ *
+ * Below `lg` the wrapper stays content-width and is pushed right with
+ * `ml-auto`; a negative right margin equal to the section gutter (`-mr-4 sm:
+ * -mr-6`) lets it reach past the container padding so the cards sit flush with
+ * the screen edge, bottom-right under the CTAs. At `lg` the larger
+ * edge-reaching margin (which also accounts for the centred max-width) takes
+ * over.
  */
 export function HeroContactCards({
   phone,
@@ -68,8 +75,16 @@ export function HeroContactCards({
 }) {
   const [expanded, setExpanded] = useState({ phone: true, email: true });
 
-  const card =
-    "text-brand-blue-dark flex h-14 cursor-pointer items-center rounded-l-2xl bg-white/70 px-4 shadow-lg backdrop-blur-md";
+  // Every size (banner height, horizontal padding, text and icon) steps up with
+  // the breakpoint: a compact chip on phones and the roomy 56px banner at `lg`.
+  //
+  // Horizontal padding depends on state: `open` uses the tight padding that
+  // also spaces the value from the icon, while collapsing to the icon-only chip
+  // gets a touch more so the little tab doesn't look cramped.
+  const card = (open: boolean) =>
+    `text-brand-blue-dark flex h-12 cursor-pointer items-center rounded-l-2xl bg-white/70 shadow-lg backdrop-blur-md lg:h-14 ${
+      open ? "px-3.5 lg:px-4" : "px-4 lg:px-5"
+    }`;
   const cell = (open: boolean) =>
     `grid min-w-0 transition-[grid-template-columns] duration-300 ease-out ${
       open ? "grid-cols-[1fr]" : "grid-cols-[0fr]"
@@ -77,20 +92,22 @@ export function HeroContactCards({
   const value = "min-w-0 overflow-hidden";
 
   /** The value's own padding is what spaces it from the icon and the card edge. */
-  const valueText = "flex h-14 items-center px-7 text-lg font-bold whitespace-nowrap";
+  const valueText =
+    "flex h-12 items-center px-4 text-base font-bold whitespace-nowrap lg:h-14 lg:px-7 lg:text-lg";
 
   return (
-    <div className="hidden flex-col items-end gap-3 lg:flex lg:-mr-[calc(2rem_+_max(0px,calc((100vw_-_92rem)/2)))]">
+    <div className="ml-auto -mr-4 flex flex-col items-end gap-3 sm:-mr-6 lg:-mr-[calc(2rem_+_max(0px,calc((100vw_-_92rem)/2)))]">
       <div
         onClick={() => setExpanded((state) => ({ ...state, phone: !state.phone }))}
-        className={card}
+        className={card(expanded.phone)}
       >
-        <Phone className="text-emerald-500 size-6 shrink-0" />
+        <Phone className="text-emerald-500 size-5 shrink-0 lg:size-6" />
         <div className={cell(expanded.phone)}>
           <a
             href={`tel:${phone}`}
             tabIndex={expanded.phone ? undefined : -1}
             aria-hidden={!expanded.phone}
+            onClick={(event) => event.stopPropagation()}
             className={value}
           >
             <span className={valueText}>{phoneDisplay}</span>
@@ -100,14 +117,15 @@ export function HeroContactCards({
 
       <div
         onClick={() => setExpanded((state) => ({ ...state, email: !state.email }))}
-        className={card}
+        className={card(expanded.email)}
       >
-        <Mail className="text-emerald-500 size-6 shrink-0" />
+        <Mail className="text-emerald-500 size-5 shrink-0 lg:size-6" />
         <div className={cell(expanded.email)}>
           <a
             href={`mailto:${email}`}
             tabIndex={expanded.email ? undefined : -1}
             aria-hidden={!expanded.email}
+            onClick={(event) => event.stopPropagation()}
             className={value}
           >
             <span className={valueText}>{email}</span>

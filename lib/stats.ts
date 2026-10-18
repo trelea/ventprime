@@ -18,6 +18,12 @@ export interface Stat {
   value: number;
   format: StatFormat;
   /**
+   * Glyph shown beside the number, e.g. `"+"` so a cumulative metric reads
+   * `+500` / `+5 ani`. Rendered as a sibling of `StatCounter`, so it stays in
+   * the server HTML and does not flicker during the count-up.
+   */
+  symbol?: string;
+  /**
    * Glyph resolvable through `components/icons/service-icon.tsx`, shown in the
    * STATS band card on top of the number.
    */
@@ -38,6 +44,7 @@ export const stats: Stat[] = [
     id: "years",
     value: 5,
     format: "years",
+    symbol: "+",
     icon: "calendar",
     labelKey: "years",
     captionKey: "years.caption",
@@ -46,6 +53,7 @@ export const stats: Stat[] = [
     id: "objects",
     value: 500,
     format: "number",
+    symbol: "+",
     icon: "building",
     labelKey: "objects",
     captionKey: "objects.caption",
@@ -70,6 +78,7 @@ export const stats: Stat[] = [
     id: "area",
     value: 12000,
     format: "number",
+    symbol: "+",
     icon: "ruler",
     labelKey: "area",
     captionKey: "area.caption",

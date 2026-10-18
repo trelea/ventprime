@@ -30,11 +30,28 @@ import { GridPattern } from "@/components/ui/grid-pattern";
 const AURORA_COLORS = ["#5AA9E6", "#10b981", "#FFFFFF"];
 
 /**
+ * Mask + paint for the hero grid texture. Shared between the two density tiers
+ * below so their fade can never drift apart.
+ */
+const GRID_TEXTURE =
+  "fill-white/10 stroke-white/20 [mask-image:linear-gradient(to_right,white,transparent_70%),linear-gradient(to_bottom,transparent,white_8%,white_92%,transparent)] [mask-composite:intersect]";
+
+/**
  * HERO (`#acasa`) — AGENTS.md §5.1.
  *
- * Edge-to-edge and at least one viewport tall on every device, phones included.
- * That works because the header is `fixed` (out of the flow) rather than
- * `sticky`, so this section starts at y=0 and owns the full screen.
+ * Edge-to-edge and exactly one viewport tall on every device, phones included —
+ * `h-[100vh]` with an `svh` enhancement (`@supports`) so nothing of the next
+ * section peeks in. The height is written as core Tailwind utilities rather
+ * than a custom `.h-screen-safe`, because `@layer utilities` classes added to
+ * `globals.css` were silently dropped by the Turbopack dev CSS pipeline (the
+ * production build kept them), which left the hero sized to its content.
+ *
+ * Filling the screen works because the header is `fixed` (out of the flow)
+ * rather than `sticky`, so this section starts at y=0 and owns the full screen.
+ * The trade-off of a fixed
+ * height is that on very short / landscape phones the content can be clipped by
+ * `overflow-hidden`; the phone-scale reductions below (badges hidden, smaller
+ * CTAs) keep the content within one screen on typical devices.
  *
  * Desktop: full-bleed photo with a blue→transparent gradient over the left
  * half; text block on the left, image subject visible on the right.
@@ -66,7 +83,7 @@ export async function Hero() {
   return (
     <section
       id="acasa"
-      className="relative isolate flex min-h-screen-safe w-full flex-col overflow-hidden"
+      className="relative isolate flex h-[100vh] w-full flex-col overflow-hidden supports-[height:100svh]:h-[100svh]"
     >
       <Image
         src={hero.src}
@@ -83,18 +100,35 @@ export async function Hero() {
         className="absolute inset-0 -z-10 bg-linear-to-r from-brand-blue-dark/95 via-brand-blue-dark/70 to-brand-blue-dark/10"
       />
 
-      {/* Grid texture under the copy (Magic UI `grid-pattern`, AGENTS.md §5.1). */}
+      {/* Same dark fade top→bottom, so the copy and the floating header stay
+          legible over the brighter parts of the photo. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-linear-to-b from-brand-blue-dark/90 via-brand-blue-dark/45 to-transparent"
+      />
+
+      {/* Grid texture under the copy (Magic UI `grid-pattern`, AGENTS.md §5.1).
+          Two density tiers: fine 24px cells on phones, larger 48px squares from
+          `lg`. Two instances are needed because `<pattern>` `width`/`height`
+          are SVG attributes, not CSS properties, so the cell size can't be
+          switched with a responsive utility. The hidden one is `display:none`. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <GridPattern
           id="hero-grid-pattern"
+          width={24}
+          height={24}
+          className={`${GRID_TEXTURE} lg:hidden`}
+        />
+        <GridPattern
+          id="hero-grid-pattern-lg"
           width={48}
           height={48}
-          className="fill-white/10 stroke-white/20 [mask-image:linear-gradient(to_right,white,transparent_52%),linear-gradient(to_bottom,transparent,white_8%,white_92%,transparent)] [mask-composite:intersect]"
+          className={`${GRID_TEXTURE} hidden lg:block`}
         />
       </div>
 
       <div
-        className={`${container} flex flex-1 flex-wrap content-center items-end justify-between gap-10 pt-28 pb-24 lg:pt-32 lg:pb-12`}
+        className={`${container} flex flex-1 flex-wrap content-between items-end justify-between gap-8 pt-28 pb-12 lg:content-center lg:gap-10 lg:pt-32 lg:pb-12`}
       >
         <div className="max-w-2xl min-w-0 lg:grow lg:basis-0">
           <h1 className="font-display text-4xl font-black tracking-tight text-balance sm:text-5xl lg:text-6xl">
@@ -105,8 +139,8 @@ export async function Hero() {
             {t("subtitle")}
           </p>
 
-          {/* 4 main advantages in a 2×2 glass card grid */}
-          <ul className="mt-7 grid auto-rows-fr grid-cols-1 gap-2.5 sm:grid-cols-2">
+          {/* 4 main advantages in a 2×2 glass card grid (hidden on phones) */}
+          <ul className="mt-7 hidden auto-rows-fr grid-cols-1 gap-2.5 sm:grid sm:grid-cols-2">
             {usps.map((usp) => (
               <li
                 key={usp.id}
@@ -126,17 +160,17 @@ export async function Hero() {
             <ButtonLink
               render={<Link href={{ pathname: "/", hash: "#contacte" }} />}
               size="lg"
-              className="bg-emerald-500 hover:bg-emerald-500/90 h-14 w-full gap-2.5 text-lg font-bold text-white"
+              className="bg-emerald-500 hover:bg-emerald-500/90 h-12 w-full gap-2 text-base font-bold text-white lg:h-14 lg:text-lg"
             >
-              <Calculator className="size-6" />
+              <Calculator className="size-5 lg:size-6" />
               {t("cta.calculateCost")}
             </ButtonLink>
             <ButtonLink
               render={<a href={`tel:${site.contact.phone}`} />}
               size="lg"
-              className="text-brand-blue h-14 w-full gap-2.5 bg-white text-lg font-bold hover:bg-white/90"
+              className="text-brand-blue h-12 w-full gap-2 bg-white text-base font-bold hover:bg-white/90 lg:h-14 lg:text-lg"
             >
-              <Phone className="size-6" />
+              <Phone className="size-5 lg:size-6" />
               {t("cta.call")}
             </ButtonLink>
           </div>

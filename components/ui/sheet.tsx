@@ -19,21 +19,21 @@ function SheetContent({
       <Dialog.Backdrop
         className={cn(
           "fixed inset-0 z-50 bg-brand-blue-dark/40 backdrop-blur-[2px]",
-          "transition-opacity duration-200 ease-out data-ending:opacity-0 data-starting:opacity-0",
+          "transition-opacity duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0",
         )}
       />
       <Dialog.Popup
         data-slot="sheet-content"
         data-side={side}
         className={cn(
-          "bg-background fixed z-50 flex flex-col gap-4 shadow-xl transition ease-out",
-          "data-ending:opacity-0 data-starting:opacity-0",
+          "bg-background fixed z-50 flex flex-col gap-4 shadow-xl transition duration-300 ease-out",
+          "data-ending-style:opacity-0 data-starting-style:opacity-0",
           side === "right" &&
-            "inset-y-0 right-0 h-full w-full max-w-sm border-l data-[ending]:translate-x-full data-[starting]:translate-x-full",
+            "inset-y-0 right-0 h-full w-full max-w-sm border-l data-ending-style:translate-x-full data-starting-style:translate-x-full",
           side === "left" &&
-            "inset-y-0 left-0 h-full w-full max-w-sm border-r data-[ending]:-translate-x-full data-[starting]:-translate-x-full",
+            "inset-y-0 left-0 h-full w-full max-w-sm border-r data-ending-style:-translate-x-full data-starting-style:-translate-x-full",
           side === "bottom" &&
-            "inset-x-0 bottom-0 max-h-[85vh] rounded-t-2xl border-t data-[ending]:translate-y-full data-[starting]:translate-y-full",
+            "inset-x-0 bottom-0 max-h-[85vh] rounded-t-2xl border-t data-ending-style:translate-y-full data-starting-style:translate-y-full",
           className,
         )}
         {...props}

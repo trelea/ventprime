@@ -254,9 +254,6 @@ export function FileUpload({
               </span>
             ) : null}
           </span>
-          <span className="text-muted-foreground mt-0.5 block truncate font-ui text-xs">
-            {labels.constraintsHint}
-          </span>
         </span>
 
         <span className="font-mono text-[11px] tracking-[0.12em] text-muted-foreground uppercase group-hover:text-foreground">

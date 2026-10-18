@@ -387,7 +387,7 @@
         "3": "3 rooms",
         "4": "4 rooms",
         "5": "5 rooms",
-        "moreThan5": "More than 5 rooms"
+        "moreThan5": "+5 rooms"
       },
       "problemRooms": {
         "bedroom": "Bedroom",

@@ -99,7 +99,7 @@ export async function ServicesSection() {
               <ButtonLink
                 render={<Link href={{ pathname: "/", hash: "#contacte" }} />}
                 size="lg"
-                className="bg-emerald-500 hover:bg-emerald-500/90 h-12 w-full gap-2 rounded-md px-5 text-base font-semibold text-white shadow-sm"
+                className="bg-emerald-500 hover:bg-emerald-500/90 h-11 w-full gap-2 rounded-md px-4 text-sm font-semibold text-white shadow-sm sm:h-12 sm:px-5 sm:text-base"
               >
                 <Send className="size-4" />
                 {t("cta.sendRequest")}
@@ -107,7 +107,7 @@ export async function ServicesSection() {
               <ButtonLink
                 render={<a href={`tel:${site.contact.phone}`} />}
                 size="lg"
-                className="text-brand-blue h-12 w-full gap-2 rounded-md bg-white px-5 text-base font-semibold shadow-sm hover:bg-white/90"
+                className="text-brand-blue h-11 w-full gap-2 rounded-md bg-white px-4 text-sm font-semibold shadow-sm hover:bg-white/90 sm:h-12 sm:px-5 sm:text-base"
               >
                 <Phone className="size-4" />
                 {t("cta.getConsultation")}

@@ -387,7 +387,7 @@
         "3": "3 camere",
         "4": "4 camere",
         "5": "5 camere",
-        "moreThan5": "Mai mult de 5 camere"
+        "moreThan5": "+5 camere"
       },
       "problemRooms": {
         "bedroom": "Dormitor",

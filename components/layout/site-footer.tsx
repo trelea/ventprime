@@ -39,10 +39,24 @@ const NAV_ICONS: Record<(typeof NAV_LINKS)[number]["key"], LucideIcon> = {
 };
 
 /**
- * Footer, three columns:
- *   1. Logo + how to reach us (address, e-mail, phone) + social profiles.
- *   2. The navbar's navigation, flattened into one list.
- *   3. The footer mini-form (Full name / Phone / E-mail).
+ * Footer, four blocks that reflow across three breakpoints:
+ *   1. Form — the footer mini-form (Full name / Phone / E-mail).
+ *   2. Logo — the full lockup.
+ *   3. Nav — the navbar's navigation, flattened into one list.
+ *   4. Contacts — address, e-mail and phone, plus the social profiles.
+ *
+ * They are listed in phone order (form first, then logo -> nav ->
+ * contacts/socials), which is exactly how the single column stacks them, so no
+ * `order` utility is needed and the focus order matches what a phone visitor
+ * sees. From `md` up the blocks are reflowed with explicit grid placement
+ * instead.
+ *
+ * Tablet (`md`, two columns) — the info blocks take the left column and the
+ * form card fills the right one across the full height.
+ *
+ * Desktop (`lg`, 4/3/5 of a 12-column grid) — logo over contacts on the left,
+ * nav in the middle, form on the right. Nav shares the contacts row, so both
+ * columns start at the same height without a padding hack.
  */
 export async function SiteFooter() {
   const t = await getTranslations("Nav");
@@ -54,12 +68,52 @@ export async function SiteFooter() {
 
   return (
     <footer className="bg-slate-100 text-white relative rounded-t-[1.75rem] shadow-[0_-12px_30px_-12px_rgba(15,46,77,0.18)] sm:rounded-t-[3rem] lg:rounded-t-[72px]">
-      <div className={`${container} grid gap-10 py-14 lg:grid-cols-12`}>
-        {/* Column 1 — logo + contacts + social */}
-        <div className="lg:col-span-4">
-          <Logo variant="full" className="h-24 w-auto" alt="VENTPRIME" />
+      <div
+        className={`${container} grid grid-cols-1 gap-10 py-14 md:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-10 lg:gap-y-6`}
+      >
+        {/*
+          Block 1 — the footer mini-form (Full name / Phone / E-mail). First in
+          source so it is the first thing the single phone column shows.
+        */}
+        <div className="border-border rounded-xl border bg-white p-8 shadow-sm md:col-start-2 md:row-start-1 md:row-span-3 md:self-start lg:col-start-8 lg:col-span-5 lg:row-start-1 lg:row-span-2 lg:self-stretch lg:p-10">
+          <FooterForm source={`footer-${locale}`} />
+        </div>
 
-          <div className="mt-6 flex flex-col gap-3.5 text-base text-brand-blue-dark">
+        {/* Block 2 — logo (scales up with the viewport) */}
+        <div className="md:col-start-1 md:row-start-1 lg:col-span-4">
+          <Logo
+            variant="full"
+            className="h-16 w-auto sm:h-20 lg:h-24"
+            alt="VENTPRIME"
+          />
+        </div>
+
+        {/* Block 3 — the navbar's nav items, flattened */}
+        <nav
+          className="md:col-start-1 md:row-start-2 lg:col-start-5 lg:col-span-3"
+          aria-label={tFooter("company")}
+        >
+          <ul className="flex flex-col gap-3.5 text-base text-brand-blue-dark">
+            {NAV_LINKS.map((link) => {
+              const Icon = NAV_ICONS[link.key];
+              return (
+                <li key={link.hash}>
+                  <Link
+                    href={{ pathname: "/", hash: link.hash }}
+                    className="hover:text-brand-blue-dark/70 flex items-center gap-2.5 transition-colors"
+                  >
+                    <Icon className="size-5 shrink-0" />
+                    {t(link.key)}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Block 4 — how to reach us + social profiles */}
+        <div className="md:col-start-1 md:row-start-3 lg:col-span-4 lg:row-start-2">
+          <div className="flex flex-col gap-3.5 text-base text-brand-blue-dark">
             <span className="flex items-start gap-2.5">
               <MapPin className="mt-1 size-5 shrink-0" />
               <span>
@@ -107,41 +161,6 @@ export async function SiteFooter() {
               </div>
             </div>
           ) : null}
-        </div>
-
-        {/*
-          Column 2 — the navbar's nav items, flattened.
-
-          `lg:pt-30` drops the list to the same level as column 1's contact rows:
-          those start below the `h-24` logo plus its `mt-6`, i.e. 6rem + 1.5rem =
-          7.5rem from the row top. Only from `lg`, where the columns sit side by
-          side — stacked, the nav keeps its natural top.
-        */}
-        <nav
-          className="lg:col-span-3 lg:pt-30"
-          aria-label={tFooter("company")}
-        >
-          <ul className="flex flex-col gap-3.5 text-base text-brand-blue-dark">
-            {NAV_LINKS.map((link) => {
-              const Icon = NAV_ICONS[link.key];
-              return (
-                <li key={link.hash}>
-                  <Link
-                    href={{ pathname: "/", hash: link.hash }}
-                    className="hover:text-brand-blue-dark/70 flex items-center gap-2.5 transition-colors"
-                  >
-                    <Icon className="size-5 shrink-0" />
-                    {t(link.key)}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        {/* Column 3 — the footer mini-form (Full name / Phone / E-mail) */}
-        <div className="border-border rounded-xl border bg-white p-8 shadow-sm lg:col-span-5 lg:p-10">
-          <FooterForm source={`footer-${locale}`} />
         </div>
       </div>
 
