@@ -1,31 +1,52 @@
 import { defineRouting } from "next-intl/routing";
-import { servicePathnames } from "@/lib/services";
-
-/**
- * Localized user-facing pathnames (AGENTS.md §3).
- *
- * The key is the internal pathname that exists on disk; values are the external
- * paths per locale. next-intl's proxy rewrites external → internal, so
- * `/ru/obrabotka-ot-pleseni` is served by `app/[locale]/tratare-mucegai`.
- *
- * `ro` is the default locale and matches the internal pathname, so only the
- * other locales need an explicit entry. Adding a service means adding one entry
- * to `servicePathnames` in `lib/services.ts` — nothing else.
- */
-const pathnames = {
-  "/": "/",
-  ...servicePathnames,
-};
 
 export const routing = defineRouting({
+  // A list of all locales that are supported
   locales: ["ro", "ru", "en"],
-  defaultLocale: "ro",
-  localePrefix: "always",
-  // Resolve the locale from the URL only — never from `Accept-Language`
-  // or a cookie, so `/` always redirects to `/ro`.
-  localeDetection: false,
-  localeCookie: false,
-  pathnames,
+
+  // Used when no locale matches
+  defaultLocale: "en",
+
+  // Static paths of the site that have a localized slug per language.
+  // The key is the internal pathname used by the file system (default locale),
+  // the values are the URLs visitors and search engines see.
+  pathnames: {
+    "/": "/",
+    "/blogs": {
+      ro: "/bloguri",
+      ru: "/blogi",
+      en: "/blogs",
+    },
+    "/blogs/natural-ventilation-or-recuperator": {
+      ro: "/bloguri/ventilatie-naturala-sau-recuperator",
+      ru: "/blogi/estestvennaya-ventilyatsiya-ili-rekuperator",
+      en: "/blogs/natural-ventilation-or-recuperator",
+    },
+    "/blogs/why-windows-fog-up-in-winter": {
+      ro: "/bloguri/de-ce-se-aburesc-ferestrele-iarna",
+      ru: "/blogi/pochemu-okna-zapotevayut-zimoy",
+      en: "/blogs/why-windows-fog-up-in-winter",
+    },
+    "/blogs/ozone-treatment-when-it-helps": {
+      ro: "/bloguri/ozonizarea-incaperilor-cand-ajuta",
+      ru: "/blogi/ozonirovanie-pomeshcheniy-kogda-pomogaet",
+      en: "/blogs/ozone-treatment-when-it-helps",
+    },
+    "/blogs/fresh-air-with-closed-windows": {
+      ro: "/bloguri/aer-proaspat-cu-ferestrele-inchise",
+      ru: "/blogi/svezhiy-vozdukh-pri-zakrytykh-oknakh",
+      en: "/blogs/fresh-air-with-closed-windows",
+    },
+  },
 });
 
-export type Locale = (typeof routing.locales)[number];
+/** Internal pathnames that have a localized variant. */
+export type LocalizedPath = keyof typeof routing.pathnames;
+
+/** The 4 static articles, in display order. */
+export const articlePaths = [
+  "/blogs/natural-ventilation-or-recuperator",
+  "/blogs/why-windows-fog-up-in-winter",
+  "/blogs/ozone-treatment-when-it-helps",
+  "/blogs/fresh-air-with-closed-windows",
+] as const satisfies ReadonlyArray<LocalizedPath>;

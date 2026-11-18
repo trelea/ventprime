@@ -1,45 +1,44 @@
 import type { MetadataRoute } from "next";
-import { routing } from "@/i18n/routing";
-import { services } from "@/lib/services";
-import { absoluteUrl } from "@/lib/site";
-import { getCopyrightYear } from "@/lib/date";
+import { articlePaths, routing, type LocalizedPath } from "@/i18n/routing";
+import { absoluteLocalizedPath } from "@/lib/seo";
 
-/**
- * Locale-aware sitemap (AGENTS.md §10).
- *
- * `alternates.languages` gives Google the full hreflang set per URL, matching
- * the `link` headers the proxy already emits.
- */
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const lastModified = new Date(await getCopyrightYear(), 0, 1);
-  const languages = Object.fromEntries(
-    routing.locales.map((locale) => [locale, absoluteUrl(`/${locale}`)]),
-  );
+type ChangeFrequency = NonNullable<
+  MetadataRoute.Sitemap[number]["changeFrequency"]
+>;
 
-  const home = routing.locales.map((locale) => ({
-    url: absoluteUrl(`/${locale}`),
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: locale === routing.defaultLocale ? 1 : 0.9,
+function localizedEntry(
+  href: LocalizedPath,
+  locale: (typeof routing.locales)[number],
+  changeFrequency: ChangeFrequency,
+  priority: number,
+): MetadataRoute.Sitemap[number] {
+  const languages: Record<string, string> = {};
+
+  for (const candidate of routing.locales) {
+    languages[candidate] = absoluteLocalizedPath(href, candidate);
+  }
+  languages["x-default"] = absoluteLocalizedPath(href, routing.defaultLocale);
+
+  return {
+    url: absoluteLocalizedPath(href, locale),
+    lastModified: new Date(),
+    changeFrequency,
+    priority,
     alternates: { languages },
-  }));
+  };
+}
 
-  const servicePages = routing.locales.flatMap((locale) =>
-    services.map((service) => ({
-      url: absoluteUrl(`/${locale}/${service.slug[locale]}`),
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-      alternates: {
-        languages: Object.fromEntries(
-          routing.locales.map((candidate) => [
-            candidate,
-            absoluteUrl(`/${candidate}/${service.slug[candidate]}`),
-          ]),
-        ),
-      },
-    })),
-  );
+export default function sitemap(): MetadataRoute.Sitemap {
+  const entries: MetadataRoute.Sitemap = [];
 
-  return [...home, ...servicePages];
+  for (const locale of routing.locales) {
+    entries.push(localizedEntry("/", locale, "monthly", 1));
+    entries.push(localizedEntry("/blogs", locale, "weekly", 0.8));
+
+    for (const path of articlePaths) {
+      entries.push(localizedEntry(path, locale, "monthly", 0.6));
+    }
+  }
+
+  return entries;
 }

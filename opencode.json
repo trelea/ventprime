@@ -3,26 +3,13 @@
   "mcp": {
     "shadcn": {
       "type": "local",
-      "command": ["npx", "shadcn@latest", "mcp"],
+      "command": ["npx", "-y", "shadcn@latest", "mcp"],
       "enabled": true
     },
-    "magicuidesign-mcp": {
-      "type": "local",
-      "command": ["npx", "-y", "@magicuidesign/mcp@latest"],
-      "enabled": true
-    },
-    "aceternityui": {
-      "type": "local",
-      "command": ["npx", "aceternityui-mcp"],
-      "enabled": true
-    },
-    "unsplash": {
-      "type": "local",
-      "command": ["npx", "-y", "@hanoak/unsplash-mcp-server"],
-      "enabled": true,
-      "environment": {
-        "UNSPLASH_ACCESS_KEY": "--W4HRGrsJdCxFhxibeOp0D71P8y8vauXvCjS5LjBpQ",
-        "UNSPLASH_APP_NAME": "huner-app"
+    "servers": {
+      "figma": {
+        "type": "remote",
+        "url": "https://mcp.figma.com/mcp"
       }
     }
   }

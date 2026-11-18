@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@utility min-h-screen-safe {
+  min-height: 100vh; /* fallback for older browsers */
+  @supports (height: 100svh) {
+    min-height: 100svh; /* browser chrome visible (iOS / Android) */
+  }
+  @supports (height: 100dvh) {
+    min-height: 100dvh; /* expands as browser chrome collapses */
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Extra colors from the design spec, exposed as Tailwind utilities */
+  --color-brand-stripes: var(--brand-stripes);
+  --color-brand-card: var(--brand-card);
+  --color-brand-icon: var(--brand-icon);
+  --color-brand-icon-light: var(--brand-icon-light);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-card: var(--surface-dark-card);
+  --color-surface-neutral: var(--surface-neutral);
+  --color-navy: var(--navy);
+  --color-slate: var(--slate);
+  --color-coral: var(--coral);
+  --color-coral-soft: var(--coral-soft);
+  --color-arrow-gray: var(--arrow-gray);
+  --color-on-dark: var(--on-dark);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+  --font-ui: var(--font-plex);
+  --font-gilroy: var(--font-plex);
+  --font-inter: var(--inter);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+
+  --card: #f4f4f4;
+  --card-foreground: #000000;
+
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+
+  --primary: #00b5a4;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f4f4f4;
+  --secondary-foreground: #000000;
+
+  --muted: #f4f4f4;
+  --muted-foreground: rgba(0, 0, 0, 0.7);
+
+  --accent: #14c4b3;
+  --accent-foreground: #ffffff;
+
+  --destructive: #fe6b48;
+  --destructive-foreground: #ffffff;
+
+  --border: #e8e8e8;
+  --input: rgba(0, 0, 0, 0.8);
+  --ring: #00b5a4;
+
+  --brand-stripes: #0cac9c;
+  --brand-card: #06c1af;
+  --brand-icon: #0ecfbc;
+  --brand-icon-light: #1ee7d4;
+  --surface-alt: #f3f3f3;
+  --surface-dark: #191919;
+  --surface-dark-card: #272727;
+  --surface-neutral: #e1e1e1;
+  --navy: #0f2e4d;
+  --slate: #6b7a89;
+  --coral: #fe6b48;
+  --coral-soft: #ff8782;
+  --arrow-gray: #829997;
+  --on-dark: #ffffff;
+
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: #191919;
+  --foreground: #ffffff;
+
+  --card: #272727;
+  --card-foreground: #ffffff;
+
+  --popover: #272727;
+  --popover-foreground: #ffffff;
+
+  --primary: #00b5a4;
+  --primary-foreground: #ffffff;
+
+  --secondary: #272727;
+  --secondary-foreground: #ffffff;
+
+  --muted: #272727;
+  --muted-foreground: rgba(255, 255, 255, 0.8);
+
+  --accent: #1ee7d4;
+  --accent-foreground: #191919;
+
+  --destructive: #fe6b48;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.8);
+  --input: rgba(255, 255, 255, 0.8);
+  --ring: #00b5a4;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

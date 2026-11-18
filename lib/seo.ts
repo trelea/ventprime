@@ -1,139 +1,44 @@
-import { services, type ServiceKey } from "@/lib/services";
-import { site, absoluteUrl } from "@/lib/site";
-import type { Locale } from "@/i18n/routing";
+import type { Metadata } from "next";
+import { getPathname } from "@/i18n/navigation";
+import { routing, type LocalizedPath } from "@/i18n/routing";
+import type { Locale } from "@/lib/blogs";
+
+/** Absolute base URL, without a trailing slash. */
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ventprime.md"
+).replace(/\/$/, "");
+
+/** Pathname a visitor sees for a given internal path and locale. */
+export function localizedPath(href: LocalizedPath, locale: Locale): string {
+  return getPathname({ href, locale });
+}
+
+/** Absolute URL for a given internal path and locale (used by the sitemap). */
+export function absoluteLocalizedPath(
+  href: LocalizedPath,
+  locale: Locale,
+): string {
+  return `${siteUrl}${localizedPath(href, locale)}`;
+}
 
 /**
- * JSON-LD builders (AGENTS.md §5.9, §10).
- *
- * Every URL produced here is a localized path, matching what the next-intl
- * proxy actually serves.
+ * Canonical + reciprocal hreflang tags for the *same* page in every locale.
+ * `x-default` points at the default-language version of that page.
+ * Relative values are resolved against `metadataBase` from the root layout.
  */
-
-type Json = Record<string, unknown>;
-
-/** Localized service names, resolved from the active message catalog. */
-export type ServiceNames = Record<ServiceKey, string>;
-
-export function organizationSchema(
+export function localizedAlternates(
+  href: LocalizedPath,
   locale: Locale,
-  serviceNames: ServiceNames,
-): Json {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "@id": `${site.url}/#organization`,
-    name: site.name,
-    legalName: site.legalName,
-    url: site.url,
-    logo: absoluteUrl("/logo.svg"),
-    image: absoluteUrl("/images/og-image.webp"),
-    telephone: site.contact.phone,
-    email: site.contact.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: site.contact.address.street,
-      addressLocality: site.contact.address.city,
-      postalCode: site.contact.address.postalCode,
-      addressCountry: site.contact.address.countryCode,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: site.contact.geo.latitude,
-      longitude: site.contact.geo.longitude,
-    },
-    openingHoursSpecification: site.contact.openingHours.map((slot) => ({
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: slot.days,
-      opens: slot.opens,
-      closes: slot.closes,
-    })),
-    areaServed: site.serviceArea.map((area) => ({
-      "@type": "City",
-      name: area,
-    })),
-    priceRange: "$$",
-    sameAs: site.socials.map((social) => social.href),
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Servicii",
-      itemListElement: services.map((service) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: serviceNames[service.key],
-          url: serviceUrl(service.key, locale),
-        },
-      })),
-    },
-  };
-}
+): NonNullable<Metadata["alternates"]> {
+  const languages: Record<string, string> = {};
 
-/** Only emitted once the placeholders in `lib/testimonials.ts` are replaced. */
-export function aggregateRatingSchema(): Json | null {
-  if (!site.rating.hasRealReviews) return null;
+  for (const candidate of routing.locales) {
+    languages[candidate] = localizedPath(href, candidate);
+  }
+  languages["x-default"] = localizedPath(href, routing.defaultLocale);
 
   return {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: site.name,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: site.rating.value,
-      reviewCount: site.rating.reviewCount,
-    },
+    canonical: localizedPath(href, locale),
+    languages,
   };
-}
-
-export function faqSchema(
-  items: { question: string; answer: string }[],
-): Json {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
-}
-
-export function serviceSchema(
-  key: ServiceKey,
-  locale: Locale,
-  data: { name: string; description: string },
-): Json {
-  const url = serviceUrl(key, locale);
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: data.name,
-    description: data.description,
-    url,
-    serviceType: data.name,
-    provider: { "@id": `${site.url}/#organization` },
-    areaServed: site.serviceArea.map((area) => ({ "@type": "City", name: area })),
-  };
-}
-
-export function breadcrumbSchema(
-  trail: { name: string; url: string }[],
-): Json {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: trail.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.url,
-    })),
-  };
-}
-
-/** Canonical URL of a service page in a given locale. */
-export function serviceUrl(key: ServiceKey, locale: Locale): string {
-  const service = services.find((entry) => entry.key === key);
-  return absoluteUrl(`/${locale}/${service?.slug[locale] ?? key}`);
 }

@@ -1,10 +1,9 @@
-import { cloneElement } from "react"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding font-ui text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -40,14 +39,12 @@ const buttonVariants = cva(
   }
 )
 
-type ButtonProps = ButtonPrimitive.Props & VariantProps<typeof buttonVariants>
-
 function Button({
   className,
   variant = "default",
   size = "default",
   ...props
-}: ButtonProps) {
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
   return (
     <ButtonPrimitive
       data-slot="button"
@@ -57,43 +54,4 @@ function Button({
   )
 }
 
-type ButtonLinkProps = {
-  /** The link element to decorate — a `<Link>` or `<a>`. */
-  render: React.ReactElement<{ className?: string }>
-  children?: React.ReactNode
-  className?: string
-  variant?: ButtonProps["variant"]
-  size?: ButtonProps["size"]
-}
-
-/**
- * A link styled as a `Button`.
- *
- * Deliberately *not* built on Base UI's `Button`. That component warns when
- * the `render` prop swaps in a non-`<button>`, and `nativeButton={false}`
- * silences the warning — but it still stamps `role="button"` and `tabindex="0"`
- * onto the result, which turns every CTA into a button for screen readers and
- * loses link affordances (open-in-new-tab, link semantics).
- *
- * Cloning the element and merging the button styles keeps them genuine links:
- * correct semantics for assistive tech, middle-click and crawlers, with no
- * `role` override.
- */
-function ButtonLink({
-  render,
-  children,
-  className,
-  variant = "default",
-  size = "default",
-}: ButtonLinkProps) {
-  const { className: elementClassName, ...elementProps } = render.props
-
-  return cloneElement(render, {
-    "data-slot": "button",
-    className: cn(buttonVariants({ variant, size, className }), elementClassName),
-    ...elementProps,
-    children,
-  } as never)
-}
-
-export { Button, ButtonLink, buttonVariants, type ButtonProps }
+export { Button, buttonVariants }
