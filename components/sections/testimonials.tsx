@@ -5,7 +5,7 @@ function Testimonials() {
   const t = useTranslations("Testimonials");
 
   return (
-    <Container bgColor="white" height="auto">
+    <Container id="reviews" bgColor="white" height="auto">
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <h1 className="text-4xl font-semibold tracking-tight lg:text-6xl">
           {t("title")}

@@ -153,5 +153,15 @@
   }
   html {
     @apply font-sans;
+    /* Lenis handles the animation; native smooth scrolling would fight it. */
+    scroll-behavior: auto;
+    /* Offset anchor targets so the fixed navbar doesn't cover them. */
+    scroll-padding-top: 96px;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 112px;
+    }
   }
 }

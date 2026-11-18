@@ -5,7 +5,7 @@ function Technology() {
   const t = useTranslations("Technology");
 
   return (
-    <Container bgColor="grey" height="screen">
+    <Container id="technology" bgColor="grey" height="screen">
       <div className="flex min-h-screen-safe flex-col items-center justify-center text-center">
         <h1 className="text-4xl font-semibold tracking-tight lg:text-6xl">
           {t("title")}
