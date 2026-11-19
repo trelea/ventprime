@@ -36,7 +36,8 @@ function Hero() {
       id="home"
       bgColor="white"
       height="screen"
-      className="relative isolate overflow-hidden"
+      className="relative isolate"
+      style={{ overflowX: "clip" }}
     >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 z-0 h-1/2 w-full lg:inset-y-0 lg:left-auto lg:h-auto lg:w-[58%]"
@@ -48,6 +49,14 @@ function Hero() {
           preload
           sizes="(min-width: 1024px) 58vw, 100vw"
           className="object-cover object-[64%_center]"
+        />
+        <Image
+          src="/hero_layer.svg"
+          alt=""
+          aria-hidden="true"
+          width={1360}
+          height={676}
+          className="absolute right-0 lg:right-[26px] bottom-[50px] lg:bottom-[-100px] h-auto w-[60%] lg:w-[120%]"
         />
       </div>
 

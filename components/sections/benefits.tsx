@@ -38,7 +38,7 @@ function Benefits() {
   const t = useTranslations("Benefits");
 
   return (
-    <Container bgColor="green" height="screen">
+    <Container bgColor="green" height="screen" className="isolate">
       <div className="flex min-h-screen-safe flex-col justify-center py-[32px] sm:py-[40px] md:py-[44px] lg:py-[48px] xl:py-[56px] 2xl:py-[64px]">
         <div className="flex flex-col gap-5 lg:flex-row lg:gap-8">
           <div className="contents lg:flex lg:w-1/2 lg:flex-col lg:justify-between lg:gap-8">
