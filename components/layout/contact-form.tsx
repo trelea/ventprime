@@ -31,7 +31,7 @@ function FormField({
           type={type}
           required={required}
           placeholder={placeholder}
-          className="w-full border-0 bg-transparent p-0 font-inter text-[15px] font-normal leading-[140%] tracking-normal text-white placeholder:text-white/80 focus:outline-none lg:text-[16px]"
+          className="w-full border-0 bg-transparent p-0 font-inter text-[15px] font-normal leading-[140%] tracking-normal text-white placeholder:text-white/60 focus:outline-none lg:text-[16px]"
         />
       </label>
       <span aria-hidden className="block h-px w-full bg-white/80" />

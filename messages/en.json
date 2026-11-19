@@ -40,28 +40,216 @@
     }
   },
   "Technology": {
-    "title": "Technology Section coming soon"
+    "label": "TECHNOLOGY",
+    "title": "How does ventilation work without electricity?",
+    "intro": "Natural ventilation uses differences in pressure and temperature to move air.",
+    "points": {
+      "intake": "The intake point is placed lower, ideally near a heating radiator. Outdoor air enters through a valve, is distributed by the indoor unit, and mixes with the warm air in the room.",
+      "exhaust": "Warm air rises and, with sufficient draft, is exhausted through the exhaust point. Some of the accumulated moisture is removed along with it.",
+      "alwaysOpen": "The valves can stay open around the clock. Flow intensity and direction depend on temperature, wind, and the specifics of the building. Read more in our <link>article</link>"
+    },
+    "cta": {
+      "consultation": "Free consultation",
+      "details": "Learn more"
+    },
+    "imageAlt": "Diagram of natural ventilation without electricity",
+    "features": {
+      "a": "Air intake near the heat source.",
+      "b": "Air exhaust in the upper part."
+    }
   },
   "MainServices": {
-    "title": "Main Services Section coming soon"
+    "label": "SERVICES",
+    "title": "Natural ventilation",
+    "paragraph": "We organize the inflow of fresh air and its movement through the room using ventilation valves. We design the placement of points and perform turnkey installation - without electric fans or unnecessary equipment.",
+    "steps": {
+      "title": "How we work:",
+      "consultation": {
+        "title": "Consultation.",
+        "desc": "We find out what bothers you in the room: stuffiness, mold, or condensation on windows."
+      },
+      "design": {
+        "title": "Design.",
+        "desc": "We show where fresh air will come in and where humid air will leave."
+      },
+      "drilling": {
+        "title": "Diamond drilling.",
+        "desc": "We drill the wall for the selected valves."
+      },
+      "installation": {
+        "title": "Installation.",
+        "desc": "We install the valves and explain how to adjust the ventilation."
+      }
+    },
+    "cta": {
+      "call": "Call",
+      "consultation": "Free consultation"
+    },
+    "card": {
+      "title": "No electricity costs",
+      "desc": "Natural ventilation works without electric fans."
+    }
   },
   "AdditionalServices": {
-    "title": "Additional Services Section coming soon"
+    "title": "Additional services:",
+    "cta": {
+      "details": "Learn more",
+      "contact": "Contact us"
+    },
+    "cards": {
+      "ozone": {
+        "title": "Room ozone treatment",
+        "desc": "We eliminate odors and bacteria with an ozonator. Safe for people and pets after ventilation."
+      },
+      "condensation": {
+        "title": "Eliminating window condensation",
+        "desc": "We solve fogged-up glass and mold in window reveals."
+      },
+      "humidity": {
+        "title": "Humidity control",
+        "desc": "We maintain optimal humidity levels in the home year-round."
+      },
+      "bathroom": {
+        "title": "Bathroom ventilation",
+        "desc": "We ensure effective air exchange in the bathroom and toilet."
+      },
+      "kitchen": {
+        "title": "Kitchen ventilation",
+        "desc": "We remove odors and moisture during cooking."
+      }
+    }
   },
   "AboutUs": {
-    "title": "About Us Section coming soon"
+    "label": "ABOUT US",
+    "title": "More than 5 years creating\na comfortable microclimate\nin homes",
+    "p1": "<brand>VentPrime</brand> is a family company specializing in the design and installation of natural ventilation systems. For over 5 years we have been helping apartment and private house owners in Chisinau and throughout Moldova solve problems of insufficient air exchange, high humidity and mold.",
+    "p2": "We chose natural ventilation as one of the most rational solutions for standard residential spaces: it provides air exchange without constant electricity consumption, creates no noise and requires no complex equipment.",
+    "p3": "Our task is to choose the right system for each room and install it professionally, at reasonable cost to the client."
   },
   "WhyChooseUs": {
-    "title": "Why Choose Us Section coming soon"
+    "title": "Why choose us?",
+    "cards": {
+      "experience": {
+        "title": "Over 5 years of experience",
+        "desc": "We know how to design and install ventilation properly to ensure efficient air movement."
+      },
+      "turnkey": {
+        "title": "Comprehensive turnkey approach",
+        "desc": "From assessing the problem and designing the system to diamond drilling, installation, and additional mold treatment, ozonation, and surface cleaning."
+      },
+      "effective": {
+        "title": "We offer the most effective solution",
+        "desc": "Efficient air exchange without noise, electricity, or unnecessary costs."
+      },
+      "installation": {
+        "title": "Fast, clean installation",
+        "desc": "We install the ventilation valve in about 1 hour, keeping the space tidy and clean."
+      }
+    }
   },
   "Testimonials": {
-    "title": "Testimonials Section coming soon"
+    "label": "REVIEWS",
+    "items": [
+      {
+        "data": "Плесень в спальне возвращалась снова и\nснова, чем бы мы её ни оттирали.\nVENTPRIME обработал стены и поставил\nпассивную вентиляцию — год спустя стены\nсухие, а запах сырости исчез полностью.",
+        "customer": "Andrei M.",
+        "location": "Кишинев"
+      },
+      {
+        "data": "Приехали на бесплатный осмотр,\nзамеряли влажность в каждой комнате и\nобъяснили причину, а не просто назвали\nцену. Подвал просох за несколько недель\nпосле установки.",
+        "customer": "Elena P.",
+        "location": "Яловень"
+      },
+      {
+        "data": "Окна запотевали каждое утро, а углы\nчернели к зиме. После установки воздух\nсвежий, стёкла чистые, а плесень больше\nне возвращается.",
+        "customer": "Ion C.",
+        "location": "Cricova"
+      }
+    ]
   },
   "FAQ": {
-    "title": "FAQ Section coming soon"
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "How many valves do I need for one room?",
+        "answer": "We recommend installing 2 valves: one for fresh air intake and one for exhaust."
+      },
+      {
+        "question": "Will there be a lot of dust and dirt during drilling?",
+        "answer": "No! We use professional equipment with dust extraction. We leave the room clean after installation."
+      },
+      {
+        "question": "Will there be drafts?",
+        "answer": "With correct installation and valve placement, the risk of drafts is minimal. The valve design lets you adjust the airflow."
+      },
+      {
+        "question": "What about heat loss?",
+        "answer": "Near the valve the temperature may be 1–2 °C lower. With the right ventilation setup, heat loss can be minimized, but it cannot be eliminated entirely."
+      },
+      {
+        "question": "Does ventilation help with mold?",
+        "answer": "Yes! Proper ventilation removes excess moisture, reduces condensation, and helps prevent mold. Existing mold must be removed separately."
+      },
+      {
+        "question": "Do the valves require maintenance?",
+        "answer": "Maintenance is minimal — just clean the filter periodically. If needed, replacing a valve costs about 250–300 lei."
+      },
+      {
+        "question": "Can I get a price without a site visit?",
+        "answer": "Yes! We can give you an exact quote over the phone if we know the wall material and thickness."
+      },
+      {
+        "question": "How do I get a discount on mold treatment?",
+        "answer": "Install 2 ventilation valves in one room and get 50% off professional ozone treatment of the room!"
+      }
+    ]
   },
   "Contacts": {
-    "title": "Contacts Section coming soon"
+    "label": "CONTACTS",
+    "titleLine1": "Fill out the form, get a free",
+    "titleLine2": "consultation within 60 minutes",
+    "form": {
+      "nameLabel": "Name *",
+      "namePlaceholder": "Your name",
+      "phoneLabel": "Phone *",
+      "phonePlaceholder": "+373 79 717 214",
+      "cityLabel": "City",
+      "cityDefault": "Chisinau",
+      "cityOptions": ["Chisinau", "Bălți", "Bender", "Comrat", "Tiraspol"],
+      "problemLabel": "Problem",
+      "problemPlaceholder": "Select problem(s)...",
+      "problemOptions": [
+        "Mold",
+        "Fungus and odours",
+        "Condensation and fogged-up windows",
+        "Stuffiness",
+        "Other"
+      ],
+      "serviceLabel": "Service",
+      "servicePlaceholder": "Select service(s)...",
+      "serviceOptions": [
+        "Natural ventilation valve installation",
+        "Mold and bacteria treatment",
+        "Diamond core drilling",
+        "Design and installation"
+      ],
+      "submit": "Send",
+      "success": "Thank you! We will contact you within 60 minutes."
+    },
+    "pricing": {
+      "title": "Indicative prices:",
+      "valve": "Natural ventilation valve",
+      "valvePrice": "from 1500 lei",
+      "valveUnit": "/ 1 pc.",
+      "treatment": "Treatment of the room against bacteria, mold and odours.",
+      "treatmentPrice": "750 lei",
+      "treatmentUnit": "/ room"
+    },
+    "notes": {
+      "calculation": "The final price is calculated individually and depends on the material and thickness of the wall.",
+      "discount": "50% off",
+      "discountText": "on treatment against mold, bacteria and unpleasant odours when installing ventilation in the room!"
+    }
   },
   "Hero": {
     "title": "Natural ventilation — the solution to mold, excess humidity, and fogged-up windows.",
@@ -81,7 +269,7 @@
   "Footer": {
     "city": "Chisinau, Moldova",
     "street": "34 Zelinskogo St.",
-    "email": "ventprimemd@gmail.com",
+    "email": "contact@ventprime.md",
     "phone": "+373 79 717 214",
     "copyright": "© 2026 VentPrime  |  All Rights Reserved",
     "form": {
@@ -91,7 +279,7 @@
       "phoneLabel": "Phone *",
       "phonePlaceholder": "+373 79 717 214",
       "emailLabel": "E-mail",
-      "emailPlaceholder": "ventprimemd@gmail.com",
+      "emailPlaceholder": "contact@ventprime.md",
       "submit": "Send",
       "success": "Thank you! We will be in touch."
     }

@@ -121,7 +121,11 @@ function FooterNav({ className }: { className?: string }) {
       <ul className="flex flex-col items-start gap-[10px] font-ui text-[16px] font-normal leading-[22px] tracking-[-0.15px] text-white lg:gap-[12px] lg:text-[16px] lg:leading-[22.5px]">
         {navItems.map((item) => (
           <li key={item.key}>
-            <Link href={item.href} className="align-middle hover:text-primary">
+            <Link
+              href={item.href}
+              scroll={typeof item.href === "object" ? false : undefined}
+              className="align-middle hover:text-primary"
+            >
               {t(item.key)}
             </Link>
           </li>

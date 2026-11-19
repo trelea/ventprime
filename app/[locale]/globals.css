@@ -90,6 +90,7 @@
   --font-ui: var(--font-plex);
   --font-gilroy: var(--font-plex);
   --font-inter: var(--inter);
+  --font-manrope: var(--manrope);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -188,13 +189,7 @@
     @apply font-sans;
     /* Lenis handles the animation; native smooth scrolling would fight it. */
     scroll-behavior: auto;
-    /* Offset anchor targets so the fixed navbar doesn't cover them. */
-    scroll-padding-top: 96px;
-  }
-
-  @media (min-width: 1024px) {
-    html {
-      scroll-padding-top: 112px;
-    }
+    /* Offset anchor targets by the current navbar height (published by Navbar). */
+    scroll-padding-top: calc(var(--navbar-height, 72px) + 8px);
   }
 }

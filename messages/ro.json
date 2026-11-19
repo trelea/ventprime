@@ -40,28 +40,216 @@
     }
   },
   "Technology": {
-    "title": "Technology Section coming soon"
+    "label": "TEHNOLOGIE",
+    "title": "Cum funcționează ventilația fără electricitate?",
+    "intro": "Ventilația naturală folosește diferența de presiune și temperatură pentru a pune aerul în mișcare.",
+    "points": {
+      "intake": "Punctul de admisie este amplasat mai jos, de preferință lângă un radiator de încălzire. Aerul exterior intră printr-o clapetă, este distribuit de unitatea interioară și se amestecă cu aerul cald din cameră.",
+      "exhaust": "Aerul cald se ridică și, dacă există tiraj suficient, este evacuat prin punctul de extracție. O parte din umiditatea acumulată este îndepărtată odată cu acesta.",
+      "alwaysOpen": "Clapele pot rămâne deschise nonstop. Intensitatea și direcția fluxului depind de temperatură, vânt și particularitățile clădirii. Citiți mai multe în <link>articolul</link> nostru"
+    },
+    "cta": {
+      "consultation": "Consultație gratuită",
+      "details": "Detalii"
+    },
+    "imageAlt": "Schema ventilației naturale fără electricitate",
+    "features": {
+      "a": "Admisia aerului lângă sursa de încălzire.",
+      "b": "Evacuarea aerului în partea superioară."
+    }
   },
   "MainServices": {
-    "title": "Main Services Section coming soon"
+    "label": "SERVICII",
+    "title": "Ventilație naturală",
+    "paragraph": "Organizăm fluxul de aer proaspăt și mișcarea acestuia în cameră cu ajutorul clapetelor de ventilație. Proiectăm amplasarea punctelor și realizăm montajul la cheie - fără ventilatoare electrice și echipamente inutile.",
+    "steps": {
+      "title": "Etapele lucrării:",
+      "consultation": {
+        "title": "Consultație.",
+        "desc": "Aflăm ce vă deranjează în cameră: sufocare, mucegai sau condens pe ferestre."
+      },
+      "design": {
+        "title": "Proiectare.",
+        "desc": "Arătăm unde va intra aerul proaspăt și de unde va ieși aerul umed."
+      },
+      "drilling": {
+        "title": "Găurire cu diamant.",
+        "desc": "Găurim peretele pentru clapetele alese."
+      },
+      "installation": {
+        "title": "Montaj.",
+        "desc": "Instalăm clapetele și explicăm cum se reglează ventilația."
+      }
+    },
+    "cta": {
+      "call": "Sună",
+      "consultation": "Consultație gratuită"
+    },
+    "card": {
+      "title": "Fără costuri de electricitate",
+      "desc": "Ventilația naturală funcționează fără ventilatoare electrice."
+    }
   },
   "AdditionalServices": {
-    "title": "Additional Services Section coming soon"
+    "title": "Servicii suplimentare:",
+    "cta": {
+      "details": "Detalii",
+      "contact": "Contactați-ne"
+    },
+    "cards": {
+      "ozone": {
+        "title": "Ozonarea încăperilor",
+        "desc": "Eliminăm mirosurile și bacteriile cu ajutorul ozonatorului. Sigur pentru oameni și animale după aerisire."
+      },
+      "condensation": {
+        "title": "Eliminarea condensului pe ferestre",
+        "desc": "Rezolvăm problema geamurilor aburite și a mucegaiului pe toc."
+      },
+      "humidity": {
+        "title": "Controlul umidității",
+        "desc": "Menținem nivelul optim de umiditate în casă pe tot parcursul anului."
+      },
+      "bathroom": {
+        "title": "Ventilația băilor",
+        "desc": "Asigurăm un schimb eficient de aer în baie și toaletă."
+      },
+      "kitchen": {
+        "title": "Ventilația bucătăriei",
+        "desc": "Eliminăm mirosurile și umiditatea în timpul gătitului."
+      }
+    }
   },
   "AboutUs": {
-    "title": "About Us Section coming soon"
+    "label": "DESPRE NOI",
+    "title": "Mai bine de 5 ani creăm\nun microclimat confortabil\nîn locuințe",
+    "p1": "<brand>VentPrime</brand> este o companie de familie specializată în proiectarea și instalarea sistemelor de ventilație naturală. De peste 5 ani ajutăm proprietarii de apartamente și case particulare din Chișinău și din toată Moldova să rezolve problemele de schimb insuficient de aer, umiditate ridicată și mucegai.",
+    "p2": "Am ales ventilația naturală ca una dintre cele mai raționale soluții pentru spațiile rezidențiale standard: asigură schimbul de aer fără consum constant de energie electrică, nu creează zgomot și nu necesită echipamente complexe.",
+    "p3": "Sarcina noastră este să alegem sistemul potrivit pentru fiecare încăpere și să îl instalăm profesionist, cu costuri rezonabile pentru client."
   },
   "WhyChooseUs": {
-    "title": "Why Choose Us Section coming soon"
+    "title": "De ce să ne alegeți?",
+    "cards": {
+      "experience": {
+        "title": "Peste 5 ani de experiență",
+        "desc": "Știm să proiectăm și să instalăm ventilația corect, pentru a asigura o circulație eficientă a aerului."
+      },
+      "turnkey": {
+        "title": "Abordare completă la cheie",
+        "desc": "De la evaluarea problemei și proiectare până la găurirea cu coroană diamantată, montaj și tratamente suplimentare împotriva mucegaiului, ozonare și curățarea suprafețelor."
+      },
+      "effective": {
+        "title": "Oferim cea mai eficientă soluție",
+        "desc": "Schimb de aer eficient, fără zgomot, electricitate sau costuri inutile."
+      },
+      "installation": {
+        "title": "Montaj rapid și îngrijit",
+        "desc": "Instalăm supapa de ventilație în aproximativ 1 oră, menținând încăperea curată și ordonată."
+      }
+    }
   },
   "Testimonials": {
-    "title": "Testimonials Section coming soon"
+    "label": "RECENZII",
+    "items": [
+      {
+        "data": "Плесень в спальне возвращалась снова и\nснова, чем бы мы её ни оттирали.\nVENTPRIME обработал стены и поставил\nпассивную вентиляцию — год спустя стены\nсухие, а запах сырости исчез полностью.",
+        "customer": "Andrei M.",
+        "location": "Кишинев"
+      },
+      {
+        "data": "Приехали на бесплатный осмотр,\nзамеряли влажность в каждой комнате и\nобъяснили причину, а не просто назвали\nцену. Подвал просох за несколько недель\nпосле установки.",
+        "customer": "Elena P.",
+        "location": "Яловень"
+      },
+      {
+        "data": "Окна запотевали каждое утро, а углы\nчернели к зиме. После установки воздух\nсвежий, стёкла чистые, а плесень больше\nне возвращается.",
+        "customer": "Ion C.",
+        "location": "Cricova"
+      }
+    ]
   },
   "FAQ": {
-    "title": "FAQ Section coming soon"
+    "title": "Întrebări frecvente",
+    "items": [
+      {
+        "question": "Câte supape sunt necesare pentru o cameră?",
+        "answer": "Recomandăm instalarea a 2 supape: una pentru admisia aerului proaspăt și alta pentru evacuare."
+      },
+      {
+        "question": "Va fi mult praf și murdărie în timpul forării?",
+        "answer": "Nu! Folosim echipament profesionist cu aspirare a prafului. După montaj lăsăm încăperea curată."
+      },
+      {
+        "question": "Vor exista curenți de aer?",
+        "answer": "Cu montajul și amplasarea corectă a supapelor, riscul de curenți este minim. Construcția supapelor permite reglarea fluxului de aer."
+      },
+      {
+        "question": "Care sunt pierderile de căldură?",
+        "answer": "În apropierea supapei temperatura poate fi mai mică cu 1–2 °C. Prin alegerea corectă a ventilației, pierderile de căldură pot fi reduse, dar nu pot fi eliminate complet."
+      },
+      {
+        "question": "Ventilația ajută împotriva mucegaiului?",
+        "answer": "Da! Ventilația corectă elimină umiditatea excesivă, reduce condensul și ajută la prevenirea apariției mucegaiului. Mucegaiul existent trebuie îndepărtat separat."
+      },
+      {
+        "question": "Supapele necesită întreținere?",
+        "answer": "Întreținerea este minimă — este suficient să curățați periodic filtrul. Dacă este necesar, înlocuirea unei supape costă aproximativ 250–300 de lei."
+      },
+      {
+        "question": "Pot afla prețul fără o vizită la locație?",
+        "answer": "Da! Putem calcula costul exact prin telefon, dacă știm materialul și grosimea peretelui."
+      },
+      {
+        "question": "Cum obțin reducere la tratamentul împotriva mucegaiului?",
+        "answer": "Instalați 2 supape de ventilație în aceeași cameră și beneficiați de reducere de 50% la tratamentul profesional cu ozon al încăperii!"
+      }
+    ]
   },
   "Contacts": {
-    "title": "Contacts Section coming soon"
+    "label": "CONTACTE",
+    "titleLine1": "Completați cererea și primiți o",
+    "titleLine2": "consultație gratuită în 60 de minute",
+    "form": {
+      "nameLabel": "Nume *",
+      "namePlaceholder": "Numele dumneavoastră",
+      "phoneLabel": "Telefon *",
+      "phonePlaceholder": "+373 79 717 214",
+      "cityLabel": "Localitate",
+      "cityDefault": "Chisinau",
+      "cityOptions": ["Chisinau", "Bălți", "Bender", "Comrat", "Tiraspol"],
+      "problemLabel": "Problemă",
+      "problemPlaceholder": "Selectați problema(ele)...",
+      "problemOptions": [
+        "Mucegai",
+        "Ciuperci și mirosuri",
+        "Condens și geamuri aburite",
+        "Lipsa aerului proaspăt",
+        "Altele"
+      ],
+      "serviceLabel": "Serviciu",
+      "servicePlaceholder": "Selectați serviciul (serviciile)...",
+      "serviceOptions": [
+        "Instalarea supapei de ventilație naturală",
+        "Tratament împotriva mucegaiului și bacteriilor",
+        "Găurire diamantată",
+        "Proiectare și montaj"
+      ],
+      "submit": "Trimite",
+      "success": "Vă mulțumim! Vă vom contacta în 60 de minute."
+    },
+    "pricing": {
+      "title": "Prețuri orientative:",
+      "valve": "Supapă de ventilație naturală",
+      "valvePrice": "de la 1500 lei",
+      "valveUnit": "/ 1 buc.",
+      "treatment": "Tratarea încăperii împotriva bacteriilor, mucegaiului și mirosurilor.",
+      "treatmentPrice": "750 lei",
+      "treatmentUnit": "/ încăpere"
+    },
+    "notes": {
+      "calculation": "Costul final se calculează individual și depinde de material și grosimea peretelui.",
+      "discount": "Reducere 50%",
+      "discountText": "la tratamentul împotriva mucegaiului, bacteriilor și mirosurilor neplăcute la instalarea ventilației în cameră!"
+    }
   },
   "Hero": {
     "title": "Ventilația naturală — soluția pentru mucegai, umiditate și geamuri aburite.",
@@ -81,7 +269,7 @@
   "Footer": {
     "city": "Chișinău, Moldova",
     "street": "Str. Zelinskogo 34",
-    "email": "ventprimemd@gmail.com",
+    "email": "contact@ventprime.md",
     "phone": "+373 79 717 214",
     "copyright": "© 2026 VentPrime  |  Toate drepturile rezervate",
     "form": {
@@ -91,7 +279,7 @@
       "phoneLabel": "Telefon *",
       "phonePlaceholder": "+373 79 717 214",
       "emailLabel": "E-mail",
-      "emailPlaceholder": "ventprimemd@gmail.com",
+      "emailPlaceholder": "contact@ventprime.md",
       "submit": "Trimite",
       "success": "Mulțumim! Vă vom contacta."
     }

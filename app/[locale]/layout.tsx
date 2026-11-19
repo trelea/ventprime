@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, IBM_Plex_Sans, Inter } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  IBM_Plex_Sans,
+  Inter,
+  Manrope,
+} from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
@@ -30,6 +36,12 @@ const plex = IBM_Plex_Sans({
 
 const inter = Inter({
   variable: "--inter",
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--manrope",
   subsets: ["latin", "latin-ext", "cyrillic"],
   display: "swap",
 });
@@ -74,7 +86,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} ${plex.variable} ${inter.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${plex.variable} ${inter.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>

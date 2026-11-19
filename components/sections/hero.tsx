@@ -117,7 +117,7 @@ function Hero() {
             </Button>
 
             <Button
-              render={<Link href={{ pathname: "/", hash: "#contacts" }} />}
+              render={<Link href={{ pathname: "/", hash: "#contacts" }} scroll={false} />}
               nativeButton={false}
               className="h-14 w-full gap-3 rounded-[14px] bg-[#191919] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#303030] sm:h-auto sm:px-5 sm:py-3 sm:font-ui sm:text-[18px] sm:leading-7 sm:font-bold"
             >

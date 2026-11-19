@@ -87,6 +87,7 @@ function MobileNav() {
                   render={
                     <Link
                       href={item.href}
+                      scroll={typeof item.href === "object" ? false : undefined}
                       className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
                     />
                   }

@@ -18,6 +18,8 @@ type ContainerProps = ComponentProps<"section"> & {
   innerClassName?: string;
 };
 
+const isDev = process.env.NODE_ENV === "development";
+
 function Container({
   bgColor,
   height = "auto",
@@ -35,6 +37,7 @@ function Container({
         "w-full",
         backgroundStyles[bgColor],
         height === "screen" && "min-h-screen-safe",
+        isDev && "border border-red-500",
         className,
       )}
       {...props}
