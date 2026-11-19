@@ -11,7 +11,33 @@
     "menuTitle": "Meniu"
   },
   "Benefits": {
-    "title": "Benefits Section coming soon"
+    "title": "De ce aleg ventilația naturală?",
+    "description": "Aer proaspăt și un microclimat confortabil, fără echipamente complexe și cheltuieli inutile. Ventilația naturală ajută la asigurarea schimbului de aer, la controlul umidității și la menținerea confortului în casă.",
+    "list": {
+      "freshAirHeat": "Aer proaspăt fără pierderi de căldură",
+      "noCondensation": "Fără aburirea ferestrelor și condens",
+      "manualControl": "Reglare manuală a fluxului de aer",
+      "noStuffiness": "Reduce senzația de aer viciat",
+      "silent": "Funcționează fără zgomotul ventilatoarelor"
+    },
+    "cards": {
+      "freshAir": {
+        "title": "Aer proaspăt fără ferestre deschise 24/7",
+        "desc": "Admisia aerului are loc datorită diferenței de presiune și temperatură"
+      },
+      "noMoisture": {
+        "title": "Fără umiditate și mucegai",
+        "desc": "Ajută la reducerea umidității excesive din încăpere."
+      },
+      "noElectricity": {
+        "title": "Fără costuri cu electricitatea",
+        "desc": "Ventilația naturală funcționează fără ventilatoare electrice."
+      },
+      "noDrafts": {
+        "title": "Fără curenți de aer",
+        "desc": "Un flux constant de aer preîncălzit"
+      }
+    }
   },
   "Technology": {
     "title": "Technology Section coming soon"
@@ -38,7 +64,19 @@
     "title": "Contacts Section coming soon"
   },
   "Hero": {
-    "title": "Hero Section coming soon"
+    "title": "Ventilația naturală — soluția pentru mucegai, umiditate și geamuri aburite.",
+    "description": "Proiectăm și instalăm sisteme de ventilație naturală și recuperare de căldură pentru apartamente și case private. Găurire diamantată profesională și instalare la cheie.",
+    "features": {
+      "design": "Proiectare gratuită",
+      "installation": "Instalare rapidă și curată în 1 oră",
+      "turnkey": "Proiecte la cheie de orice complexitate",
+      "naturalVentilation": "Fără ventilator electric"
+    },
+    "cta": {
+      "call": "Sună-ne",
+      "consultation": "Consultație gratuită"
+    },
+    "imageAlt": "O familie se relaxează într-un living luminos"
   },
   "Footer": {
     "city": "Chișinău, Moldova",

@@ -41,9 +41,10 @@ function Container({
     >
       <div
         data-slot="container-inner"
-        // 1335 = 1300px content + 2 x 17.5px gutters (375px viewport -> 340px content)
+        // Gutter ramps 16 -> 24 -> 32 -> 40 -> 48 -> 64px across breakpoints.
+        // --container-max keeps the 1300px content target intact as the gutter grows.
         className={cn(
-          "mx-auto w-full max-w-[1335px] px-[17.5px]",
+          "mx-auto w-full max-w-[var(--container-max)] px-[var(--container-gutter)]",
           innerClassName,
         )}
       >

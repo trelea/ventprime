@@ -11,7 +11,33 @@
     "menuTitle": "Menu"
   },
   "Benefits": {
-    "title": "Benefits Section coming soon"
+    "title": "Why choose natural ventilation?",
+    "description": "Fresh air and a comfortable microclimate without complex equipment or unnecessary costs. Natural ventilation helps maintain proper air exchange, control humidity, and keep your home comfortable.",
+    "list": {
+      "freshAirHeat": "Fresh air without heat loss",
+      "noCondensation": "No fogged windows or condensation",
+      "manualControl": "Manual airflow adjustment",
+      "noStuffiness": "Reduces the feeling of stuffiness",
+      "silent": "Runs without fan noise"
+    },
+    "cards": {
+      "freshAir": {
+        "title": "Fresh air without open windows 24/7",
+        "desc": "Air intake driven by differences in pressure and temperature"
+      },
+      "noMoisture": {
+        "title": "No moisture or mold",
+        "desc": "Helps reduce excess indoor humidity."
+      },
+      "noElectricity": {
+        "title": "No electricity costs",
+        "desc": "Natural ventilation works without electric fans."
+      },
+      "noDrafts": {
+        "title": "No drafts",
+        "desc": "A constant flow of preheated air"
+      }
+    }
   },
   "Technology": {
     "title": "Technology Section coming soon"
@@ -38,7 +64,19 @@
     "title": "Contacts Section coming soon"
   },
   "Hero": {
-    "title": "Hero Section coming soon"
+    "title": "Natural ventilation — the solution to mold, excess humidity, and fogged-up windows.",
+    "description": "We design and install natural ventilation and heat recovery systems for apartments and private homes. Professional diamond core drilling and turnkey installation.",
+    "features": {
+      "design": "Free system design",
+      "installation": "Fast, clean installation in 1 hour",
+      "turnkey": "Turnkey projects of any complexity",
+      "naturalVentilation": "No electric fan"
+    },
+    "cta": {
+      "call": "Call us",
+      "consultation": "Free consultation"
+    },
+    "imageAlt": "A family relaxing at home in a bright living room"
   },
   "Footer": {
     "city": "Chisinau, Moldova",

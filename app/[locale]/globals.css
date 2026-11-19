@@ -14,6 +14,39 @@
   }
 }
 
+/* Container gutter ramps smoothly across breakpoints (16 -> 64px).
+   --container-max keeps the 1300px content target intact as the gutter grows. */
+:root {
+  --container-gutter: 1rem;
+  --container-max: calc(1300px + 2 * var(--container-gutter));
+}
+
+@media (min-width: 640px) {
+  :root {
+    --container-gutter: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --container-gutter: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --container-gutter: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --container-gutter: 3rem;
+  }
+}
+@media (min-width: 1536px) {
+  :root {
+    --container-gutter: 4rem;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

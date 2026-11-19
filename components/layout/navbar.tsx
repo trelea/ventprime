@@ -26,7 +26,6 @@ function Navbar() {
       <Container
         bgColor="white"
         className="shadow-sm"
-        innerClassName="px-4 lg:px-[17.5px]"
       >
         <div className="grid grid-cols-[1fr_auto] items-center py-[18px] lg:grid-cols-[1fr_auto_1fr] lg:py-[30px]">
           <div data-slot="navbar-logo" className="pointer-events-auto lg:col-start-1">

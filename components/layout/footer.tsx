@@ -139,7 +139,6 @@ function Footer() {
       <Container
         bgColor="dark"
         className="pt-[75px] pb-[32px] lg:py-[90px]"
-        innerClassName="px-4 lg:px-[17.5px]"
       >
         <div className="flex flex-col gap-0 lg:grid lg:grid-cols-2 lg:gap-[60px]">
           <div className="contents lg:flex lg:flex-col">
