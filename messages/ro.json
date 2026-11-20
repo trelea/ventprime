@@ -10,6 +10,11 @@
     "openMenu": "Deschide meniul",
     "menuTitle": "Meniu"
   },
+  "Blogs": {
+    "home": "Acasă",
+    "readTime": "Citire {minutes} min.",
+    "readMore": "Citește articolul"
+  },
   "Benefits": {
     "title": "De ce aleg ventilația naturală?",
     "description": "Aer proaspăt și un microclimat confortabil, fără echipamente complexe și cheltuieli inutile. Ventilația naturală ajută la asigurarea schimbului de aer, la controlul umidității și la menținerea confortului în casă.",

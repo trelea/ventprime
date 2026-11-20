@@ -10,6 +10,11 @@
     "openMenu": "Open menu",
     "menuTitle": "Menu"
   },
+  "Blogs": {
+    "home": "Home",
+    "readTime": "{minutes} min read",
+    "readMore": "Read article"
+  },
   "Benefits": {
     "title": "Why choose natural ventilation?",
     "description": "Fresh air and a comfortable microclimate without complex equipment or unnecessary costs. Natural ventilation helps maintain proper air exchange, control humidity, and keep your home comfortable.",
