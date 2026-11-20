@@ -7,6 +7,12 @@ export const routing = defineRouting({
   // Used when no locale matches
   defaultLocale: "en",
 
+  // Resolve the locale from an explicit URL prefix first (so links and the
+  // locale switcher always win), then from the cookie, then from the browser's
+  // Accept-Language header. Anything unsupported falls back to `defaultLocale`.
+  // Applied by the next-intl middleware in proxy.ts.
+  localeDetection: true,
+
   // Static paths of the site that have a localized slug per language.
   // The key is the internal pathname used by the file system (default locale),
   // the values are the URLs visitors and search engines see.
