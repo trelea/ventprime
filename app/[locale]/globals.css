@@ -85,10 +85,9 @@
   --color-on-dark: var(--on-dark);
 
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-geist-sans);
   --font-ui: var(--font-plex);
-  --font-gilroy: var(--font-plex);
+  --font-gilroy: var(--font-gilroy-local);
   --font-inter: var(--inter);
   --font-manrope: var(--manrope);
 

@@ -10,10 +10,26 @@
     "openMenu": "Deschide meniul",
     "menuTitle": "Meniu"
   },
+  "Seo": {
+    "siteName": "VentPrime",
+    "homeTitle": "Ventilație naturală în Moldova | VentPrime",
+    "homeDescription": "VentPrime montează ventilație naturală în Chișinău și Moldova. Două valve per cameră aduc aer proaspăt cu ferestrele închise — fără curent, zgomot sau condens.",
+    "blogTitle": "Blog: ventilație, umiditate și mucegai | VentPrime",
+    "blogDescription": "Ghiduri practice VentPrime despre ventilația naturală, ferestrele aburite, umiditatea, mucegaiul și ozonizarea locuințelor din Moldova.",
+    "ogAlt": "VentPrime — ventilație naturală pentru o casă sănătoasă",
+    "coverAltPrefix": "Coperta articolului: ",
+    "valveNearRadiatorAlt": "Valvă de ventilație montată lângă calorifer",
+    "valveCloseupAlt": "Prim-plan al capacului valvei de ventilație",
+    "valveDiagramAlt": "Diagramă a valvei de perete cu țeavă și filtru",
+    "indoorClimateAlt": "Dormitor cu un climat interior confortabil",
+    "valveFilterAlt": "Prim-plan al filtrului detașabil al valvei"
+  },
   "Blogs": {
     "home": "Acasă",
+    "back": "Înapoi",
     "readTime": "Citire {minutes} min.",
-    "readMore": "Citește articolul"
+    "readMore": "Citește articolul",
+    "relatedTitle": "Alte articole"
   },
   "Benefits": {
     "title": "De ce aleg ventilația naturală?",

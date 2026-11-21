@@ -10,10 +10,26 @@
     "openMenu": "Open menu",
     "menuTitle": "Menu"
   },
+  "Seo": {
+    "siteName": "VentPrime",
+    "homeTitle": "Natural Ventilation in Moldova | VentPrime",
+    "homeDescription": "VentPrime installs natural ventilation in Chisinau, Moldova. Two wall valves per room give fresh air with windows closed — no electricity or condensation.",
+    "blogTitle": "Blog: ventilation, humidity and mould | VentPrime",
+    "blogDescription": "Practical guides from VentPrime about natural ventilation, fogged windows, humidity, mould and ozone treatment for homes in Moldova.",
+    "ogAlt": "VentPrime — natural ventilation for a healthier home",
+    "coverAltPrefix": "Article cover: ",
+    "valveNearRadiatorAlt": "Ventilation valve installed beside a radiator",
+    "valveCloseupAlt": "Close-up of the ventilation valve cover",
+    "valveDiagramAlt": "Diagram of a wall ventilation valve with pipe and filter",
+    "indoorClimateAlt": "Bedroom with a comfortable indoor climate",
+    "valveFilterAlt": "Close-up of a removable ventilation valve filter"
+  },
   "Blogs": {
     "home": "Home",
+    "back": "Back",
     "readTime": "{minutes} min read",
-    "readMore": "Read article"
+    "readMore": "Read article",
+    "relatedTitle": "More articles"
   },
   "Benefits": {
     "title": "Why choose natural ventilation?",

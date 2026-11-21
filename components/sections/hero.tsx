@@ -69,41 +69,41 @@ function Hero() {
         className="pointer-events-none absolute inset-y-0 left-[42%] z-10 hidden w-1/3 bg-linear-to-r from-white to-transparent lg:block"
       />
 
-      <div className="relative z-20 flex min-h-screen-safe items-end pt-28 pb-10 sm:pb-14 lg:items-start lg:pt-[180px] lg:pb-20">
+      <div className="relative z-20 flex min-h-screen-safe items-end pt-28 pb-10 sm:pb-14 lg:items-start lg:pt-[180px] lg:pb-20 max-[390px]:pt-[88px] max-[390px]:pb-6">
         <div className="w-full lg:w-1/2">
-          <h1 className="font-gilroy text-[28px] leading-[1.1] font-bold tracking-normal text-black text-pretty sm:text-[38px] sm:leading-[1.2] sm:tracking-[0.02em] lg:text-[46px]">
+          <h1 className="font-gilroy text-[28px] leading-[1.1] font-bold tracking-normal text-black text-pretty sm:text-[38px] sm:leading-[1.2] sm:tracking-[0.02em] lg:text-[46px] max-[390px]:text-[24px] max-[390px]:leading-[1.15]">
             {t("title")}
           </h1>
 
-          <p className="mt-[22px] font-inter text-[14px] leading-[1.4] tracking-normal text-black sm:mt-[30px] sm:text-[18px] sm:tracking-[0.02em] lg:text-[20.18px]">
+          <p className="mt-[22px] font-inter text-[14px] leading-[1.4] tracking-normal text-black sm:mt-[30px] sm:text-[18px] sm:tracking-[0.02em] lg:text-[20.18px] max-[390px]:mt-4 max-[390px]:text-[13px]">
             {t("description")}
           </p>
 
-          <ul className="mt-[22px] grid grid-cols-2 gap-6 sm:mt-[60px] sm:gap-[50px] lg:grid-cols-1 2xl:grid-cols-2">
+          <ul className="mt-[22px] grid grid-cols-2 gap-6 sm:mt-[60px] sm:gap-[50px] lg:grid-cols-1 2xl:grid-cols-2 max-[390px]:mt-4 max-[390px]:gap-3">
             {features.map(({ key, icon, iconSize }) => (
-              <li key={key} className="flex min-w-0 items-center gap-3">
+              <li key={key} className="flex min-w-0 items-center gap-3 max-[390px]:gap-2">
                 <Image
                   src={icon}
                   alt=""
                   aria-hidden="true"
                   width={iconSize}
                   height={iconSize}
-                  className="size-9 shrink-0 sm:size-auto"
+                  className="size-9 shrink-0 sm:size-auto max-[390px]:size-8"
                 />
-                <span className="min-w-0 flex-1 font-inter text-[12px] leading-[1.4] tracking-normal text-black sm:text-[16px] sm:tracking-[0.02em]">
+                <span className="min-w-0 flex-1 font-inter text-[12px] leading-[1.4] tracking-normal text-black sm:text-[16px] sm:tracking-[0.02em] max-[390px]:text-[11px]">
                   {t(key)}
                 </span>
               </li>
             ))}
           </ul>
 
-          <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:mt-[70px] sm:grid-cols-[2fr_3fr] sm:gap-3">
+          <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:mt-[70px] sm:grid-cols-[2fr_3fr] sm:gap-3 max-[390px]:mt-6 max-[390px]:gap-2">
             <Button
               render={
                 <a href="tel:+37379717214" aria-label={t("cta.call")} />
               }
               nativeButton={false}
-              className="h-14 w-full gap-3 rounded-[14px] bg-[#00B5A4] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#009f92] sm:h-auto sm:rounded-[14.4px] sm:px-5 sm:py-3 sm:font-ui sm:text-[19.29px] sm:font-bold"
+              className="h-14 w-full gap-3 rounded-[14px] bg-[#00B5A4] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#009f92] sm:h-auto sm:rounded-[14.4px] sm:px-5 sm:py-3 sm:text-[19.29px] sm:font-bold max-[390px]:h-12 max-[390px]:gap-2 max-[390px]:rounded-[12px] max-[390px]:px-4 max-[390px]:py-2 max-[390px]:text-[13px] max-[390px]:leading-7 max-[390px]:whitespace-normal"
             >
               <Image
                 src="/icons/phone.svg"
@@ -119,7 +119,7 @@ function Hero() {
             <Button
               render={<Link href={{ pathname: "/", hash: "#contacts" }} scroll={false} />}
               nativeButton={false}
-              className="h-14 w-full gap-3 rounded-[14px] bg-[#191919] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#303030] sm:h-auto sm:px-5 sm:py-3 sm:font-ui sm:text-[18px] sm:leading-7 sm:font-bold"
+              className="h-14 w-full gap-3 rounded-[14px] bg-[#191919] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#303030] sm:h-auto sm:px-5 sm:py-3 sm:text-[18px] sm:leading-7 sm:font-bold max-[390px]:h-12 max-[390px]:gap-2 max-[390px]:px-4 max-[390px]:py-2 max-[390px]:text-[13px] max-[390px]:leading-6 max-[390px]:whitespace-normal"
             >
               <NotebookPen aria-hidden="true" className="size-5" />
               {t("cta.consultation")}

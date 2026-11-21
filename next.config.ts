@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.1.7", "archlinux"],
   experimental: {
     agentFeedback: true,
+    globalNotFound: true,
   },
   cacheComponents: true,
   partialPrefetching: true,

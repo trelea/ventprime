@@ -15,12 +15,12 @@ function AdditionalServices() {
 
   return (
     <Container id="additional-services" bgColor="white" height="auto">
-      <div className="flex flex-col gap-[30px] pt-[30px] pb-[50px] sm:pt-[36px] sm:pb-[60px] md:pt-[42px] md:pb-[80px] lg:pt-[48px] lg:pb-[100px] xl:pt-[54px] xl:pb-[125px] 2xl:pt-[60px] 2xl:pb-[150px]">
-        <h2 className="font-gilroy text-[24px] leading-[1.1] font-bold tracking-normal text-black text-pretty sm:text-[28px] sm:leading-[1.1] md:text-[30px] lg:text-[32px] lg:leading-[1.2] lg:tracking-[0.02em]">
+      <div className="flex flex-col gap-[30px] pt-[30px] pb-[50px] sm:pt-[36px] sm:pb-[60px] md:pt-[42px] md:pb-[80px] lg:pt-[48px] lg:pb-[100px] xl:pt-[54px] xl:pb-[125px] 2xl:pt-[60px] 2xl:pb-[150px] max-[390px]:gap-5 max-[390px]:pt-6 max-[390px]:pb-8">
+        <h2 className="font-gilroy text-[24px] leading-[1.1] font-bold tracking-normal text-black text-pretty sm:text-[28px] sm:leading-[1.1] md:text-[30px] lg:text-[32px] lg:leading-[1.2] lg:tracking-[0.02em] max-[390px]:text-[22px]">
           {t("title")}
         </h2>
-        <div className="flex flex-col gap-5">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="flex flex-col gap-5 max-[390px]:gap-3">
+          <div className="grid grid-cols-1 gap-5 max-[390px]:gap-3 sm:grid-cols-2">
             {cards.slice(0, 2).map(({ type, key }) => (
               <ServiceCard
                 key={key}
@@ -33,7 +33,7 @@ function AdditionalServices() {
               />
             ))}
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 max-[390px]:gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {cards.slice(2).map(({ type, key }, i, arr) => (
               <div
                 key={key}

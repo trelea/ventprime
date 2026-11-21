@@ -17,13 +17,13 @@ const panelClassName = "flex w-full flex-col justify-between";
 
 const fieldGroupClassName = "flex flex-col gap-2 lg:gap-1.5";
 
-const fieldStackClassName = "flex flex-col gap-5 lg:gap-6";
+const fieldStackClassName = "flex flex-col gap-5 lg:gap-6 max-[390px]:gap-4";
 
 const fieldLabelClassName =
-  "font-inter text-[15px] font-normal leading-[140%] tracking-normal text-black lg:text-[16px]";
+  "font-inter text-[15px] font-normal leading-[140%] tracking-normal text-black lg:text-[16px] max-[390px]:text-[14px]";
 
 const fieldControlClassName =
-  "w-full rounded-none border-0 border-b border-neutral-300 bg-transparent p-0 font-inter text-[15px] font-normal leading-[140%] tracking-normal text-black focus:outline-none lg:py-2.5 lg:text-[16px]";
+  "w-full rounded-none border-0 border-b border-neutral-300 bg-transparent p-0 font-inter text-[15px] font-normal leading-[140%] tracking-normal text-black focus:outline-none lg:py-2.5 lg:text-[16px] max-[390px]:text-[14px]";
 
 const inputClassName = cn(
   fieldControlClassName,
@@ -165,7 +165,7 @@ function ContactsForm() {
       <div
         className={cn(
           panelClassName,
-          "gap-8 rounded-t-[22px] bg-card p-[28px] lg:w-[50.8%] lg:p-[50px] lg:rounded-l-[22px] lg:rounded-tr-none",
+          "gap-8 rounded-t-[22px] bg-card p-[28px] lg:w-[50.8%] lg:p-[50px] lg:rounded-l-[22px] lg:rounded-tr-none max-[390px]:gap-6 max-[390px]:p-5",
         )}
       >
         <div className={fieldStackClassName}>
@@ -212,11 +212,11 @@ function ContactsForm() {
       <div
         className={cn(
           panelClassName,
-          "gap-5 rounded-b-[22px] bg-primary p-[28px] text-primary-foreground lg:w-[49.2%] lg:gap-8 lg:p-[50px] lg:rounded-r-[22px] lg:rounded-bl-none",
+          "gap-5 rounded-b-[22px] bg-primary p-[28px] text-primary-foreground lg:w-[49.2%] lg:gap-8 lg:p-[50px] lg:rounded-r-[22px] lg:rounded-bl-none max-[390px]:gap-4 max-[390px]:p-5",
         )}
       >
         <div className="flex flex-col gap-4 lg:gap-5">
-          <h3 className="font-gilroy text-[20px] font-bold leading-[1.2] tracking-normal lg:text-[24px]">
+          <h3 className="font-gilroy text-[20px] font-bold leading-[1.2] tracking-normal lg:text-[24px] max-[390px]:text-[18px]">
             {t("pricing.title")}
           </h3>
           <div className={priceListClassName}>
@@ -254,7 +254,7 @@ function ContactsForm() {
           )}
           <Button
             type="submit"
-            className="h-[42px] min-w-[170px] gap-[14px] rounded-[10px] bg-white px-0 font-ui text-[15px] font-semibold text-primary hover:bg-neutral-50 lg:h-auto lg:min-w-0 lg:gap-2 lg:rounded-xl lg:px-7 lg:py-3.5 lg:font-inter lg:text-[16px]"
+            className="h-[42px] min-w-[170px] gap-[14px] rounded-[10px] bg-white px-0 font-ui text-[15px] font-semibold text-primary hover:bg-neutral-50 max-[390px]:h-10 max-[390px]:min-w-0 max-[390px]:gap-2 max-[390px]:text-[14px] lg:h-auto lg:min-w-0 lg:gap-2 lg:rounded-xl lg:px-7 lg:py-3.5 lg:font-inter lg:text-[16px]"
           >
             <Send aria-hidden className="size-4 text-primary" />
             {t("form.submit")}

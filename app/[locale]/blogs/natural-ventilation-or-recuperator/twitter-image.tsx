@@ -1,0 +1,4 @@
+import { createArticleImage } from "@/components/seo/article-og-image";
+
+export { alt, contentType, generateStaticParams } from "@/components/seo/og-image-shared";
+export default createArticleImage("/blogs/natural-ventilation-or-recuperator");

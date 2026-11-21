@@ -15,7 +15,7 @@ function Testimonials() {
 
   return (
     <Container id="reviews" bgColor="white" height="auto">
-      <div className="flex flex-col gap-[30px] py-[50px] sm:py-[40px] md:py-[44px] lg:py-[80px]">
+      <div className="flex flex-col gap-[30px] py-[50px] sm:py-[40px] md:py-[44px] lg:py-[80px] max-[390px]:gap-5 max-[390px]:py-8">
         <span className="font-inter text-[14px] font-bold tracking-[0.02em] text-primary">
           {t("label")}
         </span>
