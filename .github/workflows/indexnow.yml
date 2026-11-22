@@ -1,0 +1,47 @@
+name: IndexNow
+
+# Notify participating search engines when a new build reaches production.
+# IndexNow forwards one submission to Bing, Yandex, Naver, Seznam and Yep.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - ".github/**"
+  workflow_dispatch:
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Give the host a moment to publish the new sitemap after the push.
+      - name: Wait for the live sitemap
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://ventprime.md' }}
+        run: |
+          for attempt in $(seq 1 20); do
+            if curl -fsS --max-time 10 "$SITE_URL/sitemap.xml" -o /tmp/sitemap.xml; then
+              echo "Sitemap is live at $SITE_URL/sitemap.xml"
+              exit 0
+            fi
+            echo "Waiting for $SITE_URL/sitemap.xml (attempt $attempt/20)..."
+            sleep 15
+          done
+          echo "Sitemap did not become available in time." >&2
+          exit 1
+
+      - name: Submit sitemap URLs to IndexNow
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://ventprime.md' }}
+        run: node scripts/indexnow.mjs --site-url "$SITE_URL"
