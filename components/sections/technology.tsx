@@ -3,6 +3,7 @@ import { Phone, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 function Technology() {
   const t = useTranslations("Technology");
@@ -39,12 +40,12 @@ function Technology() {
               <p className="font-inter text-[14px] leading-[1.4] tracking-normal text-black lg:text-[16px] lg:tracking-[0.02em]">
                 {t.rich("points.alwaysOpen", {
                   link: (chunks) => (
-                    <a
-                      href="#"
+                    <Link
+                      href="/blogs/natural-ventilation-or-recuperator"
                       className="font-semibold text-primary underline underline-offset-2"
                     >
                       {chunks}
-                    </a>
+                    </Link>
                   ),
                 })}
               </p>
@@ -63,7 +64,12 @@ function Technology() {
                 {t("cta.consultation")}
               </Button>
               <Button
-                render={<a href="#" aria-label={t("cta.details")} />}
+                render={
+                  <Link
+                    href="/blogs/natural-ventilation-or-recuperator"
+                    aria-label={t("cta.details")}
+                  />
+                }
                 nativeButton={false}
                 className="h-auto gap-2 rounded-[14.4px] bg-surface-neutral p-3 font-gilroy text-[14px] font-semibold leading-[28px] tracking-normal text-black text-center hover:bg-[#d4d4d4] lg:text-[19.29px] lg:font-bold lg:leading-[28.93px] max-[390px]:gap-1.5 max-[390px]:p-2.5 max-[390px]:text-[13px] max-[390px]:leading-6 max-[390px]:whitespace-normal"
               >

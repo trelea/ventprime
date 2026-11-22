@@ -34,14 +34,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## SEO environment variables
-
-All optional — the site works without them, but they should be set in production:
-
-- `NEXT_PUBLIC_SITE_URL` — canonical host used in metadata, the sitemap and `robots.txt` (default: `https://ventprime.md`).
-- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — Google Search Console verification token.
-- `NEXT_PUBLIC_YANDEX_VERIFICATION` — Yandex Webmaster verification token.
-- `NEXT_PUBLIC_BING_VERIFICATION` — Bing Webmaster Tools verification token.
-
-Open Graph and Twitter images are generated automatically at build time, one per locale plus one per localized blog article.

@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { Phone, NotebookPen } from "lucide-react";
+import { NotebookPen } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 const steps = ["consultation", "design", "drilling", "installation"] as const;
 
@@ -72,7 +73,13 @@ function MainServices() {
                 {t("cta.call")}
               </Button>
               <Button
-                render={<a href="#" aria-label={t("cta.consultation")} />}
+                render={
+                  <Link
+                    href={{ pathname: "/", hash: "#contacts" }}
+                    scroll={false}
+                    aria-label={t("cta.consultation")}
+                  />
+                }
                 nativeButton={false}
                 className="h-14 w-full gap-3 rounded-[14px] bg-[#191919] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#303030] sm:h-auto sm:px-5 sm:py-3 sm:text-[18px] sm:leading-7 sm:font-bold max-[390px]:h-12 max-[390px]:gap-2 max-[390px]:px-4 max-[390px]:py-2 max-[390px]:text-[13px] max-[390px]:leading-6 max-[390px]:whitespace-normal"
               >

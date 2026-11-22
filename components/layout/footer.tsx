@@ -14,10 +14,11 @@ const navItems = [
   { key: "contacts", href: { pathname: "/", hash: "#contacts" } },
 ] as const;
 
+// Until real profiles exist, the social icons navigate to relevant sections.
 const socials = [
-  { label: "Facebook", x: "0", width: "24px" },
-  { label: "Instagram", x: "37px", width: "26px" },
-  { label: "YouTube", x: "75px", width: "30px" },
+  { label: "Facebook", x: "0", width: "24px", hash: "#reviews" },
+  { label: "Instagram", x: "37px", width: "26px", hash: "#about" },
+  { label: "YouTube", x: "75px", width: "30px", hash: "#technology" },
 ] as const;
 
 function Contacts({ className }: { className?: string }) {
@@ -90,9 +91,10 @@ function Socials({ className }: { className?: string }) {
           height={23.9095}
         />
         {socials.map((social) => (
-          <a
+          <Link
             key={social.label}
-            href="#"
+            href={{ pathname: "/", hash: social.hash }}
+            scroll={false}
             aria-label={social.label}
             className="absolute inset-y-0"
             style={{ left: social.x, width: social.width }}
@@ -100,14 +102,19 @@ function Socials({ className }: { className?: string }) {
         ))}
       </li>
       <li>
-        <a href="#" aria-label="TikTok" className="block">
+        <Link
+          href={{ pathname: "/", hash: "#services" }}
+          scroll={false}
+          aria-label="TikTok"
+          className="block"
+        >
           <Image
             src="/icons/footer/tiktok.svg"
             alt=""
             width={20.856}
             height={24}
           />
-        </a>
+        </Link>
       </li>
     </ul>
   );

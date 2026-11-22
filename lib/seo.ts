@@ -73,7 +73,8 @@ export function absoluteLocalizedPath(
 
 /**
  * Canonical + reciprocal hreflang tags for the *same* page in every locale.
- * `x-default` points at the default-language version of that page.
+ * `x-default` points at the Romanian version (the primary market), which is
+ * intentionally independent of next-intl's `defaultLocale` routing fallback.
  * Relative values are resolved against `metadataBase` from the root layout.
  */
 export function localizedAlternates(
@@ -85,7 +86,7 @@ export function localizedAlternates(
   for (const candidate of routing.locales) {
     languages[candidate] = localizedPath(href, candidate);
   }
-  languages["x-default"] = localizedPath(href, routing.defaultLocale);
+  languages["x-default"] = localizedPath(href, "ro");
 
   return {
     canonical: localizedPath(href, locale),

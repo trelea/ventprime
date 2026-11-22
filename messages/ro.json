@@ -172,17 +172,17 @@
     "label": "RECENZII",
     "items": [
       {
-        "data": "Плесень в спальне возвращалась снова и\nснова, чем бы мы её ни оттирали.\nVENTPRIME обработал стены и поставил\nпассивную вентиляцию — год спустя стены\nсухие, а запах сырости исчез полностью.",
+        "data": "Mucegaiul din dormitor revenea iar și\niar, oricât de bine îl ștergeam.\nVENTPRIME a tratat pereții și a montat\nventilație pasivă — un an mai târziu pereții\nsunt uscați, iar mirosul de umezeală a dispărut.",
         "customer": "Andrei M.",
-        "location": "Кишинев"
+        "location": "Chișinău"
       },
       {
-        "data": "Приехали на бесплатный осмотр,\nзамеряли влажность в каждой комнате и\nобъяснили причину, а не просто назвали\nцену. Подвал просох за несколько недель\nпосле установки.",
+        "data": "Au venit la o evaluare gratuită,\nau măsurat umiditatea în fiecare cameră și\nau explicat cauza, nu doar prețul.\nSubsolul s-a uscat în câteva săptămâni\ndupă montaj.",
         "customer": "Elena P.",
-        "location": "Яловень"
+        "location": "Ialoveni"
       },
       {
-        "data": "Окна запотевали каждое утро, а углы\nчернели к зиме. После установки воздух\nсвежий, стёкла чистые, а плесень больше\nне возвращается.",
+        "data": "Ferestrele se abureau în fiecare dimineață, iar\ncolțurile se înnegreau până la iarnă. După montaj,\naerul e proaspăt, geamurile sunt curate, iar\nmucegaiul nu mai revine.",
         "customer": "Ion C.",
         "location": "Cricova"
       }
@@ -255,7 +255,9 @@
         "Proiectare și montaj"
       ],
       "submit": "Trimite",
-      "success": "Vă mulțumim! Vă vom contacta în 60 de minute."
+      "success": "Vă mulțumim! Vă vom contacta în 60 de minute.",
+      "sending": "Se trimite…",
+      "error": "Nu am putut trimite. Vă rugăm să încercați din nou sau să ne sunați."
     },
     "pricing": {
       "title": "Prețuri orientative:",
@@ -302,7 +304,9 @@
       "emailLabel": "E-mail",
       "emailPlaceholder": "contact@ventprime.md",
       "submit": "Trimite",
-      "success": "Mulțumim! Vă vom contacta."
+      "success": "Mulțumim! Vă vom contacta.",
+      "sending": "Se trimite…",
+      "error": "Nu am putut trimite. Vă rugăm să încercați din nou sau să ne sunați."
     }
   }
 }

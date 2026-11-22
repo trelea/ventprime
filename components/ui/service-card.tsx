@@ -1,5 +1,7 @@
 import { ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
+import type { LocalizedPath } from "@/i18n/routing";
 
 type ServiceCardType = "grey" | "green";
 
@@ -8,9 +10,10 @@ type ServiceCardProps = {
   title: string;
   description: string;
   ctaLabel: string;
+  href?: LocalizedPath;
 };
 
-function ServiceCard({ type, title, description, ctaLabel }: ServiceCardProps) {
+function ServiceCard({ type, title, description, ctaLabel, href }: ServiceCardProps) {
   const isGreen = type === "green";
 
   return (
@@ -28,10 +31,11 @@ function ServiceCard({ type, title, description, ctaLabel }: ServiceCardProps) {
       <div className="mt-auto flex justify-end">
         <Button
           render={
-            <a
-              href={isGreen ? "tel:+37379717214" : "#"}
-              aria-label={ctaLabel}
-            />
+            isGreen ? (
+              <a href="tel:+37379717214" aria-label={ctaLabel} />
+            ) : (
+              <Link href={href ?? "/blogs"} aria-label={ctaLabel} />
+            )
           }
           nativeButton={false}
           className={`flex w-full items-center justify-center gap-2 px-4 font-ui text-[16px] font-normal leading-[28.93px] tracking-normal sm:w-auto max-[390px]:gap-1.5 max-[390px]:text-[14px] max-[390px]:leading-6 ${

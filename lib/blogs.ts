@@ -90,7 +90,7 @@ export const blogPosts: BlogPost[] = [
             [
               "Micro-ventilation and air movement",
               "With the valves open and natural draft present, fresh air enters through one valve while humid air leaves through the other at the same time. This creates continuous micro-ventilation in the room. The valves can be slightly opened for gentle intake without a directed stream from a fan.",
-              "With the valves open and natural draft present, fresh air enters through one valve while humid air leaves through the other at the same time. This creates continuous micro-ventilation in the room. The valves can be slightly opened for gentle intake without a directed stream from a fan.",
+              "With a room recuperator, a fan draws humid room air out and supplies filtered fresh air through the same unit. Air exchange runs continuously without opening a window, and the supply air is filtered before it enters the room.",
             ],
             [
               "Adjustment and closing",
@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
             "With standard installation in a wall made of material other than concrete or reinforced concrete, one VentPrime valve costs around 1,500 lei. If several separate rooms have fogged windows or dampness, we provide their own pair of valves for each.",
           caption:
             "By this calculation, natural ventilation in three rooms costs roughly 9,000 lei. For comparison, one of the verified room recuperators with mini-heating costs from 11,000 lei for the unit.",
-          columns: ["What we install", "Number of rooms", "Room recuperator"],
+          columns: ["What we install", "Number of rooms", "Cost"],
           rows: [
             ["2 VentPrime valves", "1 room", "3,000 lei"],
             ["4 VentPrime valves", "2 rooms", "6,000 lei"],
@@ -203,7 +203,7 @@ export const blogPosts: BlogPost[] = [
             [
               "Micro-ventilația și circulația aerului",
               "Cu valvele deschise și cu tiraj natural, aerul proaspăt intră printr-o valvă, iar aerul umed iese în același timp prin cealaltă. Astfel, în cameră are loc o micro-ventilație continuă. Valvele pot fi întredeschise pentru un aport blând, fără un flux dirijat de la un ventilator.",
-              "Cu valvele deschise și cu tiraj natural, aerul proaspăt intră printr-o valvă, iar aerul umed iese în același timp prin cealaltă. Astfel, în cameră are loc o micro-ventilație continuă. Valvele pot fi întredeschise pentru un aport blând, fără un flux dirijat de la un ventilator.",
+              "La un recuperator de cameră, ventilatorul elimină aerul umed din încăpere și aduce aer proaspăt filtrat prin același aparat. Schimbul de aer funcționează continuu, fără a deschide fereastra, iar aerul de aport este filtrat înainte de a intra în cameră.",
             ],
             [
               "Reglarea și închiderea",
@@ -273,7 +273,7 @@ export const blogPosts: BlogPost[] = [
             "La montajul standard într-un perete din alt material decât betonul sau betonul armat, o valvă VentPrime costă aproximativ 1 500 de lei. Dacă mai multe camere separate au ferestre aburite sau umezeală, prevedem câte o pereche de valve pentru fiecare.",
           caption:
             "Conform acestui calcul, ventilația naturală în trei camere costă aproximativ 9 000 de lei. Pentru comparație, unul dintre recuperatoarele de cameră verificate cu mini-încălzire costă de la 11 000 de lei pentru aparat.",
-          columns: ["Ce montăm", "Nr. de camere", "Recuperator de cameră"],
+          columns: ["Ce montăm", "Nr. de camere", "Preț"],
           rows: [
             ["2 valve VentPrime", "1 cameră", "3 000 de lei"],
             ["4 valve VentPrime", "2 camere", "6 000 de lei"],
@@ -315,7 +315,7 @@ export const blogPosts: BlogPost[] = [
             [
               "Микро-проветривание и движение воздуха",
               "При открытых клапанах и наличии естественной тяги свежий воздух входит через один клапан, а влажный одновременно выходит через второй. Так в комнате идёт непрерывное микропроветривание. Клапаны можно приоткрыть для мягкого притока без направленной струи от вентилятора.",
-              "При открытых клапанах и наличии естественной тяги свежий воздух входит через один клапан, а влажный одновременно выходит через второй. Так в комнате идёт непрерывное микропроветривание. Клапаны можно приоткрыть для мягкого притока без направленной струи от вентилятора.",
+              "При комнатном рекуператоре вентилятор удаляет влажный воздух из помещения и подаёт отфильтрованный свежий воздух через то же устройство. Воздухообмен работает непрерывно без открытия окна, а приточный воздух проходит через фильтр перед поступлением в комнату.",
             ],
             [
               "Регулировка и закрытие",
@@ -385,7 +385,7 @@ export const blogPosts: BlogPost[] = [
             "При стандартном монтаже в стену из материала, отличного от бетона или железобетона, один клапан VentPrime стоит около 1 500 леев. Если запотевают окна или появляется сырость в нескольких отдельных комнатах, для каждой предусматриваем свою пару клапанов.",
           caption:
             "По этому расчёту естественная вентиляция в трёх комнатах обходится примерно в 9 000 леев. Для сравнения, один из проверенных комнатных рекуператоров с мини-догревом стоит от 11 000 леев за прибор.",
-          columns: ["Что устанавливаем", "Кол-во комнат", "Комнатный рекуператор"],
+          columns: ["Что устанавливаем", "Кол-во комнат", "Стоимость"],
           rows: [
             ["2 клапана VentPrime", "1 комната", "3 000 леев"],
             ["4 клапана VentPrime", "2 комнаты", "6 000 леев"],

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 
 function FormField({
@@ -39,16 +39,39 @@ function FormField({
   );
 }
 
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
 function ContactForm() {
   const t = useTranslations("Footer.form");
-  const [submitted, setSubmitted] = useState(false);
+  const locale = useLocale();
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
   return (
     <form
       data-slot="contact-form"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
-        setSubmitted(true);
+        const form = event.currentTarget;
+        const data = new FormData(form);
+        setStatus("sending");
+
+        try {
+          const response = await fetch("/api/contact-footer", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: data.get("name"),
+              phone: data.get("phone"),
+              email: data.get("email"),
+              locale,
+            }),
+          });
+          if (!response.ok) throw new Error("Request failed");
+          form.reset();
+          setStatus("success");
+        } catch {
+          setStatus("error");
+        }
       }}
       className="flex h-auto flex-col self-start rounded-[14px] bg-surface-dark-card p-[28px] lg:h-full lg:rounded-[22px] lg:px-[42px] lg:pb-[33px] lg:pt-[34px]"
     >
@@ -79,17 +102,23 @@ function ContactForm() {
       </div>
 
       <div className="mt-[18px] flex flex-wrap items-center justify-end gap-4 lg:mt-[24px]">
-        {submitted && (
+        {status === "success" && (
           <p role="status" className="font-ui text-[13px] text-white/80 lg:text-[14px]">
             {t("success")}
           </p>
         )}
+        {status === "error" && (
+          <p role="alert" className="font-ui text-[13px] text-white lg:text-[14px]">
+            {t("error")}
+          </p>
+        )}
         <Button
           type="submit"
-          className="h-[42px] w-[169.59px] gap-[14px] rounded-[10px] bg-primary px-0 font-ui text-[15px] text-white hover:bg-primary/90 lg:h-[46px] lg:rounded-[14px] lg:text-[16px]"
+          disabled={status === "sending"}
+          className="h-[42px] w-[169.59px] gap-[14px] rounded-[10px] bg-primary px-0 font-ui text-[15px] text-white hover:bg-primary/90 disabled:opacity-60 lg:h-[46px] lg:rounded-[14px] lg:text-[16px]"
         >
           <Image src="/icons/footer/send.svg" alt="" width={16} height={16} />
-          {t("submit")}
+          {status === "sending" ? t("sending") : t("submit")}
         </Button>
       </div>
     </form>

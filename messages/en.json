@@ -172,17 +172,17 @@
     "label": "REVIEWS",
     "items": [
       {
-        "data": "Плесень в спальне возвращалась снова и\nснова, чем бы мы её ни оттирали.\nVENTPRIME обработал стены и поставил\nпассивную вентиляцию — год спустя стены\nсухие, а запах сырости исчез полностью.",
+        "data": "Mould in the bedroom kept coming back again and\nagain, no matter how well we wiped it away.\nVENTPRIME treated the walls and installed\npassive ventilation — a year later the walls\nare dry and the damp smell is completely gone.",
         "customer": "Andrei M.",
-        "location": "Кишинев"
+        "location": "Chisinau"
       },
       {
-        "data": "Приехали на бесплатный осмотр,\nзамеряли влажность в каждой комнате и\nобъяснили причину, а не просто назвали\nцену. Подвал просох за несколько недель\nпосле установки.",
+        "data": "They came for a free inspection,\nmeasured the humidity in every room and\nexplained the cause, not just the price.\nThe basement dried out within a few weeks\nafter installation.",
         "customer": "Elena P.",
-        "location": "Яловень"
+        "location": "Ialoveni"
       },
       {
-        "data": "Окна запотевали каждое утро, а углы\nчернели к зиме. После установки воздух\nсвежий, стёкла чистые, а плесень больше\nне возвращается.",
+        "data": "The windows fogged up every morning, and the corners\nwent black by winter. After installation, the air\nis fresh, the glass is clear, and the mould\nhas not come back.",
         "customer": "Ion C.",
         "location": "Cricova"
       }
@@ -255,7 +255,9 @@
         "Design and installation"
       ],
       "submit": "Send",
-      "success": "Thank you! We will contact you within 60 minutes."
+      "success": "Thank you! We will contact you within 60 minutes.",
+      "sending": "Sending…",
+      "error": "Could not send. Please try again or call us."
     },
     "pricing": {
       "title": "Indicative prices:",
@@ -302,7 +304,9 @@
       "emailLabel": "E-mail",
       "emailPlaceholder": "contact@ventprime.md",
       "submit": "Send",
-      "success": "Thank you! We will be in touch."
+      "success": "Thank you! We will be in touch.",
+      "sending": "Sending…",
+      "error": "Could not send. Please try again or call us."
     }
   }
 }

@@ -10,6 +10,14 @@ const cards = [
   { type: "green", key: "kitchen" },
 ] as const;
 
+const serviceArticles = {
+  ozone: "/blogs/ozone-treatment-when-it-helps",
+  condensation: "/blogs/why-windows-fog-up-in-winter",
+  humidity: "/blogs/natural-ventilation-or-recuperator",
+  bathroom: "/blogs/fresh-air-with-closed-windows",
+  kitchen: "/blogs/fresh-air-with-closed-windows",
+} as const;
+
 function AdditionalServices() {
   const t = useTranslations("AdditionalServices");
 
@@ -30,6 +38,7 @@ function AdditionalServices() {
                 ctaLabel={
                   type === "green" ? t("cta.contact") : t("cta.details")
                 }
+                href={serviceArticles[key]}
               />
             ))}
           </div>
@@ -50,6 +59,7 @@ function AdditionalServices() {
                   ctaLabel={
                     type === "green" ? t("cta.contact") : t("cta.details")
                   }
+                  href={serviceArticles[key]}
                 />
               </div>
             ))}

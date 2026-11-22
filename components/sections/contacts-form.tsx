@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { cn } from "cn";
 import { Info, Send } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -142,13 +142,16 @@ function Note({ children }: { children: ReactNode }) {
   );
 }
 
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
 function ContactsForm() {
   const t = useTranslations("Contacts");
+  const locale = useLocale();
 
   const [city, setCity] = useState("Chisinau");
   const [problem, setProblem] = useState("");
   const [service, setService] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
   const cities = t.raw("form.cityOptions") as string[];
   const problems = t.raw("form.problemOptions") as string[];
@@ -156,9 +159,34 @@ function ContactsForm() {
 
   return (
     <form
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
-        setSubmitted(true);
+        const form = event.currentTarget;
+        const data = new FormData(form);
+        setStatus("sending");
+
+        try {
+          const response = await fetch("/api/contact-page", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: data.get("contacts-name"),
+              phone: data.get("contacts-phone"),
+              city,
+              problem: problem ? [problem] : [],
+              service: service ? [service] : [],
+              locale,
+            }),
+          });
+          if (!response.ok) throw new Error("Request failed");
+          form.reset();
+          setCity("Chisinau");
+          setProblem("");
+          setService("");
+          setStatus("success");
+        } catch {
+          setStatus("error");
+        }
       }}
       className="flex w-full flex-col items-stretch overflow-hidden rounded-[22px] lg:flex-row"
     >
@@ -244,7 +272,7 @@ function ContactsForm() {
         </div>
 
         <div className="mt-auto flex flex-col items-end gap-4 lg:gap-3">
-          {submitted && (
+          {status === "success" && (
             <p
               role="status"
               className="font-inter text-[13px] text-white/80 lg:text-[14px]"
@@ -252,12 +280,21 @@ function ContactsForm() {
               {t("form.success")}
             </p>
           )}
+          {status === "error" && (
+            <p
+              role="alert"
+              className="font-inter text-[13px] text-white lg:text-[14px]"
+            >
+              {t("form.error")}
+            </p>
+          )}
           <Button
             type="submit"
-            className="h-[42px] min-w-[170px] gap-[14px] rounded-[10px] bg-white px-0 font-ui text-[15px] font-semibold text-primary hover:bg-neutral-50 max-[390px]:h-10 max-[390px]:min-w-0 max-[390px]:gap-2 max-[390px]:text-[14px] lg:h-auto lg:min-w-0 lg:gap-2 lg:rounded-xl lg:px-7 lg:py-3.5 lg:font-inter lg:text-[16px]"
+            disabled={status === "sending"}
+            className="h-[42px] min-w-[170px] gap-[14px] rounded-[10px] bg-white px-0 font-ui text-[15px] font-semibold text-primary hover:bg-neutral-50 disabled:opacity-60 max-[390px]:h-10 max-[390px]:min-w-0 max-[390px]:gap-2 max-[390px]:text-[14px] lg:h-auto lg:min-w-0 lg:gap-2 lg:rounded-xl lg:px-7 lg:py-3.5 lg:font-inter lg:text-[16px]"
           >
             <Send aria-hidden className="size-4 text-primary" />
-            {t("form.submit")}
+            {status === "sending" ? t("form.sending") : t("form.submit")}
           </Button>
         </div>
       </div>
