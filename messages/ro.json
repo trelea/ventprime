@@ -83,6 +83,11 @@
     "label": "SERVICII",
     "title": "Ventilație naturală",
     "paragraph": "Organizăm fluxul de aer proaspăt și mișcarea acestuia în cameră cu ajutorul clapetelor de ventilație. Proiectăm amplasarea punctelor și realizăm montajul la cheie - fără ventilatoare electrice și echipamente inutile.",
+    "imageAlts": {
+      "one": "Gaură forată în peretele exterior pentru aer proaspăt",
+      "two": "Clapetă de admisie instalată lângă un radiator",
+      "three": "Grilă de ventilație exterioară pe peretele casei"
+    },
     "steps": {
       "title": "Etapele lucrării:",
       "consultation": {
@@ -143,6 +148,11 @@
   "AboutUs": {
     "label": "DESPRE NOI",
     "title": "Mai bine de 5 ani creăm\nun microclimat confortabil\nîn locuințe",
+    "imageAlts": {
+      "one": "Tehnician VentPrime găurind peretele în timpul montajului",
+      "two": "Clapetă de admisie instalată deasupra unui radiator",
+      "three": "Clapetă de ventilație instalată lângă un radiator"
+    },
     "p1": "<brand>VentPrime</brand> este o companie de familie specializată în proiectarea și instalarea sistemelor de ventilație naturală. De peste 5 ani ajutăm proprietarii de apartamente și case particulare din Chișinău și din toată Moldova să rezolve problemele de schimb insuficient de aer, umiditate ridicată și mucegai.",
     "p2": "Am ales ventilația naturală ca una dintre cele mai raționale soluții pentru spațiile rezidențiale standard: asigură schimbul de aer fără consum constant de energie electrică, nu creează zgomot și nu necesită echipamente complexe.",
     "p3": "Sarcina noastră este să alegem sistemul potrivit pentru fiecare încăpere și să îl instalăm profesionist, cu costuri rezonabile pentru client."
@@ -308,5 +318,12 @@
       "sending": "Se trimite…",
       "error": "Nu am putut trimite. Vă rugăm să încercați din nou sau să ne sunați."
     }
+  },
+  "ImageLightbox": {
+    "title": "Previzualizare imagine",
+    "open": "Deschide imaginea pe ecran complet",
+    "close": "Închide previzualizarea",
+    "previous": "Imaginea anterioară",
+    "next": "Imaginea următoare"
   }
 }

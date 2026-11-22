@@ -3,6 +3,7 @@ import { NotebookPen } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
 import { Link } from "@/i18n/navigation";
 
 const steps = ["consultation", "design", "drilling", "installation"] as const;
@@ -11,6 +12,32 @@ const stepImages = ["/services/1.png", "/services/2.png", "/services/3.png"] as 
 
 function MainServices() {
   const t = useTranslations("MainServices");
+  const images = stepImages.map((src, i) => ({
+    src,
+    alt: t(`imageAlts.${["one", "two", "three"][i]}`),
+  }));
+  const alts = images.map((image) => image.alt);
+  const thumbnails = images.map((image) => (
+    <Image
+      key={image.src}
+      src={image.src}
+      alt={image.alt}
+      fill
+      sizes="(min-width: 1024px) 25vw, 50vw"
+      className="object-cover object-center"
+    />
+  ));
+  const previews = images.map((image) => (
+    <Image
+      key={image.src}
+      src={image.src}
+      alt={image.alt}
+      fill
+      sizes="100vw"
+      quality={90}
+      className="object-contain"
+    />
+  ));
 
   return (
     <Container id="services" bgColor="white" height="auto">
@@ -94,20 +121,15 @@ function MainServices() {
             {/* 3. card grid */}
             <div className="order-3">
               <div className="grid grid-cols-2 grid-rows-2 gap-[10px] max-[390px]:gap-2">
-                {stepImages.map((src, i) => (
-                  <div
-                    key={i}
+                {images.map((image, i) => (
+                  <ImageLightbox
+                    key={image.src}
+                    thumbnails={thumbnails}
+                    previews={previews}
+                    alts={alts}
+                    index={i}
                     className="relative min-h-[15rem] overflow-hidden rounded-[22px] max-[390px]:min-h-[11rem] max-[390px]:rounded-[16px] border border-transparent lg:h-auto lg:aspect-square"
-                  >
-                    <Image
-                      src={src}
-                      alt=""
-                      aria-hidden="true"
-                      fill
-                      sizes="(min-width: 1024px) 25vw, 50vw"
-                      className="object-cover object-center"
-                    />
-                  </div>
+                  />
                 ))}
                 {/* 4th card — no electricity (same style as benefits cards) */}
                 <div className="flex h-full min-h-[17rem] min-w-0 flex-col justify-between overflow-hidden rounded-[11px] border border-transparent p-[11.33px] [background:linear-gradient(#00B5A4,#00B5A4)_padding-box,linear-gradient(143.58deg,#00E3CD_2.08%,#06C1AF_82.22%)_border-box] sm:min-h-[15rem] sm:rounded-[14px] sm:p-4 md:min-h-[15rem] md:rounded-[16px] md:p-5 lg:h-auto lg:min-h-0 lg:aspect-square lg:rounded-[22px] lg:p-6 xl:rounded-[24px] xl:p-7 2xl:rounded-[26px] 2xl:p-8 max-[390px]:min-h-[13rem] max-[390px]:rounded-[14px] max-[390px]:p-3">

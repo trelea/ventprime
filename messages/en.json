@@ -83,6 +83,11 @@
     "label": "SERVICES",
     "title": "Natural ventilation",
     "paragraph": "We organize the inflow of fresh air and its movement through the room using ventilation valves. We design the placement of points and perform turnkey installation - without electric fans or unnecessary equipment.",
+    "imageAlts": {
+      "one": "Fresh-air hole drilled through an exterior wall",
+      "two": "Intake ventilation valve installed next to a radiator",
+      "three": "Exterior ventilation grille on the wall of a house"
+    },
     "steps": {
       "title": "How we work:",
       "consultation": {
@@ -143,6 +148,11 @@
   "AboutUs": {
     "label": "ABOUT US",
     "title": "More than 5 years creating\na comfortable microclimate\nin homes",
+    "imageAlts": {
+      "one": "VentPrime technician drilling a wall during installation",
+      "two": "Installed intake valve above a radiator",
+      "three": "Installed ventilation valve next to a radiator"
+    },
     "p1": "<brand>VentPrime</brand> is a family company specializing in the design and installation of natural ventilation systems. For over 5 years we have been helping apartment and private house owners in Chisinau and throughout Moldova solve problems of insufficient air exchange, high humidity and mold.",
     "p2": "We chose natural ventilation as one of the most rational solutions for standard residential spaces: it provides air exchange without constant electricity consumption, creates no noise and requires no complex equipment.",
     "p3": "Our task is to choose the right system for each room and install it professionally, at reasonable cost to the client."
@@ -308,5 +318,12 @@
       "sending": "Sending…",
       "error": "Could not send. Please try again or call us."
     }
+  },
+  "ImageLightbox": {
+    "title": "Image preview",
+    "open": "Open image in full screen",
+    "close": "Close image preview",
+    "previous": "Previous image",
+    "next": "Next image"
   }
 }

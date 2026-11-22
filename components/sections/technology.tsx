@@ -3,10 +3,33 @@ import { Phone, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
 import { Link } from "@/i18n/navigation";
 
 function Technology() {
   const t = useTranslations("Technology");
+  const images = [{ src: "/technology.png", alt: t("imageAlt") }];
+  const thumbnails = images.map((image) => (
+    <Image
+      key={image.src}
+      src={image.src}
+      alt={image.alt}
+      fill
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      className="object-contain"
+    />
+  ));
+  const previews = images.map((image) => (
+    <Image
+      key={image.src}
+      src={image.src}
+      alt={image.alt}
+      fill
+      sizes="100vw"
+      quality={90}
+      className="object-contain"
+    />
+  ));
 
   return (
     <Container id="technology" bgColor="grey" height="screen">
@@ -83,15 +106,12 @@ function Technology() {
           <div className="contents lg:flex lg:w-1/2 lg:flex-col lg:mt-[38px]">
             {/* 3. image container */}
             <div className="order-3">
-              <div className="relative aspect-[700/449] w-full overflow-hidden rounded-[22px] border border-black p-5 lg:p-[7.5%] max-[390px]:p-3">
-                <Image
-                  src="/technology.png"
-                  alt={t("imageAlt")}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-contain"
-                />
-              </div>
+              <ImageLightbox
+                thumbnails={thumbnails}
+                previews={previews}
+                alts={images.map((image) => image.alt)}
+                className="relative aspect-[700/449] w-full overflow-hidden rounded-[22px] border border-black p-5 lg:p-[7.5%] max-[390px]:p-3"
+              />
             </div>
 
             {/* 4. features */}

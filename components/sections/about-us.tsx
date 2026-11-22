@@ -1,9 +1,50 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
+import { cn } from "@/lib/utils";
+
+const thumbnailSpans = [
+  "col-span-5 row-span-3",
+  "col-span-3 row-span-2",
+  "col-span-2 row-span-2",
+] as const;
+
+const thumbnailSizes = [
+  "(min-width: 1024px) 50vw, 100vw",
+  "(min-width: 1024px) 30vw, 60vw",
+  "(min-width: 1024px) 20vw, 40vw",
+] as const;
 
 function AboutUs() {
   const t = useTranslations("AboutUs");
+  const images = [
+    { src: "/about/1.png", alt: t("imageAlts.one") },
+    { src: "/about/2.png", alt: t("imageAlts.two") },
+    { src: "/about/3.png", alt: t("imageAlts.three") },
+  ];
+  const alts = images.map((image) => image.alt);
+  const thumbnails = images.map((image, i) => (
+    <Image
+      key={image.src}
+      src={image.src}
+      alt={image.alt}
+      fill
+      sizes={thumbnailSizes[i]}
+      className="object-cover object-center"
+    />
+  ));
+  const previews = images.map((image) => (
+    <Image
+      key={image.src}
+      src={image.src}
+      alt={image.alt}
+      fill
+      sizes="100vw"
+      quality={90}
+      className="object-contain"
+    />
+  ));
 
   return (
     <Container id="about" bgColor="grey" height="auto">
@@ -21,36 +62,19 @@ function AboutUs() {
             {/* 4. image grid */}
             <div className="order-4 mt-[12px] sm:mt-[20px] md:mt-[24px] lg:mt-[40px] xl:mt-[40px] 2xl:mt-[40px]">
               <div className="grid aspect-square w-full grid-cols-5 grid-rows-5 gap-[12px] max-[390px]:gap-2">
-                <div className="relative col-span-5 row-span-3 overflow-hidden rounded-[22px]">
-                  <Image
-                    src="/about/1.png"
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover object-center"
+                {images.map((image, i) => (
+                  <ImageLightbox
+                    key={image.src}
+                    thumbnails={thumbnails}
+                    previews={previews}
+                    alts={alts}
+                    index={i}
+                    className={cn(
+                      "relative overflow-hidden rounded-[22px]",
+                      thumbnailSpans[i],
+                    )}
                   />
-                </div>
-                <div className="relative col-span-3 row-span-2 overflow-hidden rounded-[22px]">
-                  <Image
-                    src="/about/2.png"
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    sizes="(min-width: 1024px) 30vw, 60vw"
-                    className="object-cover object-center"
-                  />
-                </div>
-                <div className="relative col-span-2 row-span-2 overflow-hidden rounded-[22px]">
-                  <Image
-                    src="/about/3.png"
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    sizes="(min-width: 1024px) 20vw, 40vw"
-                    className="object-cover object-center"
-                  />
-                </div>
+                ))}
               </div>
             </div>
           </div>
