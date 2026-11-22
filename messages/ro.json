@@ -244,6 +244,8 @@
       "namePlaceholder": "Numele dumneavoastră",
       "phoneLabel": "Telefon *",
       "phonePlaceholder": "+373 79 717 214",
+      "emailLabel": "E-mail *",
+      "emailPlaceholder": "example@example.com",
       "cityLabel": "Localitate",
       "cityDefault": "Chisinau",
       "cityOptions": ["Chisinau", "Bălți", "Bender", "Comrat", "Tiraspol"],
@@ -265,7 +267,7 @@
         "Proiectare și montaj"
       ],
       "submit": "Trimite",
-      "success": "Vă mulțumim! Vă vom contacta în 60 de minute.",
+      "success": "Vă mulțumim! Verificați-vă inboxul pentru e-mailul de confirmare — vă vom contacta în 60 de minute.",
       "sending": "Se trimite…",
       "error": "Nu am putut trimite. Vă rugăm să încercați din nou sau să ne sunați."
     },
@@ -311,10 +313,10 @@
       "namePlaceholder": "Numele dumneavoastră",
       "phoneLabel": "Telefon *",
       "phonePlaceholder": "+373 79 717 214",
-      "emailLabel": "E-mail",
-      "emailPlaceholder": "contact@ventprime.md",
+      "emailLabel": "E-mail *",
+      "emailPlaceholder": "example@example.com",
       "submit": "Trimite",
-      "success": "Mulțumim! Vă vom contacta.",
+      "success": "Mulțumim! Verificați-vă inboxul pentru e-mailul de confirmare — vă vom contacta.",
       "sending": "Se trimite…",
       "error": "Nu am putut trimite. Vă rugăm să încercați din nou sau să ne sunați."
     }

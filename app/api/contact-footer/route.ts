@@ -4,7 +4,7 @@ import { handleContactRequest } from "@/lib/contact";
 export function POST(request: Request) {
   return handleContactRequest(request, {
     source: "footer-form",
-    subject: (name) => `New footer request — ${name}`,
-    extraFields: (payload) => [["Email", payload.email]],
+    kind: "footer",
+    extraFields: () => [],
   });
 }

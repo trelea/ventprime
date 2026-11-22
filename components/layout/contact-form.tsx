@@ -98,6 +98,7 @@ function ContactForm() {
           type="email"
           label={t("emailLabel")}
           placeholder={t("emailPlaceholder")}
+          required
         />
       </div>
 

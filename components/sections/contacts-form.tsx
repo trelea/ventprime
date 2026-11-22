@@ -172,6 +172,7 @@ function ContactsForm() {
             body: JSON.stringify({
               name: data.get("contacts-name"),
               phone: data.get("contacts-phone"),
+              email: data.get("contacts-email"),
               city,
               problem: problem ? [problem] : [],
               service: service ? [service] : [],
@@ -208,6 +209,13 @@ function ContactsForm() {
             type="tel"
             label={t("form.phoneLabel")}
             placeholder={t("form.phonePlaceholder")}
+            required
+          />
+          <Field
+            id="contacts-email"
+            type="email"
+            label={t("form.emailLabel")}
+            placeholder={t("form.emailPlaceholder")}
             required
           />
           <SelectField

@@ -4,11 +4,11 @@ import { handleContactRequest } from "@/lib/contact";
 export function POST(request: Request) {
   return handleContactRequest(request, {
     source: "contacts-page",
-    subject: (name) => `New consultation request — ${name}`,
+    kind: "contacts",
     extraFields: (payload) => [
-      ["City", payload.city],
-      ["Problem(s)", payload.problem],
-      ["Service(s)", payload.service],
+      ["city", payload.city],
+      ["problems", payload.problem],
+      ["services", payload.service],
     ],
   });
 }

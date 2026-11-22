@@ -244,6 +244,8 @@
       "namePlaceholder": "Ваше имя",
       "phoneLabel": "Телефон *",
       "phonePlaceholder": "+373 79 717 214",
+      "emailLabel": "E-mail *",
+      "emailPlaceholder": "example@example.com",
       "cityLabel": "Населенный пункт",
       "cityDefault": "Chisinau",
       "cityOptions": ["Chisinau", "Bălți", "Bender", "Comrat", "Tiraspol"],
@@ -265,7 +267,7 @@
         "Проектирование и монтаж"
       ],
       "submit": "Отправить",
-      "success": "Спасибо! Мы свяжемся с вами в течение 60 минут.",
+      "success": "Спасибо! Проверьте почту — мы отправили подтверждение и свяжемся с вами в течение 60 минут.",
       "sending": "Отправка…",
       "error": "Не удалось отправить. Попробуйте ещё раз или позвоните нам."
     },
@@ -311,10 +313,10 @@
       "namePlaceholder": "Ваше имя",
       "phoneLabel": "Телефон *",
       "phonePlaceholder": "+373 79 717 214",
-      "emailLabel": "E-mail",
-      "emailPlaceholder": "contact@ventprime.md",
+      "emailLabel": "E-mail *",
+      "emailPlaceholder": "example@example.com",
       "submit": "Отправить",
-      "success": "Спасибо! Мы свяжемся с вами.",
+      "success": "Спасибо! Проверьте почту — мы отправили подтверждение и свяжемся с вами.",
       "sending": "Отправка…",
       "error": "Не удалось отправить. Попробуйте ещё раз или позвоните нам."
     }
