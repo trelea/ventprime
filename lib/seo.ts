@@ -18,10 +18,21 @@ export const site = {
   name: "VentPrime",
   phone: "+37379717214",
   email: "contact@ventprime.md",
-  street: "34 Zelinskogo St.",
-  city: "Chisinau",
+  street: "33/2 Nicolae Zelinski St.",
+  city: "Chișinău",
   country: "MD",
 } as const;
+
+/** Localized street address for structured data (the footer uses the message files). */
+const businessStreets: Record<Locale, string> = {
+  en: "33/2 Nicolae Zelinski St.",
+  ro: "Str. Nicolae Zelinski 33/2",
+  ru: "ул. Николая Зелинского, 33/2",
+};
+
+export function businessStreet(locale: Locale): string {
+  return businessStreets[locale];
+}
 
 /** Topical keywords reused by Open Graph tags and BlogPosting schema. */
 export const topicTags: Record<Locale, string[]> = {

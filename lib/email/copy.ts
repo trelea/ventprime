@@ -60,7 +60,7 @@ const en: EmailCopy = {
 
   footerForm: "Footer form",
   contactsForm: "Contacts page form",
-  address: "34 Zelinskogo St., Chisinau, Moldova",
+  address: "33/2 Nicolae Zelinski St., Chișinău, Moldova",
   site: "ventprime.md",
   copyright: "© 2026 VentPrime. All rights reserved.",
 };
@@ -93,7 +93,7 @@ const ro: EmailCopy = {
 
   footerForm: "Formularul din footer",
   contactsForm: "Formularul de pe pagina Contacte",
-  address: "Str. Zelinskogo 34, Chișinău, Moldova",
+  address: "Str. Nicolae Zelinski 33/2, Chișinău, Moldova",
   site: "ventprime.md",
   copyright: "© 2026 VentPrime. Toate drepturile rezervate.",
 };
@@ -126,7 +126,7 @@ const ru: EmailCopy = {
 
   footerForm: "Форма в подвале сайта",
   contactsForm: "Форма на странице «Контакты»",
-  address: "ул. Зелинского 34, Кишинев, Молдова",
+  address: "ул. Николая Зелинского, 33/2, Кишинёв, Молдова",
   site: "ventprime.md",
   copyright: "© 2026 VentPrime. Все права защищены.",
 };

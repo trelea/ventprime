@@ -1,8 +1,9 @@
-import { createBrandImage } from "@/components/seo/brand-og-image";
+import { createPhotoImage } from "@/components/seo/photo-og-image";
+import { heroPhoto } from "@/components/seo/og-image-shared";
 
 export {
   alt,
   contentType,
   generateStaticParams,
 } from "@/components/seo/og-image-shared";
-export default createBrandImage();
+export default createPhotoImage(heroPhoto);

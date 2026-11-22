@@ -14,11 +14,13 @@ const navItems = [
   { key: "contacts", href: { pathname: "/", hash: "#contacts" } },
 ] as const;
 
-// Until real profiles exist, the social icons navigate to relevant sections.
+const GOOGLE_BUSINESS_URL = "https://share.google/AF6c7f51gI1Ey0OyM";
+const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/xzNa6fSxmFZTaM9TA";
+
 const socials = [
-  { label: "Facebook", x: "0", width: "24px", hash: "#reviews" },
-  { label: "Instagram", x: "37px", width: "26px", hash: "#about" },
-  { label: "YouTube", x: "75px", width: "30px", hash: "#technology" },
+  { key: "facebook", x: "0", width: "24px" },
+  { key: "instagram", x: "37px", width: "26px" },
+  { key: "youtube", x: "75px", width: "30px" },
 ] as const;
 
 function Contacts({ className }: { className?: string }) {
@@ -38,9 +40,16 @@ function Contacts({ className }: { className?: string }) {
             className="mt-[2px]"
           />
           <address className="not-italic align-middle">
-            {t("city")}
-            <br />
-            {t("street")}
+            <a
+              href={GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              {t("city")}
+              <br />
+              {t("street")}
+            </a>
           </address>
         </li>
         <li className="flex items-center gap-[16px]">
@@ -91,21 +100,23 @@ function Socials({ className }: { className?: string }) {
           height={23.9095}
         />
         {socials.map((social) => (
-          <Link
-            key={social.label}
-            href={{ pathname: "/", hash: social.hash }}
-            scroll={false}
-            aria-label={social.label}
+          <a
+            key={social.key}
+            href={GOOGLE_BUSINESS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="VentPrime on Google"
             className="absolute inset-y-0"
             style={{ left: social.x, width: social.width }}
           />
         ))}
       </li>
       <li>
-        <Link
-          href={{ pathname: "/", hash: "#services" }}
-          scroll={false}
-          aria-label="TikTok"
+        <a
+          href={GOOGLE_BUSINESS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="VentPrime on Google"
           className="block"
         >
           <Image
@@ -114,7 +125,7 @@ function Socials({ className }: { className?: string }) {
             width={20.856}
             height={24}
           />
-        </Link>
+        </a>
       </li>
     </ul>
   );

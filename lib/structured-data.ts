@@ -3,6 +3,7 @@ import type { BlogPost, Locale } from "@/lib/blogs";
 import { articleText } from "@/lib/blog-text";
 import {
   absoluteLocalizedPath,
+  businessStreet,
   isoDate,
   site,
   siteUrl,
@@ -70,7 +71,7 @@ export function siteJsonLd(
         priceRange: "$$",
         address: {
           "@type": "PostalAddress",
-          streetAddress: site.street,
+          streetAddress: businessStreet(locale),
           addressLocality: site.city,
           addressCountry: site.country,
         },

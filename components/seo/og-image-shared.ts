@@ -17,6 +17,16 @@ export function resolveLocale(locale: string) {
     : routing.defaultLocale;
 }
 
+/** Real work photo used by the blog index share cards. */
+export const aboutPhoto = readFile(
+  join(process.cwd(), "public/about/1.png"),
+).then((data) => `data:image/png;base64,${data.toString("base64")}`);
+
+/** Small 1200x630 crop of the hero photo, used by the homepage share cards. */
+export const heroPhoto = readFile(
+  join(process.cwd(), "public/hero-og.png"),
+).then((data) => `data:image/png;base64,${data.toString("base64")}`);
+
 const fontDir = join(
   process.cwd(),
   "public/assets/Gilroy_font/Gilroy_font",

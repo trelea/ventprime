@@ -39,7 +39,7 @@ type FaqAccordionProps = {
 
 function FaqAccordion({ items }: FaqAccordionProps) {
   return (
-    <Accordion className="w-full">
+    <Accordion className="w-full" keepMounted>
       {items.map((item, index) => {
         const Icon = icons[index] ?? Sparkles;
 
