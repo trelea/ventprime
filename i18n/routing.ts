@@ -4,8 +4,8 @@ export const routing = defineRouting({
   // A list of all locales that are supported
   locales: ["ro", "ru", "en"],
 
-  // Used when no locale matches
-  defaultLocale: "en",
+  // Fallback when the browser language can't be matched: Romanian (primary market).
+  defaultLocale: "ro",
 
   // Resolve the locale from an explicit URL prefix first (so links and the
   // locale switcher always win), then from the cookie, then from the browser's

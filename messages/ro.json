@@ -325,5 +325,11 @@
     "close": "Închide previzualizarea",
     "previous": "Imaginea anterioară",
     "next": "Imaginea următoare"
+  },
+  "NotFound": {
+    "title": "404 — Pagina nu a fost găsită",
+    "description": "Pagina pe care o căutați nu există sau a fost mutată.",
+    "backHome": "Înapoi la pagina principală",
+    "readBlog": "Citiți blogul"
   }
 }
