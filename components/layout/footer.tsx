@@ -190,7 +190,7 @@ function Footer() {
             </p>
           </div>
 
-          <div className="order-1 lg:order-none">
+          <div className="order-1 hidden lg:order-none lg:block">
             <ContactForm />
           </div>
         </div>
