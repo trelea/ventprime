@@ -13,6 +13,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { DevalonCredit } from "@/components/seo/devalon-credit";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -64,6 +65,7 @@ export default async function BlogsPage({ params }: Props) {
         ])}
       />
       <JsonLd value={blogIndexJsonLd(locale, blogPosts, t("blog"))} />
+      <DevalonCredit locale={locale} path="/blogs" />
       <h1 className="sr-only">{t("blog")}</h1>
       <Container bgColor="white" height="auto">
         <div className="pt-[calc(var(--navbar-height,70px)_+_20px)] pb-[20px] sm:pt-[calc(var(--navbar-height,70px)_+_24px)] sm:pb-[24px] md:pt-[calc(var(--navbar-height,70px)_+_28px)] md:pb-[30px] lg:pt-[calc(var(--navbar-height,70px)_+_30px)] max-[390px]:pt-[84px] max-[390px]:pb-4">

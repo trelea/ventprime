@@ -12,6 +12,7 @@ import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { Testimonials } from "@/components/sections/testimonials";
 import { FAQ } from "@/components/sections/faq";
 import { Contacts } from "@/components/sections/contacts";
+import { DevalonCredit } from "@/components/seo/devalon-credit";
 import { JsonLd } from "@/components/seo/json-ld";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
@@ -57,6 +58,7 @@ export default async function Home({ params }: Props) {
 
   return (
     <>
+      <DevalonCredit locale={locale} path="/" />
       <JsonLd value={faqJsonLd(locale, faqItems)} />
       <Hero />
       <Benefits />
