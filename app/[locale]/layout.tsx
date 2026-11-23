@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, IBM_Plex_Sans, Inter, Manrope } from "next/font/google";
 import localFont from "next/font/local";
+import { DevalonSignal } from "@devalon.dev/credits/signals";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
@@ -10,6 +11,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { JsonLd } from "@/components/seo/json-ld";
+import { devalonPixelId } from "@/lib/devalon";
 import { pageMetadata, site, siteUrl } from "@/lib/seo";
 import { siteJsonLd } from "@/lib/structured-data";
 import "lenis/dist/lenis.css";
@@ -129,6 +131,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${geistSans.variable} ${plex.variable} ${inter.variable} ${manrope.variable} ${gilroy.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <DevalonSignal pixelId={devalonPixelId} />
         <JsonLd value={siteJsonLd(locale, t("homeDescription"), services)} />
         <NextIntlClientProvider>
           <SmoothScroll>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { signal } from "@devalon.dev/credits/signals";
 import { cn } from "cn";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -87,7 +88,13 @@ function Navbar() {
             )}
           >
             <div data-slot="navbar-logo" className="pointer-events-auto lg:col-start-1">
-              <Link href="/" aria-label="VentPrime">
+              <Link
+                href="/"
+                aria-label="VentPrime"
+                onClick={() =>
+                  signal("NavClick", { target: "logo" }, { debug: true })
+                }
+              >
                 <Image
                   src="/logo.svg"
                   alt="VentPrime"
@@ -109,6 +116,9 @@ function Navbar() {
                     <Link
                       href={item.href}
                       scroll={typeof item.href === "object" ? false : undefined}
+                      onClick={() =>
+                        signal("NavClick", { target: item.key }, { debug: true })
+                      }
                       className="relative whitespace-nowrap transition-colors duration-300 ease-out hover:text-primary motion-reduce:transition-none after:absolute after:-bottom-[3px] after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-primary after:content-[''] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 motion-reduce:after:transition-none"
                     >
                       {t(item.key)}
