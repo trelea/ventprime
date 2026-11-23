@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DevalonJsonLd } from "@devalon.dev/credits/next";
 import { Geist, IBM_Plex_Sans, Inter, Manrope } from "next/font/google";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
@@ -10,7 +11,8 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { JsonLd } from "@/components/seo/json-ld";
-import { pageMetadata, site, siteUrl } from "@/lib/seo";
+import { devalonCredit } from "@/lib/devalon";
+import { absoluteLocalizedPath, pageMetadata, site, siteUrl } from "@/lib/seo";
 import { siteJsonLd } from "@/lib/structured-data";
 import "lenis/dist/lenis.css";
 import "./globals.css";
@@ -130,11 +132,19 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body className="min-h-full flex flex-col">
         <JsonLd value={siteJsonLd(locale, t("homeDescription"), services)} />
+        <DevalonJsonLd
+          site_url={devalonCredit.site_url}
+          site_name={devalonCredit.site_name}
+          in_language={locale}
+          page_url={absoluteLocalizedPath("/", locale)}
+          services={devalonCredit.services}
+          contributions={devalonCredit.contributions}
+        />
         <NextIntlClientProvider>
           <SmoothScroll>
             <Navbar />
             {children}
-            <Footer />
+            <Footer locale={locale} />
           </SmoothScroll>
         </NextIntlClientProvider>
       </body>

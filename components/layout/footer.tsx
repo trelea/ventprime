@@ -1,7 +1,10 @@
+import { DevalonBacklink } from "@devalon.dev/credits/next";
 import Image from "next/image";
 import { cn } from "cn";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/lib/blogs";
+import { devalonCredit } from "@/lib/devalon";
 import { Container } from "./container";
 import { ContactForm } from "./contact-form";
 
@@ -153,7 +156,7 @@ function FooterNav({ className }: { className?: string }) {
   );
 }
 
-function Footer() {
+function Footer({ locale }: { locale: Locale }) {
   const t = useTranslations("Footer");
 
   return (
@@ -188,6 +191,13 @@ function Footer() {
             <p className="order-5 mt-[20px] font-gilroy text-[15px] font-normal leading-[160%] tracking-[0.02em] text-white/80 lg:order-none lg:mt-auto lg:text-[18px] lg:leading-[175%]">
               {t("copyright")}
             </p>
+
+            <DevalonBacklink
+              locale={locale}
+              site_url={devalonCredit.site_url}
+              utm
+              className="order-6 mt-[10px] block font-gilroy text-[13px] leading-[160%] text-white/70 [&_a]:text-white [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-primary lg:order-none lg:mt-[6px] lg:text-[14px]"
+            />
           </div>
 
           <div className="order-1 hidden lg:order-none lg:block">

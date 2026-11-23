@@ -1,8 +1,10 @@
+import { mergeDevalonLlmsTxt } from "@devalon.dev/credits/next";
 import en from "../../messages/en.json";
 import ro from "../../messages/ro.json";
 import ru from "../../messages/ru.json";
 import { routing } from "@/i18n/routing";
 import { blogPosts } from "@/lib/blogs";
+import { devalonCredit } from "@/lib/devalon";
 import { absoluteLocalizedPath, site, siteUrl } from "@/lib/seo";
 
 const messages = { en, ro, ru };
@@ -48,7 +50,12 @@ export function GET() {
   lines.push(`- [llms-full.txt](${siteUrl}/llms-full.txt)`);
   lines.push("");
 
-  return new Response(lines.join("\n"), {
+  const content = mergeDevalonLlmsTxt(lines.join("\n"), {
+    ...devalonCredit,
+    description: messages.en.Seo.homeDescription,
+  });
+
+  return new Response(content, {
     headers: { "Content-Type": "text/markdown; charset=utf-8" },
   });
 }

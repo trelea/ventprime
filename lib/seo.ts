@@ -5,23 +5,12 @@ import ru from "../messages/ru.json";
 import { getPathname } from "@/i18n/navigation";
 import { routing, type LocalizedPath } from "@/i18n/routing";
 import type { BlogPost, Locale } from "@/lib/blogs";
+import { site, siteUrl } from "@/lib/site";
 
 const messages = { en, ro, ru };
 
-/** Absolute base URL, without a trailing slash. */
-export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ventprime.md"
-).replace(/\/$/, "");
-
-/** Brand constants shared by metadata and structured data. */
-export const site = {
-  name: "VentPrime",
-  phone: "+37379717214",
-  email: "contact@ventprime.md",
-  street: "33/2 Nicolae Zelinski St.",
-  city: "Chișinău",
-  country: "MD",
-} as const;
+// Re-exported so existing `@/lib/seo` imports keep working.
+export { site, siteUrl };
 
 /** Localized street address for structured data (the footer uses the message files). */
 const businessStreets: Record<Locale, string> = {
