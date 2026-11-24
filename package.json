@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
-    "@devalon.dev/credits": "^1.0.2",
+    "@devalon.dev/credits": "^1.0.4",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.2",
     "embla-carousel-autoplay": "^8.6.0",

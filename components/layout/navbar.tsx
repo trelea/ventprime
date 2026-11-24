@@ -91,9 +91,7 @@ function Navbar() {
               <Link
                 href="/"
                 aria-label="VentPrime"
-                onClick={() =>
-                  signal("NavClick", { target: "logo" }, { debug: true })
-                }
+                onClick={() => signal("NavClick", { target: "logo" })}
               >
                 <Image
                   src="/logo.svg"
@@ -117,7 +115,7 @@ function Navbar() {
                       href={item.href}
                       scroll={typeof item.href === "object" ? false : undefined}
                       onClick={() =>
-                        signal("NavClick", { target: item.key }, { debug: true })
+                        signal("NavClick", { target: item.key })
                       }
                       className="relative whitespace-nowrap transition-colors duration-300 ease-out hover:text-primary motion-reduce:transition-none after:absolute after:-bottom-[3px] after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-primary after:content-[''] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 motion-reduce:after:transition-none"
                     >

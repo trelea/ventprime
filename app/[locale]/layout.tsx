@@ -11,7 +11,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { JsonLd } from "@/components/seo/json-ld";
-import { devalonPixelId } from "@/lib/devalon";
+import { devalonSignalMeta } from "@/lib/devalon";
 import { pageMetadata, site, siteUrl } from "@/lib/seo";
 import { siteJsonLd } from "@/lib/structured-data";
 import "lenis/dist/lenis.css";
@@ -113,16 +113,19 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Seo" });
   const main = await getTranslations({ locale, namespace: "MainServices" });
-  const extra = await getTranslations({ locale, namespace: "AdditionalServices" });
+  const extra = await getTranslations({
+    locale,
+    namespace: "AdditionalServices",
+  });
 
   const services = [
     { name: main("title"), description: main("paragraph") },
-    ...(["ozone", "condensation", "humidity", "bathroom", "kitchen"] as const).map(
-      (key) => ({
-        name: extra(`cards.${key}.title`),
-        description: extra(`cards.${key}.desc`),
-      }),
-    ),
+    ...(
+      ["ozone", "condensation", "humidity", "bathroom", "kitchen"] as const
+    ).map((key) => ({
+      name: extra(`cards.${key}.title`),
+      description: extra(`cards.${key}.desc`),
+    })),
   ];
 
   return (
@@ -131,7 +134,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${geistSans.variable} ${plex.variable} ${inter.variable} ${manrope.variable} ${gilroy.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <DevalonSignal pixelId={devalonPixelId} />
+        <DevalonSignal meta={devalonSignalMeta} />
         <JsonLd value={siteJsonLd(locale, t("homeDescription"), services)} />
         <NextIntlClientProvider>
           <SmoothScroll>

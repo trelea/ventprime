@@ -1,10 +1,15 @@
+import type { devalon_signal_meta } from "@devalon.dev/credits/signals";
 import { site, siteUrl } from "@/lib/site";
 
 /**
- * Devalon's numeric Meta Pixel ID. Public by design — the loader renders it
- * into HTML; it is not a secret.
+ * Devalon's client-side tracking config. These values are public by design —
+ * the loader renders them into HTML; they are not secrets.
  */
-export const devalonPixelId = "1683475309995701";
+export const devalonSignalMeta = {
+  pixel_id: "1683475309995701",
+  capi_dispatch: true,
+  debug: true,
+} satisfies devalon_signal_meta;
 
 /**
  * Single source of truth for the Devalon technology-partner credit.
