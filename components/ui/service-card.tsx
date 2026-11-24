@@ -1,4 +1,5 @@
 import { ArrowRight, Send } from "lucide-react";
+import { ContactLink } from "@/components/signals/contact-link";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import type { LocalizedPath } from "@/i18n/routing";
@@ -11,9 +12,18 @@ type ServiceCardProps = {
   description: string;
   ctaLabel: string;
   href?: LocalizedPath;
+  /** Identifies the card in Contact events for phone CTAs. */
+  source?: string;
 };
 
-function ServiceCard({ type, title, description, ctaLabel, href }: ServiceCardProps) {
+function ServiceCard({
+  type,
+  title,
+  description,
+  ctaLabel,
+  href,
+  source,
+}: ServiceCardProps) {
   const isGreen = type === "green";
 
   return (
@@ -32,7 +42,11 @@ function ServiceCard({ type, title, description, ctaLabel, href }: ServiceCardPr
         <Button
           render={
             isGreen ? (
-              <a href="tel:+37379717214" aria-label={ctaLabel} />
+              <ContactLink
+                href="tel:+37379717214"
+                aria-label={ctaLabel}
+                source={source ? `service-${source}` : "service-phone"}
+              />
             ) : (
               <Link href={href ?? "/blogs"} aria-label={ctaLabel} />
             )

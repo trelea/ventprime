@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { signal } from "@devalon.dev/credits/signals";
 import { cn } from "cn";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { TrackedLink } from "@/components/signals/tracked-link";
 import { Container } from "./container";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MobileNav } from "./mobile-nav";
@@ -88,11 +88,7 @@ function Navbar() {
             )}
           >
             <div data-slot="navbar-logo" className="pointer-events-auto lg:col-start-1">
-              <Link
-                href="/"
-                aria-label="VentPrime"
-                onClick={() => signal("NavClick", { target: "logo" })}
-              >
+              <Link href="/" aria-label="VentPrime">
                 <Image
                   src="/logo.svg"
                   alt="VentPrime"
@@ -111,16 +107,15 @@ function Navbar() {
               <ul className="flex items-center gap-10 font-ui text-[15px] leading-[22.5px] tracking-[-0.15px] text-foreground">
                 {navItems.map((item) => (
                   <li key={item.key}>
-                    <Link
+                    <TrackedLink
                       href={item.href}
+                      eventName="NavClick"
+                      eventParams={{ nav_location: "header", item: item.key }}
                       scroll={typeof item.href === "object" ? false : undefined}
-                      onClick={() =>
-                        signal("NavClick", { target: item.key })
-                      }
                       className="relative whitespace-nowrap transition-colors duration-300 ease-out hover:text-primary motion-reduce:transition-none after:absolute after:-bottom-[3px] after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-primary after:content-[''] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 motion-reduce:after:transition-none"
                     >
                       {t(item.key)}
-                    </Link>
+                    </TrackedLink>
                   </li>
                 ))}
               </ul>

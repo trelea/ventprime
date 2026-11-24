@@ -10,6 +10,7 @@ import { BlogTable } from "@/components/ui/blog-table";
 import { BlogTextBlock } from "@/components/ui/blog-text-block";
 import { RelatedArticles } from "@/components/ui/related-articles";
 import { ArticleSeo } from "@/components/seo/article-seo";
+import { ArticleView } from "@/components/signals/article-view";
 import { DevalonCredit } from "@/components/seo/devalon-credit";
 import { routing } from "@/i18n/routing";
 import { getPostByPath } from "@/lib/blogs";
@@ -53,6 +54,7 @@ export default async function WhyWindowsFogUpInWinter({ params }: Props) {
   return (
     <>
       <ArticleSeo locale={locale} post={post} blogLabel={t("blog")} />
+      <ArticleView path={articlePath} title={content.title} />
       <DevalonCredit locale={locale} path={articlePath} />
       <Container bgColor="white" height="auto">
         <div className="pt-[calc(var(--navbar-height,70px)_+_20px)] pb-[20px] sm:pt-[calc(var(--navbar-height,70px)_+_24px)] sm:pb-[24px] md:pt-[calc(var(--navbar-height,70px)_+_28px)] md:pb-[30px] lg:pt-[calc(var(--navbar-height,70px)_+_30px)] max-[390px]:pt-[84px] max-[390px]:pb-4">

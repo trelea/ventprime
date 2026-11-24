@@ -7,8 +7,10 @@ import { site, siteUrl } from "@/lib/site";
  */
 export const devalonSignalMeta = {
   pixel_id: "1683475309995701",
-  capi_dispatch: true,
   debug: true,
+  // Explicit signal() calls are the source of truth; avoid Meta's automatic
+  // button/metadata collection so events are not counted twice.
+  autoConfig: false,
 } satisfies devalon_signal_meta;
 
 /**

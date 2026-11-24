@@ -2,6 +2,7 @@ import Image from "next/image";
 import { NotebookPen } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
+import { ContactLink } from "@/components/signals/contact-link";
 import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
 import { Link } from "@/i18n/navigation";
@@ -84,7 +85,11 @@ function MainServices() {
             <div className="order-6 mt-5 grid w-full grid-cols-1 gap-2 sm:mt-[60px] sm:grid-cols-[2fr_3fr] sm:gap-[12px] lg:mt-[110px]">
               <Button
                 render={
-                  <a href="tel:+37379717214" aria-label={t("cta.call")} />
+                  <ContactLink
+                    href="tel:+37379717214"
+                    aria-label={t("cta.call")}
+                    source="main-services-phone"
+                  />
                 }
                 nativeButton={false}
                 className="h-14 w-full gap-3 rounded-[14px] bg-[#00B5A4] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#009f92] sm:h-auto sm:rounded-[14.4px] sm:px-5 sm:py-3 sm:text-[19.29px] sm:font-bold max-[390px]:h-12 max-[390px]:gap-2 max-[390px]:rounded-[12px] max-[390px]:px-4 max-[390px]:py-2 max-[390px]:text-[13px] max-[390px]:leading-7 max-[390px]:whitespace-normal"

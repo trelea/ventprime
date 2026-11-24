@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { ContactLink } from "@/components/signals/contact-link";
+import { TrackedLink } from "@/components/signals/tracked-link";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -85,8 +87,10 @@ function MobileNav() {
                 <SheetClose
                   nativeButton={false}
                   render={
-                    <Link
+                    <TrackedLink
                       href={item.href}
+                      eventName="NavClick"
+                      eventParams={{ nav_location: "mobile", item: item.key }}
                       scroll={typeof item.href === "object" ? false : undefined}
                       className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
                     />
@@ -105,14 +109,15 @@ function MobileNav() {
         </nav>
 
         <SheetFooter className="mt-0 gap-3 border-t border-border px-5 py-5">
-          <PhoneCta />
-          <a
+          <PhoneCta source="mobile-phone" />
+          <ContactLink
             href={`mailto:${footerT("email")}`}
+            source="mobile-email"
             className="inline-flex items-center justify-center gap-2 font-ui text-sm text-slate hover:text-foreground"
           >
             <Mail className="size-4 shrink-0" />
             {footerT("email")}
-          </a>
+          </ContactLink>
         </SheetFooter>
       </SheetContent>
     </Sheet>

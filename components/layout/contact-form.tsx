@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
+import { hash_meta_user_data } from "@devalon.dev/credits/signals";
+import { useSignals } from "@/lib/signals/events";
 import { Button } from "@/components/ui/button";
 
 function FormField({
@@ -44,6 +46,7 @@ type SubmitStatus = "idle" | "sending" | "success" | "error";
 function ContactForm() {
   const t = useTranslations("Footer.form");
   const locale = useLocale();
+  const { lead } = useSignals();
   const [status, setStatus] = useState<SubmitStatus>("idle");
 
   return (
@@ -67,6 +70,15 @@ function ContactForm() {
             }),
           });
           if (!response.ok) throw new Error("Request failed");
+          const email = String(data.get("email") ?? "");
+          const phone = String(data.get("phone") ?? "");
+          // Hash before it leaves the browser; never fail the conversion if
+          // Web Crypto is unavailable.
+          const userData = await hash_meta_user_data({
+            ...(email ? { email } : {}),
+            ...(phone ? { phone } : {}),
+          }).catch(() => undefined);
+          lead("footer-form", userData);
           form.reset();
           setStatus("success");
         } catch {

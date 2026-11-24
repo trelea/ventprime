@@ -2,8 +2,9 @@ import Image from "next/image";
 import { NotebookPen } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
+import { ContactLink } from "@/components/signals/contact-link";
+import { TrackedLink } from "@/components/signals/tracked-link";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
 
 const features = [
   {
@@ -100,7 +101,11 @@ function Hero() {
           <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:mt-[70px] sm:grid-cols-[2fr_3fr] sm:gap-3 max-[390px]:mt-6 max-[390px]:gap-2">
             <Button
               render={
-                <a href="tel:+37379717214" aria-label={t("cta.call")} />
+                <ContactLink
+                  href="tel:+37379717214"
+                  aria-label={t("cta.call")}
+                  source="hero-phone"
+                />
               }
               nativeButton={false}
               className="h-14 w-full gap-3 rounded-[14px] bg-[#00B5A4] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#009f92] sm:h-auto sm:rounded-[14.4px] sm:px-5 sm:py-3 sm:text-[19.29px] sm:font-bold max-[390px]:h-12 max-[390px]:gap-2 max-[390px]:rounded-[12px] max-[390px]:px-4 max-[390px]:py-2 max-[390px]:text-[13px] max-[390px]:leading-7 max-[390px]:whitespace-normal"
@@ -117,7 +122,14 @@ function Hero() {
             </Button>
 
             <Button
-              render={<Link href={{ pathname: "/", hash: "#contacts" }} scroll={false} />}
+              render={
+                <TrackedLink
+                  href={{ pathname: "/", hash: "#contacts" }}
+                  eventName="HeroCtaClick"
+                  eventParams={{ button_id: "hero-consultation", section: "hero" }}
+                  scroll={false}
+                />
+              }
               nativeButton={false}
               className="h-14 w-full gap-3 rounded-[14px] bg-[#191919] px-[50px] py-[10px] font-gilroy text-[14px] leading-[28.93px] font-semibold text-white text-center hover:bg-[#303030] sm:h-auto sm:px-5 sm:py-3 sm:text-[18px] sm:leading-7 sm:font-bold max-[390px]:h-12 max-[390px]:gap-2 max-[390px]:px-4 max-[390px]:py-2 max-[390px]:text-[13px] max-[390px]:leading-6 max-[390px]:whitespace-normal"
             >

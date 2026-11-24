@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Phone, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
+import { ContactLink } from "@/components/signals/contact-link";
 import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
 import { Link } from "@/i18n/navigation";
@@ -78,7 +79,11 @@ function Technology() {
             <div className="order-6 mt-5 grid w-full grid-cols-1 gap-2 sm:mt-[60px] sm:grid-cols-[3fr_2fr] sm:gap-[12px] lg:mt-[90px] max-[390px]:mt-6 max-[390px]:gap-2">
               <Button
                 render={
-                  <a href="tel:+37379717214" aria-label={t("cta.consultation")} />
+                  <ContactLink
+                    href="tel:+37379717214"
+                    aria-label={t("cta.consultation")}
+                    source="technology-phone"
+                  />
                 }
                 nativeButton={false}
                 className="h-auto gap-2 rounded-[14.4px] bg-[#00B5A4] p-3 font-gilroy text-[14px] font-semibold leading-[28px] tracking-normal text-white text-center hover:bg-[#009f92] lg:text-[19.29px] lg:font-bold lg:leading-[28.93px] max-[390px]:gap-1.5 max-[390px]:p-2.5 max-[390px]:text-[13px] max-[390px]:leading-6 max-[390px]:whitespace-normal"

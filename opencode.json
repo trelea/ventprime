@@ -11,6 +11,14 @@
         "type": "remote",
         "url": "https://mcp.figma.com/mcp"
       }
+    },
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "environment": {
+        "CONTEXT7_API_KEY": "ctx7sk-d5bd64bd-8bc2-482b-853d-c4f11ba40b06"
+      },
+      "enabled": true
     }
   }
 }

@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/lib/blogs";
 import { devalonCredit } from "@/lib/devalon";
+import { ContactLink } from "@/components/signals/contact-link";
+import { TrackedLink } from "@/components/signals/tracked-link";
 import { Container } from "./container";
 import { ContactForm } from "./contact-form";
 
@@ -57,14 +59,15 @@ function Contacts({ className }: { className?: string }) {
         </li>
         <li className="flex items-center gap-[16px]">
           <Image src="/icons/footer/mail.svg" alt="" width={17} height={17} />
-          <a
+          <ContactLink
             href={`mailto:${email}`}
             target="_blank"
             rel="noreferrer"
             className="align-middle hover:underline"
+            source="footer-email"
           >
             {email}
-          </a>
+          </ContactLink>
         </li>
         <li className="flex items-center gap-[17px]">
           <span className="relative flex size-4 shrink-0 items-center justify-center">
@@ -76,12 +79,13 @@ function Contacts({ className }: { className?: string }) {
               className="rotate-[-135deg]"
             />
           </span>
-          <a
+          <ContactLink
             href={`tel:${phone.replace(/[^+\d]/g, "")}`}
             className="align-middle hover:underline"
+            source="footer-phone"
           >
             {phone}
-          </a>
+          </ContactLink>
         </li>
       </ul>
       <Socials className="mt-[50px] hidden lg:flex" />
@@ -142,13 +146,15 @@ function FooterNav({ className }: { className?: string }) {
       <ul className="flex flex-col items-start gap-[10px] font-ui text-[16px] font-normal leading-[22px] tracking-[-0.15px] text-white lg:gap-[12px] lg:text-[16px] lg:leading-[22.5px]">
         {navItems.map((item) => (
           <li key={item.key}>
-            <Link
+            <TrackedLink
               href={item.href}
+              eventName="NavClick"
+              eventParams={{ nav_location: "footer", item: item.key }}
               scroll={typeof item.href === "object" ? false : undefined}
               className="align-middle hover:text-primary"
             >
               {t(item.key)}
-            </Link>
+            </TrackedLink>
           </li>
         ))}
       </ul>

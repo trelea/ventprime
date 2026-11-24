@@ -4,6 +4,8 @@ import { useState, type ReactNode } from "react";
 import { cn } from "cn";
 import { Info, Send } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { hash_meta_user_data } from "@devalon.dev/credits/signals";
+import { useSignals } from "@/lib/signals/events";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -147,6 +149,7 @@ type SubmitStatus = "idle" | "sending" | "success" | "error";
 function ContactsForm() {
   const t = useTranslations("Contacts");
   const locale = useLocale();
+  const { lead } = useSignals();
 
   const [city, setCity] = useState("Chisinau");
   const [problem, setProblem] = useState("");
@@ -180,6 +183,13 @@ function ContactsForm() {
             }),
           });
           if (!response.ok) throw new Error("Request failed");
+          const email = String(data.get("contacts-email") ?? "");
+          const phone = String(data.get("contacts-phone") ?? "");
+          const userData = await hash_meta_user_data({
+            ...(email ? { email } : {}),
+            ...(phone ? { phone } : {}),
+          }).catch(() => undefined);
+          lead("contacts-page", userData);
           form.reset();
           setCity("Chisinau");
           setProblem("");
