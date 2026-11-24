@@ -1,16 +1,18 @@
 # Signals event map
 
 All tracking goes through `signal()` from `@devalon.dev/credits/signals`
-(`@devalon.dev/credits@1.1.1`). There is no Graph API code in this repository:
-the package forwards every event to `signal.devalon.dev/{pixel_id}/signals`
-with `navigator.sendBeacon`, using the same `event_id` for the browser Pixel
-and the server-side (CAPI) copy.
+(`@devalon.dev/credits@1.1.3`). There is no Graph API code in this repository:
+the package forwards every event to `signal.devalon.dev/{pixel_id}/signals` via
+`fetch(..., keepalive: true)`, with the JWT sent as an `Authorization: Bearer …`
+request credential (since 1.1.3, not in the event body), using the same
+`event_id` for the browser Pixel and the server-side (CAPI) copy.
 
  Loader: `<DevalonSignal meta={devalonSignalMeta} />` in `app/[locale]/layout.tsx`.
  Config: `lib/devalon.ts` — pixel ID, `debug: true`, `autoConfig: false`.
  Helpers: `lib/signals/events.ts` (`useSignals()` adds the active `locale` to
- every payload; `locale` is UI-only and is not forwarded to Meta) and
- `lib/signals/user-data.ts` (E.164 phone normalization for matching).
+ every payload; `locale` is UI-only and is not forwarded to Meta),
+ `lib/signals/user-data.ts` (E.164 phone normalization for matching), and
+ `components/signals/jwt-provider.tsx` (token refresh).
 
 ## Events
 
@@ -47,9 +49,32 @@ and `components/signals/contact-link.tsx`, both client components.
 - `autoConfig: false` stops Meta's automatic button/metadata collection, so the
   explicit events above are the only ones counted.
 - `debug: true` is intentionally kept on for this project. A per-call
-  `{ debug: false }` can silence a noisy event.
+  `{ debug: false }` can silence a noisy event. JWT debug lines contain only
+  metadata (`jti`, `exp`, …), never the token value.
 - No `capi_test_event_code` in production payloads.
 - Custom event names stay well under Meta's 50-character limit.
+
+## JWT endpoint protection
+
+`app/api/signal-tkn/route.ts` mints a short-lived HMAC-SHA256 token with
+`createDevalonSignalJwt()`. `DEVALON_SIGNING_SECRET` is server-only (≥16 chars,
+never `NEXT_PUBLIC_`/`VITE_`) and must match the secret registered with Devalon
+for this pixel and origin (`siteUrl`, i.e. `https://ventprime.md`). Missing
+secret or a mint failure returns a generic `500` and issues no token. The
+same-origin check rejects foreign origins (403) and a best-effort per-IP limit
+returns 429 after 10 requests/minute; for real abuse control add a rate-limit
+rule for this path at the edge. Local testing from `localhost`/LAN needs a
+Devalon administrator to enable development origins for the pixel and a local
+`origin` claim; production keeps `https://ventprime.md`.
+
+`components/signals/jwt-provider.tsx` registers `set_signal_jwt_provider()` once
+on mount. There is deliberately **no `meta.jwt`** and no `force-dynamic`: pages
+stay static, the SDK fetches a token on the first event, refreshes within
+30 seconds of expiry, and retries once on a `403 jwt_*` rejection.
+
+A JWT is a bearer credential: any visitor can call the public mint endpoint and
+get a token valid for at most 300 seconds. This blocks anonymous/invalid
+requests, but it is abuse reduction, **not** authentication of individual events.
 
 ## Verify
 
@@ -60,6 +85,10 @@ and `components/signals/contact-link.tsx`, both client components.
 4. In the HAR, the `signal.devalon.dev` POST must show `user_data` with 64-hex
    `email`, `phone` (hash of the `+373…` number) and `firstName` (hash of the
    submitted name) — never raw values.
-5. Click a phone/email CTA and a nav link: one `Contact` / `NavClick` fires.
-6. With `debug: true`, the browser console shows `✓ Pixel <id>` and
-   `→ endpoint ✓` for each event.
+5. `GET /api/signal-tkn` returns a three-part token for same-origin calls,
+   403 for a foreign origin, and a generic 500 when the signing secret is absent.
+6. Click a phone/email CTA and a nav link: one `Contact` / `NavClick` fires.
+7. In the HAR, the `signal.devalon.dev` POST carries `Authorization: Bearer …`
+   with **no `jwt` field in the body** and no `403 jwt_*` response; the browser
+   console shows `✓ Pixel <id>` and `→ endpoint ✓` (plus JWT refresh metadata)
+   with `debug: true`.

@@ -11,6 +11,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { JsonLd } from "@/components/seo/json-ld";
+import { JwtProvider } from "@/components/signals/jwt-provider";
 import { devalonSignalMeta } from "@/lib/devalon";
 import { pageMetadata, site, siteUrl } from "@/lib/seo";
 import { siteJsonLd } from "@/lib/structured-data";
@@ -135,6 +136,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body className="min-h-full flex flex-col">
         <DevalonSignal meta={devalonSignalMeta} />
+        <JwtProvider />
         <JsonLd value={siteJsonLd(locale, t("homeDescription"), services)} />
         <NextIntlClientProvider>
           <SmoothScroll>
