@@ -7,7 +7,7 @@ import { site, siteUrl } from "@/lib/site";
  */
 export const devalonSignalMeta = {
   pixel_id: "1683475309995701",
-  debug: true,
+  debug: false,
   // Explicit signal() calls are the source of truth; avoid Meta's automatic
   // button/metadata collection so events are not counted twice.
   autoConfig: false,
