@@ -6,6 +6,7 @@ import { Info, Send } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { hash_meta_user_data } from "@devalon.dev/credits/signals";
 import { useSignals } from "@/lib/signals/events";
+import { normalizePhoneForMatching } from "@/lib/signals/user-data";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -185,9 +186,11 @@ function ContactsForm() {
           if (!response.ok) throw new Error("Request failed");
           const email = String(data.get("contacts-email") ?? "");
           const phone = String(data.get("contacts-phone") ?? "");
+          const name = String(data.get("contacts-name") ?? "");
           const userData = await hash_meta_user_data({
             ...(email ? { email } : {}),
-            ...(phone ? { phone } : {}),
+            ...(phone ? { phone: normalizePhoneForMatching(phone) } : {}),
+            ...(name ? { name } : {}),
           }).catch(() => undefined);
           lead("contacts-page", userData);
           form.reset();

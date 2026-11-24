@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { hash_meta_user_data } from "@devalon.dev/credits/signals";
 import { useSignals } from "@/lib/signals/events";
+import { normalizePhoneForMatching } from "@/lib/signals/user-data";
 import { Button } from "@/components/ui/button";
 
 function FormField({
@@ -72,11 +73,14 @@ function ContactForm() {
           if (!response.ok) throw new Error("Request failed");
           const email = String(data.get("email") ?? "");
           const phone = String(data.get("phone") ?? "");
+          const name = String(data.get("name") ?? "");
           // Hash before it leaves the browser; never fail the conversion if
-          // Web Crypto is unavailable.
+          // Web Crypto is unavailable. The phone is converted to E.164 for
+          // matching; our own API still receives the original value.
           const userData = await hash_meta_user_data({
             ...(email ? { email } : {}),
-            ...(phone ? { phone } : {}),
+            ...(phone ? { phone: normalizePhoneForMatching(phone) } : {}),
+            ...(name ? { name } : {}),
           }).catch(() => undefined);
           lead("footer-form", userData);
           form.reset();
