@@ -134,6 +134,21 @@ export default async function LocaleLayout({ children, params }: Props) {
       lang={locale}
       className={`${geistSans.variable} ${plex.variable} ${inter.variable} ${manrope.variable} ${gilroy.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-5T8B6F5N"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <DevalonSignal meta={devalonSignalMeta} />
         <JwtProvider />
