@@ -1,11 +1,16 @@
 # Signals event map
 
 All tracking goes through `signal()` from `@devalon.dev/credits/signals`
-(`@devalon.dev/credits@1.1.3`). There is no Graph API code in this repository:
+(`@devalon.dev/credits@1.1.4`). There is no Graph API code in this repository:
 the package forwards every event to `signal.devalon.dev/{pixel_id}/signals` via
 `fetch(..., keepalive: true)`, with the JWT sent as an `Authorization: Bearer …`
 request credential (since 1.1.3, not in the event body), using the same
 `event_id` for the browser Pixel and the server-side (CAPI) copy.
+
+Since 1.1.4 the SDK also reads `fbclid` from the URL, validates it, persists it
+in a first-party `_fbc` cookie (90 days, `SameSite=Lax`, `Secure` on HTTPS) and
+adds `fbc` to every payload. An existing cookie is reused and is not rewritten
+unless the click ID actually changes; no application code is involved.
 
  Loader: `<DevalonSignal meta={devalonSignalMeta} />` in `app/[locale]/layout.tsx`.
  Config: `lib/devalon.ts` — pixel ID, `debug: true`, `autoConfig: false`.
