@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { hash_meta_user_data } from "@devalon.dev/credits/signals";
 import { useSignals } from "@/lib/signals/events";
 import { normalizePhoneForMatching } from "@/lib/signals/user-data";
+import { trackLeadFormSubmit } from "@/lib/analytics/gtm";
 import { Button } from "@/components/ui/button";
 
 function FormField({
@@ -83,6 +84,7 @@ function ContactForm() {
             ...(name ? { name } : {}),
           }).catch(() => undefined);
           lead("footer-form", userData);
+          trackLeadFormSubmit("footer");
           form.reset();
           setStatus("success");
         } catch {

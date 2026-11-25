@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { hash_meta_user_data } from "@devalon.dev/credits/signals";
 import { useSignals } from "@/lib/signals/events";
 import { normalizePhoneForMatching } from "@/lib/signals/user-data";
+import { trackLeadFormSubmit } from "@/lib/analytics/gtm";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -193,6 +194,7 @@ function ContactsForm() {
             ...(name ? { name } : {}),
           }).catch(() => undefined);
           lead("contacts-page", userData);
+          trackLeadFormSubmit("contacts");
           form.reset();
           setCity("Chisinau");
           setProblem("");

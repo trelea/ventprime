@@ -2,6 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { useSignals } from "@/lib/signals/events";
+import { trackPhoneClick } from "@/lib/analytics/gtm";
 
 type ContactLinkProps = ComponentProps<"a"> & {
   /** Identifies the surface that produced the contact attempt. */
@@ -19,6 +20,7 @@ function ContactLink({ source, href, onClick, ...props }: ContactLinkProps) {
       href={href}
       {...props}
       onClick={(event) => {
+        if (method === "phone") trackPhoneClick(source);
         contact(source, method);
         onClick?.(event);
       }}
