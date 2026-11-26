@@ -1,5 +1,5 @@
 import type { devalon_signal_meta } from "@devalon.dev/credits/signals";
-import { site, siteUrl } from "@/lib/site";
+import { businessEntityId, site, siteUrl } from "@/lib/site";
 
 /**
  * Devalon's client-side tracking config. These values are public by design —
@@ -22,6 +22,9 @@ export const devalonSignalMeta = {
 export const devalonCredit = {
   site_url: siteUrl,
   site_name: site.name,
+  // Point Devalon at our existing LocalBusiness so it does not emit a second
+  // Organization stub for the same company (1.1.5 metadata overlap contract).
+  client_entity_id: businessEntityId,
   services: [
     "web_development",
     "frontend_engineering",

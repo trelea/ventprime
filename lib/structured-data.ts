@@ -9,10 +9,9 @@ import {
   siteUrl,
   topicTags,
 } from "@/lib/seo";
+import { businessEntityId } from "@/lib/site";
 
 type JsonLd = Record<string, unknown>;
-
-const businessId = `${siteUrl}/#business`;
 
 const knowsAbout: Record<Locale, string[]> = {
   en: [
@@ -54,7 +53,7 @@ export function siteJsonLd(
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": businessId,
+        "@id": businessEntityId,
         name: site.name,
         url: absoluteLocalizedPath("/", locale),
         telephone: site.phone,
@@ -90,21 +89,16 @@ export function siteJsonLd(
           },
         ],
       },
-      {
-        "@type": "WebSite",
-        "@id": `${siteUrl}/#website`,
-        url: absoluteLocalizedPath("/", locale),
-        name: site.name,
-        inLanguage: locale,
-        publisher: { "@id": businessId },
-      },
+      // WebSite / WebPage nodes are owned by Devalon (DevalonCredit), which
+      // references this LocalBusiness via client_entity_id. Declaring them
+      // here too would produce a duplicate @id on every page.
       ...services.map((service, index) => ({
         "@type": "Service",
         "@id": `${siteUrl}/${locale}#service-${index + 1}`,
         name: service.name,
         description: service.description,
         serviceType: service.name,
-        provider: { "@id": businessId },
+        provider: { "@id": businessEntityId },
         areaServed: {
           "@type": "Country",
           name: "Moldova",
@@ -131,7 +125,7 @@ export function blogIndexJsonLd(
         name: blogLabel,
         url: blogUrl,
         inLanguage: locale,
-        publisher: { "@id": businessId },
+        publisher: { "@id": businessEntityId },
         blogPost: posts.map((post) => ({
           "@id": absoluteLocalizedPath(post.path, locale),
         })),
@@ -203,12 +197,9 @@ export function articleJsonLd(
       "@type": "WebPage",
       "@id": absoluteLocalizedPath(post.path, locale),
     },
-    author: {
-      "@type": "Organization",
-      name: site.name,
-      url: siteUrl,
-    },
-    publisher: { "@id": businessId },
+    // `author` / `creator` are Devalon-owned; the strict contract forbids a
+    // competing client declaration on BlogPosting nodes.
+    publisher: { "@id": businessEntityId },
   };
 }
 

@@ -22,6 +22,7 @@ export function DevalonCredit({ locale, path }: DevalonCreditProps) {
       site_name={devalonCredit.site_name}
       in_language={locale}
       page_url={absoluteLocalizedPath(path, locale)}
+      client_entity_id={devalonCredit.client_entity_id}
       services={devalonCredit.services}
       contributions={devalonCredit.contributions}
     />
