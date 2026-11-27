@@ -23,6 +23,7 @@ export const devalonSignalMeta = {
  */
 export const devalonSignalGoogle = {
   gtm_id: "GTM-MZCPTKMG",
+  debug: true,
 } satisfies devalon_signal_google;
 
 /**
