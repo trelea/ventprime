@@ -13,7 +13,7 @@ type PhoneCtaProps = {
 
 function PhoneCta({ source = "navbar-phone" }: PhoneCtaProps) {
   const t = useTranslations("Nav");
-  const { contact } = useSignals();
+  const { contact, googleContact } = useSignals();
 
   return (
     <Button
@@ -22,6 +22,7 @@ function PhoneCta({ source = "navbar-phone" }: PhoneCtaProps) {
       onClick={() => {
         trackPhoneClick(source);
         contact(source, "phone");
+        googleContact(source, "phone");
       }}
       className="h-[42px] gap-[13px] rounded-[11.2px] bg-primary px-3 font-ui text-[15px] text-on-dark hover:bg-primary/90 lg:px-[20px]"
     >

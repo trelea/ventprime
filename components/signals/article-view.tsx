@@ -11,7 +11,7 @@ type ArticleViewProps = {
 
 /** Fires one ViewContent per article page load; Strict Mode safe. */
 function ArticleView({ path, title }: ArticleViewProps) {
-  const { viewContent } = useSignals();
+  const { viewContent, googleViewContent } = useSignals();
   const locale = useLocale();
   const sentRef = useRef<string | null>(null);
 
@@ -20,7 +20,8 @@ function ArticleView({ path, title }: ArticleViewProps) {
     if (sentRef.current === key) return;
     sentRef.current = key;
     viewContent(path, title);
-  }, [locale, path, title, viewContent]);
+    googleViewContent(path, title);
+  }, [locale, path, title, viewContent, googleViewContent]);
 
   return null;
 }

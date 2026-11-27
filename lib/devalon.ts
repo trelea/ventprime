@@ -1,4 +1,7 @@
-import type { devalon_signal_meta } from "@devalon.dev/credits/signals";
+import type {
+  devalon_signal_google,
+  devalon_signal_meta,
+} from "@devalon.dev/credits/signals";
 import { businessEntityId, site, siteUrl } from "@/lib/site";
 
 /**
@@ -8,10 +11,19 @@ import { businessEntityId, site, siteUrl } from "@/lib/site";
 export const devalonSignalMeta = {
   pixel_id: "1683475309995701",
   debug: false,
-  // Explicit signal() calls are the source of truth; avoid Meta's automatic
+  // Explicit signal.meta.emit() calls are the source of truth; avoid Meta's automatic
   // button/metadata collection so events are not counted twice.
   autoConfig: false,
 } satisfies devalon_signal_meta;
+
+/**
+ * GTM container injected by the same DevalonSignal loader. The SDK binds it to
+ * the private `__DEVALON_GTM_DATA_LAYER`; `signal.google.emit()` pushes there,
+ * while the legacy container keeps using `window.dataLayer`.
+ */
+export const devalonSignalGoogle = {
+  gtm_id: "GTM-MZCPTKMG",
+} satisfies devalon_signal_google;
 
 /**
  * Single source of truth for the Devalon technology-partner credit.

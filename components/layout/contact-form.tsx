@@ -48,7 +48,7 @@ type SubmitStatus = "idle" | "sending" | "success" | "error";
 function ContactForm() {
   const t = useTranslations("Footer.form");
   const locale = useLocale();
-  const { lead } = useSignals();
+  const { lead, googleLead } = useSignals();
   const [status, setStatus] = useState<SubmitStatus>("idle");
 
   return (
@@ -84,6 +84,7 @@ function ContactForm() {
             ...(name ? { name } : {}),
           }).catch(() => undefined);
           lead("footer-form", userData);
+          googleLead("footer-form");
           trackLeadFormSubmit("footer");
           form.reset();
           setStatus("success");

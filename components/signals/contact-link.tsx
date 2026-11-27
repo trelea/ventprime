@@ -11,7 +11,7 @@ type ContactLinkProps = ComponentProps<"a"> & {
 
 /** Anchor that reports a Meta `Contact` event when the user clicks it. */
 function ContactLink({ source, href, onClick, ...props }: ContactLinkProps) {
-  const { contact } = useSignals();
+  const { contact, googleContact } = useSignals();
   const method =
     typeof href === "string" && href.startsWith("mailto:") ? "email" : "phone";
 
@@ -22,6 +22,7 @@ function ContactLink({ source, href, onClick, ...props }: ContactLinkProps) {
       onClick={(event) => {
         if (method === "phone") trackPhoneClick(source);
         contact(source, method);
+        googleContact(source, method);
         onClick?.(event);
       }}
     />

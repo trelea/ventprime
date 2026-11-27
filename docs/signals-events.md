@@ -1,33 +1,52 @@
 # Signals event map
 
-All tracking goes through `signal()` from `@devalon.dev/credits/signals`
-(`@devalon.dev/credits@1.1.5`). There is no Graph API code in this repository:
-the package forwards every event to `signal.devalon.dev/{pixel_id}/signals` via
-`fetch(..., keepalive: true)`, with the JWT sent as an `Authorization: Bearer …`
-request credential (since 1.1.3, not in the event body), using the same
-`event_id` for the browser Pixel and the server-side (CAPI) copy.
+Meta tracking goes through `signal.meta.emit()` and Google tracking through
+`signal.google.emit()` from `@devalon.dev/credits/signals`
+(`@devalon.dev/credits@1.1.7`). `signal` is a namespace object; the two emitters
+are independent and names/params are never translated between them. There is no
+Graph API code in this repository: the package forwards every Meta event to
+`signal.devalon.dev/{pixel_id}/signals` via `fetch(..., keepalive: true)`, with
+the JWT sent as an `Authorization: Bearer …` request credential (since 1.1.3,
+not in the event body), using the same `event_id` for the browser Pixel and the
+server-side (CAPI) copy. Google emits go only to the GTM container's private
+layer — no collector, no `event_id`, no `user_data`.
 
 Since 1.1.4 the SDK also reads `fbclid` from the URL, validates it, persists it
 in a first-party `_fbc` cookie (90 days, `SameSite=Lax`, `Secure` on HTTPS) and
 adds `fbc` to every payload. An existing cookie is reused and is not rewritten
 unless the click ID actually changes; no application code is involved.
 
- Loader: `<DevalonSignal meta={devalonSignalMeta} />` in `app/[locale]/layout.tsx`.
- Config: `lib/devalon.ts` — pixel ID, `debug: false`, `autoConfig: false`.
+Since 1.1.6 the same `<DevalonSignal>` loader also injects Google Tag Manager
+(`google={devalonSignalGoogle}`, container `GTM-MZCPTKMG` in `lib/devalon.ts`).
+Since 1.1.7 the container is bound to a private, read-only
+`__DEVALON_GTM_DATA_LAYER` (`gtm.js?id=…&l=__DEVALON_GTM_DATA_LAYER`); it does
+not declare `gtag` and does not touch `window.dataLayer`. `signal.google.emit()`
+pushes `{ ...params, event }` there, with the event name used verbatim as the
+GTM Custom Event trigger. A CSP `nonce` applies to both script tags.
+
+The pre-existing `GTM-5T8B6F5N` snippet in `<head>` is kept alongside it and
+still uses `window.dataLayer`, so `phone_click` and `lead_form_submit` from
+`lib/analytics/gtm.ts` reach only that container. The two layers are isolated —
+configure triggers separately in each container's GTM workspace.
+
+ Loader: `<DevalonSignal meta={devalonSignalMeta} google={devalonSignalGoogle} />`
+ in `app/[locale]/layout.tsx`.
+ Config: `lib/devalon.ts` — pixel ID, `debug: false`, `autoConfig: false`, GTM ID
+ (`google.debug` is left unset; both debug defaults are `false`).
  Helpers: `lib/signals/events.ts` (`useSignals()` adds the active `locale` to
- every payload; `locale` is UI-only and is not forwarded to Meta),
+ every Meta and Google payload; `locale` is UI-only and is not forwarded to Meta),
  `lib/signals/user-data.ts` (E.164 phone normalization for matching), and
  `components/signals/jwt-provider.tsx` (token refresh).
 
 ## Events
 
-| Event | Type | Trigger | Payload (beyond `locale`) |
-| --- | --- | --- | --- |
-| `Lead` | standard | After a 2xx response from `/api/contact-footer` or `/api/contact-page` | `content_name: "footer-form" \| "contacts-page"`, `content_category: "contact-form"`, `options.userData` with browser-hashed `email`, `phone` (E.164) and `name` (→ Meta `fn`) |
-| `Contact` | standard | Click on any phone (`tel:`) or email (`mailto:`) CTA | `content_name: <surface>`, `contact_method: "phone" \| "email"` |
-| `ViewContent` | standard | Once per blog article page load | `content_ids: [post.path]`, `content_type: "article"`, `content_name: <localized title>`, `content_category: "blog"` |
-| `HeroCtaClick` | custom | Hero "consultation" button | `button_id: "hero-consultation"`, `section: "hero"` |
-| `NavClick` | custom | Header, footer or mobile nav link | `nav_location: "header" \| "footer" \| "mobile"`, `item: <nav key>` |
+| Meta event | Google event | Type | Trigger | Payload (beyond `locale`) |
+| --- | --- | --- | --- | --- |
+| `Lead` | `generate_lead` | standard | After a 2xx response from `/api/contact-footer` or `/api/contact-page` | `content_name: "footer-form" \| "contacts-page"`, `content_category: "contact-form"`; Meta only: `options.userData` with browser-hashed `email`, `phone` (E.164) and `name` (→ Meta `fn`) |
+| `Contact` | `phone_click` / `email_click` | standard (Meta), custom (Google) | Click on any phone (`tel:`) or email (`mailto:`) CTA | `content_name: <surface>`; Meta only: `contact_method: "phone" \| "email"` |
+| `ViewContent` | `article_view` | standard (Meta), custom (Google) | Once per blog article page load | `content_ids: [post.path]`, `content_name: <localized title>`; Meta only: `content_type: "article"`, `content_category: "blog"` |
+| `HeroCtaClick` | `hero_cta_click` | custom | Hero "consultation" button | `button_id: "hero-consultation"`, `section: "hero"` |
+| `NavClick` | `nav_click` | custom | Header, footer or mobile nav link | `nav_location: "header" \| "footer" \| "mobile"`, `item: <nav key>` |
 
 `Contact` sources: `hero-phone`, `navbar-phone`, `mobile-phone`, `mobile-email`,
 `footer-phone`, `footer-email`, `main-services-phone`, `technology-phone`,
@@ -37,6 +56,11 @@ unless the click ID actually changes; no application code is involved.
 client component; a ref guard prevents double-fire under React Strict Mode and
 on re-renders. The other click events come from `components/signals/tracked-link.tsx`
 and `components/signals/contact-link.tsx`, both client components.
+
+Every helper has a `google*` counterpart called from the same place, so both
+platforms see the same user action. `GOOGLE_EVENT_ALIASES` maps our two Meta
+custom names to their snake_case GTM counterparts; unknown names are skipped
+rather than sent under a trigger name that does not exist.
 
 ## Rules applied
 
@@ -53,9 +77,12 @@ and `components/signals/contact-link.tsx`, both client components.
   worker from IP geo on every forwarded event; no application code is needed.
 - `autoConfig: false` stops Meta's automatic button/metadata collection, so the
   explicit events above are the only ones counted.
-- `debug: true` is intentionally kept on for this project. A per-call
-  `{ debug: false }` can silence a noisy event. JWT debug lines contain only
-  metadata (`jti`, `exp`, …), never the token value.
+- `debug: false` in `lib/devalon.ts` keeps the browser console quiet. A per-call
+  `{ debug: true }` enables verbose logging for one event when debugging; JWT
+  debug lines contain only metadata (`jti`, `exp`, …), never the token value.
+- Google emits carry only `{ ...params, event }`: no `user_data`, no hashed PII,
+  no `event_id`, and no request to `signal.devalon.dev`. Names follow Google's
+  catalogs (`GOOGLE_STANDARD_EVENT_NAMES` / `GOOGLE_CUSTOM_EVENT_NAMES`, snake_case).
 - No `capi_test_event_code` in production payloads.
 - Custom event names stay well under Meta's 50-character limit.
 
@@ -96,4 +123,10 @@ requests, but it is abuse reduction, **not** authentication of individual events
 7. In the HAR, the `signal.devalon.dev` POST carries `Authorization: Bearer …`
    with **no `jwt` field in the body** and no `403 jwt_*` response; the browser
    console shows `✓ Pixel <id>` and `→ endpoint ✓` (plus JWT refresh metadata)
-   with `debug: true`.
+   when `debug: true` is temporarily enabled for the check.
+8. A rendered page's HTML contains
+   `gtm.js?id=GTM-MZCPTKMG&l=__DEVALON_GTM_DATA_LAYER` and the read-only
+   `__DEVALON_GTM_DATA_LAYER` bootstrap; the Devalon snippet declares no `gtag`.
+9. A form submit / CTA click pushes `generate_lead` / `phone_click` into
+   `__DEVALON_GTM_DATA_LAYER` (no `user_data`, no `event_id`), while the legacy
+   container still receives `lead_form_submit` / `phone_click` via `dataLayer`.

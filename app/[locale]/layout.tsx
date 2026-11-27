@@ -12,7 +12,7 @@ import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { JsonLd } from "@/components/seo/json-ld";
 import { JwtProvider } from "@/components/signals/jwt-provider";
-import { devalonSignalMeta } from "@/lib/devalon";
+import { devalonSignalGoogle, devalonSignalMeta } from "@/lib/devalon";
 import { pageMetadata, site, siteUrl } from "@/lib/seo";
 import { siteJsonLd } from "@/lib/structured-data";
 import "lenis/dist/lenis.css";
@@ -150,7 +150,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <DevalonSignal meta={devalonSignalMeta} />
+        <DevalonSignal
+          meta={devalonSignalMeta}
+          google={devalonSignalGoogle}
+        />
         <JwtProvider />
         <JsonLd value={siteJsonLd(locale, t("homeDescription"), services)} />
         <NextIntlClientProvider>

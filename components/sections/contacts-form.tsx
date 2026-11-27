@@ -151,7 +151,7 @@ type SubmitStatus = "idle" | "sending" | "success" | "error";
 function ContactsForm() {
   const t = useTranslations("Contacts");
   const locale = useLocale();
-  const { lead } = useSignals();
+  const { lead, googleLead } = useSignals();
 
   const [city, setCity] = useState("Chisinau");
   const [problem, setProblem] = useState("");
@@ -194,6 +194,7 @@ function ContactsForm() {
             ...(name ? { name } : {}),
           }).catch(() => undefined);
           lead("contacts-page", userData);
+          googleLead("contacts-page");
           trackLeadFormSubmit("contacts");
           form.reset();
           setCity("Chisinau");
