@@ -150,10 +150,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <DevalonSignal
-          meta={devalonSignalMeta}
-          google={devalonSignalGoogle}
-        />
+        <DevalonSignal meta={devalonSignalMeta} google={devalonSignalGoogle} />
         <JwtProvider />
         <JsonLd value={siteJsonLd(locale, t("homeDescription"), services)} />
         <NextIntlClientProvider>

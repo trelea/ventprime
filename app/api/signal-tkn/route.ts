@@ -1,4 +1,5 @@
 import { createDevalonSignalJwt } from "@devalon.dev/credits/signals";
+import { devalonLogs } from "@/lib/devalon";
 import { siteUrl } from "@/lib/site";
 
 const PIXEL_ID = "1683475309995701";
@@ -54,7 +55,7 @@ export async function GET(request: Request) {
       secret,
       pixel_id: PIXEL_ID,
       origin: siteUrl,
-      debug: true,
+      logs: devalonLogs,
     });
   } catch {
     return new Response("Could not mint token", { status: 500 });

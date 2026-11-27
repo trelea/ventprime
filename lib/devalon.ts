@@ -4,13 +4,16 @@ import type {
 } from "@devalon.dev/credits/signals";
 import { businessEntityId, site, siteUrl } from "@/lib/site";
 
+/** Per-event console logs are a development aid only; production stays quiet. */
+export const devalonLogs = process.env.NODE_ENV === "development";
+
 /**
  * Devalon's client-side tracking config. These values are public by design —
  * the loader renders them into HTML; they are not secrets.
  */
 export const devalonSignalMeta = {
   pixel_id: "1683475309995701",
-  debug: false,
+  logs: devalonLogs,
   // Explicit signal.meta.emit() calls are the source of truth; avoid Meta's automatic
   // button/metadata collection so events are not counted twice.
   autoConfig: false,
@@ -18,12 +21,12 @@ export const devalonSignalMeta = {
 
 /**
  * GTM container injected by the same DevalonSignal loader. The SDK binds it to
- * the private `__DEVALON_GTM_DATA_LAYER`; `signal.google.emit()` pushes there,
- * while the legacy container keeps using `window.dataLayer`.
+ * the private `__DS_G_DL` layer (`DEVALON_GOOGLE_DATA_LAYER`); `signal.google.emit()`
+ * pushes there, while the legacy container keeps using `window.dataLayer`.
  */
 export const devalonSignalGoogle = {
   gtm_id: "GTM-MZCPTKMG",
-  debug: true,
+  logs: devalonLogs,
 } satisfies devalon_signal_google;
 
 /**

@@ -294,10 +294,10 @@
     reselect "^5.3.0"
     use-sync-external-store "^1.7.0"
 
-"@devalon.dev/credits@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@devalon.dev/credits/-/credits-1.1.7.tgz#69578a5d8ec2b3151c18d0a73c57eafddd770237"
-  integrity sha512-f2OI32qVMwnE6Dih1GHB08/GCC8zWRywvjQ70MmQmp9zyH+n0rbPs+P6oAwxVxbhoBlYuaV4nDSSoNQYEpk2gQ==
+"@devalon.dev/credits@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/@devalon.dev/credits/-/credits-2.0.0.tgz"
+  integrity sha512-GVI2l3XeycslnfJWR8/cspW/oRzHCcCqT8XW0eWnJBHyQpUWK11Dm113eZtcgfcw780RT8VSnWa1sRWBU02ynQ==
 
 "@dotenvx/dotenvx@^1.48.4":
   version "1.75.1"
