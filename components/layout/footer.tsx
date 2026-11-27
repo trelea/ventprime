@@ -202,7 +202,7 @@ function Footer({ locale }: { locale: Locale }) {
               locale={locale}
               site_url={devalonCredit.site_url}
               utm
-              className="order-6 mt-[10px] block font-gilroy text-[13px] leading-[160%] text-white/70 [&_a]:text-white [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-primary lg:order-none lg:mt-[6px] lg:text-[14px]"
+              className="order-6 mt-[10px] block font-gilroy text-[14px] leading-[160%] text-white/70 [&_a]:relative [&_a]:inline-block [&_a]:leading-none [&_a]:text-white [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-300 [&_a]:ease-out [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-px [&_a]:after:w-full [&_a]:after:origin-left [&_a]:after:scale-x-0 [&_a]:after:bg-primary [&_a]:after:content-[''] [&_a]:after:transition-transform [&_a]:after:duration-300 [&_a]:after:ease-out [&_a]:hover:text-primary [&_a]:hover:after:scale-x-100 [&_a]:focus-visible:text-primary [&_a]:focus-visible:after:scale-x-100 motion-reduce:[&_a]:transition-none motion-reduce:[&_a]:after:transition-none lg:order-none lg:mt-[6px] lg:text-[15px]"
             />
           </div>
 
