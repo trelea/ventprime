@@ -25,7 +25,7 @@ export const devalonSignalMeta = {
  * pushes there, while the legacy container keeps using `window.dataLayer`.
  */
 export const devalonSignalGoogle = {
-  gtm_id: "GTM-MZCPTKMG",
+  gtm_id: "GTM-WLJ5FB72",
   logs: devalonLogs,
 } satisfies devalon_signal_google;
 
